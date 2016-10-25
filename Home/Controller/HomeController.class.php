@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace tyreWWW\Controller;
 use Think\Controller;
 class HomeController extends CommonController {
 	public function index()
