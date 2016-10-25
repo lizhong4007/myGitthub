@@ -1,6 +1,7 @@
 <include file="Public/header"/>
 <link rel="stylesheet" href="__STATIC__/css/homepage.css">
 <script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.js"></script>
+<script src="__STATIC__/js/home.js"></script>
 <!-- slide -->
 <div class="container-fluid slide-body">
     <div class="container">
@@ -94,7 +95,7 @@
                         <div class="col-xs-12 goodsthumb ">
                             <div class="goods_img">
                             <a  target="_blank" href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}">
-                                <img  class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$value.thumb}</if>" />
+                                <img  class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else />{$site_imagedomain}{$value.thumb}</if>" />
                             </a>
                             </div>
                             <div class="goods_brand">
@@ -127,54 +128,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(".p_category").on("mouseover",function(){
-        var obj = $(this);
-        var index = obj.attr("data-index");
-        $(".sub_category").css({"display":"none"});
-        var li_arr = $("#sub_"+index).find("li");
-        
-        if(li_arr.length > 0)
-        {
-            $("#sub_"+index).css({"display":"block"});
-            obj.css({"border-right":"none"});
-            $("#slide_box").css({"display":"none"});
-        }
-    });
-    $(".p_category").on("mouseout",function(){
-        var obj = $(this);
-        $("#slide_box").css({"display":"block"});
-        $(".sub_category").css({"display":"none"});
-        obj.css({"border-right":"1px solid #e7e7e7"});
-    });
-    $(".sub_category").on("mouseover",function(){
-        var obj = $(this);
-        var index = obj.attr("data-index");
-        $("#slide_box").css({"display":"none"});
-        obj.css({"display":"block"});
-        $("#pcat_"+index).css({"border-right":"none"});
 
-    });
-    $(".sub_category").on("mouseout",function(){
-        var obj = $(this);
-        var index = obj.attr("data-index");
-        $("#slide_box").css({"display":"block"});
-        obj.css({"display":"none"});
-        $("#pcat_"+index).css({"border-right":"1px solid #e7e7e7"});
-    });
-    
-</script>  
-<script id="jsID" type="text/javascript">
-jQuery(".slideBox").slide( { 
-    mainCell:".bd ul", 
-    effect:"fade",
-    autoPlay:"auto",
-    trigger:"mouseover",
-    easing:"swing",
-    delayTime:500,
-    mouseOverStop:true,
-    pnLoop:true 
-});
-</script>
 <include file="Public/page" />
 <include file="Public/footer"/>

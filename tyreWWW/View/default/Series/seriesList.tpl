@@ -36,10 +36,10 @@
 			    <ul class=" col-xs-12 row">
 				    <li class="col-xs-2 row t_selector_brand">
 				    	<div class="t_selector_img">
-					    	<img  src="<if condition="$brand['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$brand.thumb}</if>" />
+					    	<img  src="<if condition="$brand['thumb'] eq ''">{$default_image}<else />{$site_imagedomain}{$brand.thumb}</if>" />
 					    </div>
 					    <div class="t_selector_title">
-					    	<a href="{:U('Brand/brand_list',array('brandid',$brand['brandid']))}">
+					    	<a href="{:U('Brand/brand_list',array('brandid'=>$brand['brandid']))}">
 						    	{$brand.brand_name}
 					    	</a>
 					    </div>
@@ -126,7 +126,7 @@
 			    <li class="col-xs-12 t_list_li">
 				    <div class="t_list_l col-xs-3">
 			    		<a href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$value.thumb}</if>" />
+			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else />{$site_imagedomain}{$value.thumb}</if>" />
 			    		</a>
 				    </div>
 				    <div class="t_list_c col-xs-8 row">

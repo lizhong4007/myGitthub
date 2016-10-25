@@ -5,7 +5,7 @@
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('Home/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
             <if condition="$parent_category neq ''">
@@ -66,11 +66,11 @@
 			    </div>
 		    </if>
 		    <div class="t_filter_r col-xs-10 ">
-		    <input type="hidden" value="{:U('Goods/get_series')}" id="get_series_url" />
+		    <input type="hidden" value="{:U('series/get_series')}" id="get_series_url" />
 			    <ul id="series_list">
 			        <foreach name="series" key="key" item="value">
 				    <li >
-					    <a href="{:U('Goods/series_list',array('seriesid'=>$value['seriesid']))}">
+					    <a href="{:U('series/series_list',array('seriesid'=>$value['seriesid']))}">
 					    {$value.series_name}
 					    </a>
 				    </li>

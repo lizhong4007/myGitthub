@@ -11,7 +11,7 @@ class CommonController extends Controller {
 		//图片地址
 		$site_imagedomain = C('UPLOAD_FILE_URL');
 		$this->assign('site_imagedomain',$site_imagedomain);
-		$default_image = C('UPLOAD_FILE_URL');
+		$default_image = C('DEFAULT_IMAGE');
 		$this->assign('default_image',$default_image);
 	}
 

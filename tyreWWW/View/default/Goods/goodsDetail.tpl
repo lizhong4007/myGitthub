@@ -21,7 +21,7 @@
     		</li>
             <if condition="$nav_series neq ''">
                 <li>
-                    <a href="{:U('Goods/series_list',array('seriesid'=>$goods['seriesid']))}">{$nav_series['series_name']}</a>
+                    <a href="{:U('Series/series_list',array('seriesid'=>$goods['seriesid']))}">{$nav_series['series_name']}</a>
                     <i>></i>
                 </li>
             </if>

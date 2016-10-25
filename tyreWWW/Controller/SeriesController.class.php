@@ -39,7 +39,7 @@ class SeriesController extends CommonController {
 		$this->assign("goods",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
 
-		$this->display("Series/List");
+		$this->display("Series/seriesList");
 	}
 	
 	/*根据分类和品牌查询系列*/
