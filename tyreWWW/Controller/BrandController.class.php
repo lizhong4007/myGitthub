@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace tyreWWW\Controller;
 use Think\Controller;
 class BrandController extends Controller {
 
@@ -21,7 +21,6 @@ class BrandController extends Controller {
 		$category = D('Category')->getCategoryList();
 		$this->assign("category",$category);
 		$this->assign("catids",$catids);
-		// 商品
 		// 赛选条件
 		$where = array();
 		$catid = (int)I('get.catid','');
@@ -32,7 +31,6 @@ class BrandController extends Controller {
 		}
 		$p = (int)I('p',1);
 		$where['brandid'] = $brandid;
-		// print_r($where);exit;
 		$size = 20;
 		$goodslist = D("Goods")->getGoodsList($where,$p,$size);
 		$goods_data = $goodslist['data'];
@@ -47,7 +45,6 @@ class BrandController extends Controller {
 		}
 		$this->assign("goods",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
-		// print_r($catids);exit;
 
 		$this->display("Brand/List");
 	}

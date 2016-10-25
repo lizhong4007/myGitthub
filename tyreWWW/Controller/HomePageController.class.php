@@ -1,7 +1,7 @@
 <?php
 namespace tyreWWW\Controller;
 use Think\Controller;
-class HomeController extends CommonController {
+class HomePageController extends CommonController {
 	public function index()
 	{
 		//分类
@@ -25,10 +25,7 @@ class HomeController extends CommonController {
 		$this->assign("goods_data",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
 
-		// print_r($goods_data_tmp);exit;
-		$this->display("Home/Index");
-		// $this->display("Goods/List");
-		// $this->display("Goods/Detail");
+		$this->display("HomePage/Index");
 
 	}
 
