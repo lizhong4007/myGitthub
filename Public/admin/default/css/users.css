@@ -1,0 +1,33 @@
+ .register-box{
+  width: 100%;
+  margin: 0 auto;
+}
+.col-xs-4{
+  float: right;
+}
+.box-info{
+  width: 40%;
+  margin-left: 10%;
+}
+.col-sm-9{
+  padding-left: 0px;
+  padding-right: 15px;
+}
+.fa-check,.fa-close{
+  color: #E44242;
+}
+.nav-tabs{
+  border-top:1px solid #f4f4f4;
+}
+.box-footer{
+  border: none;
+}
+.fl{
+  float: left;
+}
+.marginleft_1{
+  margin-left: 15px;
+}
+#reset{
+  cursor: pointer;
+}

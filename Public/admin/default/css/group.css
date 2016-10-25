@@ -1,0 +1,61 @@
+.checkbox_ul{
+    list-style: none;
+    width: 100%;
+    text-align: left;
+    padding-left: 0px;
+  }
+  .checkbox_ul li {
+    float: left;
+    width: 25%;
+    margin-right: 10px;
+    line-height: 0px;
+    margin-top: 5px;
+  }
+  .checkbox_ul li input{
+    float: left;
+  }
+ 
+  .control-label{
+    padding-top: 0px !important;
+  }
+  .col-sm-6{
+    float: none;
+    margin-left: 20%;
+    border: 1px dotted #666;
+    border-bottom: none;
+    padding-bottom: 5px;
+  }
+  .small_title{
+    float:left;
+    margin-top: 3px;
+  }
+  .checkbox_under{
+    border:none;border-top:1px dotted #666;
+  }
+  .btn-primary{
+    margin-left: 10px;
+  }
+  .checkbox_title{
+  margin-top:5px;
+}
+.checkbox_little_title{
+  width:100%;margin-top:8px;
+}
+/*========品牌===============*/
+.box-body{
+  position: relative;
+}
+.brand_img{
+  position: absolute;
+  border: 1px solid #ddd;
+  right: 40%;
+  top: 10%;
+}
+.brand_input-group-addon{
+  border: none;
+  padding: 0px;
+}
+.col-sm-6
+{
+  border: none !important;
+}

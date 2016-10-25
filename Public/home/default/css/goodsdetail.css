@@ -1,0 +1,210 @@
+.t_detail{
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+}
+.t_detail_l{
+	border-right: 1px solid #e7e7e7;
+}
+.t_detail_t{
+	padding-bottom: 5px;
+	border-bottom:2px solid #0f5489;
+}
+.t_detail_l .t_detail_image{
+	height: 240px;
+
+}
+/*.t_detail_l .t_detail_image img{
+	display: block;
+	max-height: 100%;
+	width: auto;
+}*/
+.t_detail_l .t_detail_title h1
+{
+	font-size: 1.5em;
+}
+.t_detail_l .t_detail_price{
+	color: #333;
+}
+.t_detail_l .t_detail_price ul li {
+	width: 100%;
+	float: left;
+	padding: 5px 0;
+}
+.t_detail_l .t_detail_price ul li span{
+	color: #666;
+}
+.t_detail_l .t_detail_price ul li .t_detail_price_em{
+	font-style: normal;
+	color: #f00;
+}
+
+/*brand*/
+.t_detail_r .t_detail_brand {
+	position: relative;
+	border-top: 2px solid #0f5489;
+	height: 205px;
+	overflow: hidden;
+}
+.t_detail_r .t_detail_brand .t_detail_brand_title h1
+{
+	font-size: 1.5em;
+}
+.t_detail_r .t_detail_brand .t_detail_brand_content ul li{
+	padding: 5px 0 5px 10px;
+	background: url("../images/detail_dot.png") no-repeat 0 15px;
+}
+.t_detail_r .t_detail_brand .t_detail_brand_content ul li a{
+	color: #333;
+}
+.t_detail_r .t_detail_brand .t_detail_brand_content ul li a:hover{
+	color: #C81623;
+}
+.t_detail_r .t_brand_more{
+	position: absolute;
+	right: 5px;
+	top: 15px;
+	cursor: pointer;
+}
+/*brand end*/
+/*花纹*/
+.tyre_tread{
+	border-bottom: 2px solid #0f5489;
+	margin-top: 10px;
+	padding-bottom: 40px;
+}
+.tyre_tread .tyre_tread_title{
+	font-size: 1.5em;
+	color: #333;
+}
+.tyre_tread .tyre_tread_body{
+	border-top:1px solid #e7e7e7;
+}
+.tyre_tread .tyre_tread_body .tyre_tread_l_img{
+	margin-top: 5px;
+
+}
+.t_tyre_img .slider{
+   position: relative;
+}
+.t_tyre_img ul {
+	margin-top: 20px;
+}
+.t_tyre_img ul li{
+	text-align: center;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.t_tyre_img .prev,.t_tyre_img .next{
+	position: absolute;
+	z-index: 10;
+	left: 5px;
+	top: 60px;
+	margin-top: -25px;
+	display: block;
+	width: 20px;
+	height: 20px;
+	filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+.t_tyre_img .prev{
+	background: url(../images/prev_left.png) no-repeat;
+}
+.t_tyre_img .next{
+	left: auto;
+	right: 0;
+	background: url(../images/next_v.png) no-repeat;
+}
+.t_tyre_img .t_tyre_content{
+	text-align: left;
+	margin-top: 5px;
+	/*text-indent: 2em;*/
+
+}
+/*spec*/
+.t_detail_spec{
+	margin-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #0f5489;
+}
+.t_detail_spec .t_spec_title{
+	font-size: 1.5em;
+	color: #333;
+}
+.t_detail_spec .t_spec_body{
+	border-top:1px solid #e7e7e7;
+	
+}
+.t_detail_spec .t_spec_body ul li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.t_detail_spec .t_spec_body ul li span{
+	color: #999;
+}
+.model_replace span{
+   float:left;
+}
+.model_replace .model_replace_r{
+	margin-left: 3px;
+	color: #000
+}
+.model_replace .model_replace_r a:hover{
+	color: #C81623;
+}
+/*spec end*/
+/*distributor*/
+.t_distributor{
+	margin-top: 10px;
+	padding-bottom: 20px;
+}
+.t_distributor .t_distributor_title{
+	font-size: 1.5em;
+	color: #333;
+}
+.t_distributor .t_distributor_body table tr:last-child{
+	border-bottom: 1px solid #e7e7e7;
+}
+.t_distributor .t_distributor_body table th{
+	border:1px solid #e7e7e7;
+	border-bottom:none;
+	font-style: normal;
+	font-weight: normal;
+	color: #333;
+	text-align: center;
+	padding: 5px 0;
+}
+.t_distributor .t_distributor_body table td{
+	border:1px solid #e7e7e7;
+	border-bottom:none;
+	text-align: center;
+	padding: 5px 0;
+}
+.t_distributor .t_distributor_body table td em{
+	font-style: normal;
+	color: #C81623;
+}
+.t_distributor .t_distributor_body table td a:hover{
+	color: #C81623;
+}
+/*distributor end*/
+/*content*/
+.t_detail_content{
+	margin-top: 10px;
+	padding-bottom: 20px;
+	border-top: 2px solid #0f5489;
+}
+.t_detail_content .t_detail_content_title{
+	
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+.t_detail_content .t_detail_content_body ul{
+	margin-top: 10px;
+}
+.t_detail_content .t_detail_content_body ul li{
+	text-indent: 2em;
+
+}
+/*content end*/
+

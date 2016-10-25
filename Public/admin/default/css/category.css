@@ -1,0 +1,46 @@
+.box{
+  border-top:2px solid #f4f4f4;
+}
+.nav-tabs{
+  border-top:1px solid #f4f4f4;
+}
+.text-navy,.dropdown{
+  cursor: pointer;
+}
+a{
+  margin-right: 5px;
+}
+ul{
+  list-style: none;
+}
+.box-header{
+  border-bottom: 1px solid #ddd;
+}
+.category ul li{
+  float: left;
+  margin-left: 5px;
+}
+.show_state{
+	cursor: pointer;
+}
+ul{
+  list-style: none;
+}
+.param{
+  float: left;
+}
+.batch{
+  width: 30%;
+  padding-bottom: 20px
+}
+.batch .control-label{
+  margin-top: 5px;
+}
+.batch select{
+  float: left;
+  width: 40% !important;
+  margin-right: 5px;
+}
+.batch button{
+  float: left;
+}

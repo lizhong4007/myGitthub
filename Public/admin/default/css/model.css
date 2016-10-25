@@ -1,0 +1,24 @@
+.category{
+  width: 20% !important;
+  margin-right: 5px;
+}
+.model_spec{
+   border:1px solid #e7e7e7;
+   height: 34px;
+   margin-top: 5px;
+}
+.model_spec .param{
+	width: 40%;
+	margin-right: 10px;
+}
+.model_spec .fa{
+	height: 32px;
+	float: right;
+	border:1px solid #e7e7e7;
+	padding: 5px 15px 5px 15px;
+	cursor: pointer;
+}
+.native{
+	margin: 0 10px 0 5px;
+	padding-top: 5px;
+}

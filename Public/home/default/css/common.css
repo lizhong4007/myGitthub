@@ -1,0 +1,142 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
+body{
+    font-family: "Microsoft Yahei";
+}
+.container{
+    padding:0;
+}
+*{
+    margin: 0 auto;
+    padding: 0;
+} 
+ul{
+    list-style: none;
+}
+img{ 
+    border:0;  
+}
+a{ 
+    text-decoration:none; 
+}
+a:link{ 
+    text-decoration:none; 
+}
+.header{
+    background-color: #f1f1f1;
+    padding: 5px 0;
+}
+.search .search_l{
+    padding: 15px 0;
+}
+.search .search_r{
+    padding: 15px 0;
+    position: relative;
+}
+.search .search_r .search_bg{
+    background: #fff;
+    cursor: pointer;
+}
+.menu{
+    padding-bottom:10px; 
+    border-bottom:1px solid #e7e7e7;
+}
+.menu .navbar-nav>li{
+    margin-top: 2px;
+    display: inline-block;
+}
+.menu .navbar-nav>li.active>a{
+    color: #fff;
+    background-color: #2796de;
+}
+.menu .nav>li>a{
+    border-radius: 3px;
+    color: #000;
+    /*font-size: 13px;
+    font-weight: 900;*/
+    font:400  "microsoft yahei";
+    margin: 0 2px;
+    padding: 5px 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    /*font-family: 'Slabo 27px', serif;*/
+}
+.menu .navbar-nav > li.active > a:hover, .menu .navbar-nav > li > a:hover {
+    color: #fff;
+    background-color: #2796de;
+}
+/*nav*/
+.t_nav{
+    height: 34px;
+    /*margin-top: 10px;*/
+    border-bottom: 1px solid #e7e7e7;
+}
+.t_nav ul{
+    margin-bottom: 0;
+}
+.t_nav ul li {
+    float: left;
+    margin-right: 5px;
+    line-height: 34px;
+    height: 34px;
+}
+.t_nav ul li a{
+    color: #666;
+}
+.t_nav ul li a:hover{
+    color:#C81623;
+}
+.t_nav ul li em{
+    font-style: normal;
+    color: #666;
+}   
+/*nav end*/
+/*footer*/
+.footer{
+    border-top:2px solid #0f5489;
+    /*height: 150px;*/
+    text-align: center;
+    margin-bottom: 30px; 
+    padding-top: 10px;
+}
+.footer .footer_l {
+    text-align: center;
+    margin-left: 40%;
+}
+.footer .footer_l ul li{
+    float: left;
+    border-right: 1px solid #c4c4c4;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+.footer .footer_l ul li:last-child{
+    border-right: none;
+}
+.footer .footer_l ul li a{
+    color: #999;
+}
+.footer .footer_l ul li a:hover{
+    color: #d60000;
+}
+.copyright{
+    margin-bottom: 30px; 
+    text-align: center;
+    color: #999;
+}
+.goto_top{
+    position: fixed;
+    right: 10%;
+    bottom: 5%;
+    background: url("../images/gotop.png") -1px -3px no-repeat;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: none;
+}
+.goto_top:hover{
+    background-position: -1px -39px;
+}
