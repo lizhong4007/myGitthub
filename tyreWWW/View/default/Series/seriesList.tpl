@@ -15,8 +15,12 @@
         		</li>
             </if>
     		<li>
-    			{$current_category.cat_name}
+    			<a href="{:U('Goods/goods_list',array('catid'=>$current_category['catid']))}">{$current_category.cat_name}</a>
+    			<i>></i>
     		</li>
+            <li>
+                {$nav_series['series_name']}
+            </li>
     	</ul>
     </div>
     </div>
@@ -24,61 +28,83 @@
 <!-- nav -->
 <div class="container-fluid">
     <div class="container all_selector">
-        <input type="hidden" value="0" id="closed" />
-        <input type="hidden" value="{:L('ADMIN_CLOSE')}" id="closeing" />
-        <input type="hidden" value="{:L('ADMIN_SPREAD')}" id="opened" />
-        <input type="hidden" value="{$catid}" id="cat_id" />
 	    <div class="t_selector col-xs-12">
 		    <div class="t_selector_l col-xs-1">
-			    {:L('ADMIN_BRAND')}
+			    {:L('ADMIN_BRAND')}:
 		    </div>
-		    <if condition="count($brand) gt 6">
-			    <div class="t_selector_more">
-				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
-				    <i class="opened"></i>
-			    </div>
-		    </if>
 		    <div class="t_selector_r col-xs-11">
 			    <ul class=" col-xs-12 row">
-				    <foreach name="brand" key="key" item="value">
-					    <li class="col-xs-2 row t_selector_brand">
-					    	<div class="t_selector_img">
-						    	<img  src="{$value.thumb}" />
-						    </div>
-						    <div class="t_selector_title">
-							    <input type="hidden" value="{$value.brandid}" class="brand_id" />
-						    	<a href="javascript:;" class="select_brand">{$value.brand_name}</a>
-						    </div>
-					    </li>
-
-				    </foreach>
+				    <li class="col-xs-2 row t_selector_brand">
+				    	<div class="t_selector_img">
+					    	<img  src="<if condition="$brand['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$brand.thumb}</if>" />
+					    </div>
+					    <div class="t_selector_title">
+					    	<a href="{:U('Brand/brand_list',array('brandid',$brand['brandid']))}">
+						    	{$brand.brand_name}
+					    	</a>
+					    </div>
+				    </li>
 			    </ul>
 		    </div>
 	    </div>
+	    <!-- 筛选条件 扁平率 -->
 	     <div class="t_filter col-xs-12">
 		    <div class="t_filter_l col-xs-1 ">
-			    {:L('ADMIN_SERIES')}:
+			    {:L('FLATTENING')}:
 		    </div>
-		    <if condition="count($series) gt 6">
-			    <div class="t_filter_more">
-				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
-				    <i class="opened"></i>
-			    </div>
-		    </if>
-		    <div class="t_filter_r col-xs-10 ">
-		    <input type="hidden" value="{:U('Goods/get_series')}" id="get_series_url" />
-			    <ul id="series_list">
-			        <foreach name="series" key="key" item="value">
+		    <div class="t_filter_r col-xs-11 ">
+			    <ul>
 				    <li >
-					    <a href="{:U('Goods/series_list',array('seriesid'=>$value['seriesid']))}">
-					    {$value.series_name}
-					    </a>
+					    <a href="">30</a>
 				    </li>
-				    </foreach>
-
+				    <li >
+					    <a href="">35</a>
+				    </li>
+				    <li >
+					    <a href="">40</a>
+				    </li>
 			    </ul>
 		    </div>
 	    </div>
+	    <!-- 胎面宽度 -->
+	    <div class="t_filter col-xs-12">
+		    <div class="t_filter_l col-xs-1 ">
+			    {:L('TREAD_WIDTH')}:
+		    </div>
+		    <div class="t_filter_r col-xs-11 ">
+			    <ul>
+				    <li >
+					    <a href="">155</a>
+				    </li>
+				    <li >
+					    <a href="">165</a>
+				    </li>
+				    <li >
+					    <a href="">175</a>
+				    </li>
+			    </ul>
+		    </div>
+	    </div>
+	    <!-- 尺寸 -->
+	    <div class="t_filter col-xs-12">
+		    <div class="t_filter_l col-xs-1 ">
+			    {:L('ADMIN_SIZE')}:
+		    </div>
+		    <div class="t_filter_r col-xs-11 ">
+			    <ul>
+				    <li >
+					    <a href="">12</a>
+				    </li>
+				    <li >
+					    <a href="">15</a>
+				    </li>
+				    <li >
+					    <a href="">16</a>
+				    </li>
+			    </ul>
+		    </div>
+	    </div>
+	    <!-- //筛选条件 -->
     </div>
 </div><!-- //nav -->
 
@@ -99,8 +125,8 @@
 		    <foreach name="goods" key="key" item="value">
 			    <li class="col-xs-12 t_list_li">
 				    <div class="t_list_l col-xs-3">
-			    		<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="{$value.thumb}" />
+			    		<a href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
+			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$value.thumb}</if>" />
 			    		</a>
 				    </div>
 				    <div class="t_list_c col-xs-8 row">
@@ -165,18 +191,6 @@
 		obj.find("i").addClass("opened");
 		obj.removeClass("active");
 	});
-	$(".t_filter_more").hover(function(){
-		var obj = $(this);
-		obj.find("i").removeClass("opened");
-		obj.find("i").addClass("closed");
-		obj.addClass("active");
-
-	},function(){
-		var obj = $(this);
-		obj.find("i").removeClass("closed");
-		obj.find("i").addClass("opened");
-		obj.removeClass("active");
-	});
 
 </script>
 <script type="text/javascript">
@@ -207,64 +221,6 @@
 			obj.parent().find(".t_selector_r").css({"height":"50px"});
 			obj.parent().find(".t_selector_brand").css({"margin-top":"auto"});
 		}
-	});
-	/*赛选条件更多*/
-	$(".t_filter_more").on("click",function(){
-		var obj = $(this);
-		var html = obj.find("a").html();
-		var closed = $("#closed").val();
-		var closeing = $("#closeing").val();
-		var opened = $("#opened").val();
-		if(closed == 0)
-		{
-			$("#closed").val("1");
-			obj.find("a").html(closeing);
-			obj.addClass("active");
-			obj.find("i").removeClass("opened");
-			obj.find("i").addClass("closeing");
-			obj.find("a").addClass("a_color");
-			obj.parent().find(".t_filter_r ul").css({"height":"auto"});
-		}else{
-			$("#closed").val("0");
-			obj.find("a").html(opened);
-			obj.removeClass("active");
-			obj.find("i").removeClass("closeing");
-			obj.find("i").addClass("opened");
-			obj.find("a").removeClass("a_color");
-			obj.parent().find(".t_filter_r ul").css({"height":"40px"});
-		}
-	});
-</script>
-<script type="text/javascript">
-	$('.select_brand').on('click',function(){
-		var obj = $(this);
-		obj.parent().parent().parent().find('.t_selector_img').css({'border':'1px solid #e7e7e7'});
-		obj.parent().parent().find('.t_selector_img').css({'border':'1px solid #C81623'});
-		var brand_id = obj.parent().find('.brand_id').val();
-		var cat_id = $('#cat_id').val();
-		var url = $('#get_series_url').val();
-		$.ajax({
-			url:url,
-			type:'post',
-			dataType:'json',
-			data:{cat_id:cat_id,brand_id:brand_id},
-			success:function(json){
-				var data = json.message;
-				if(json.code == 1)
-				{
-					var str = '';
-					for (var i = 0; i < data.length; i++) {
-						str += '<li >';
-						str += '<a href="/Goods/goods_list/catid/'+cat_id+'/seriesid/'+data[i].seriesid+'">';
-						str += data[i].series_name;
-						str += '</a>';
-						str += '</li>';
-					}
-					$('#series_list').html(str);
-				}
-			}
-
-		});
 	});
 </script>
 <include file="Public/page" />

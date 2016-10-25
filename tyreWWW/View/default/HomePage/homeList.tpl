@@ -94,7 +94,7 @@
                         <div class="col-xs-12 goodsthumb ">
                             <div class="goods_img">
                             <a  target="_blank" href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}">
-                                <img  class="img-responsive" src="{$value.thumb}" />
+                                <img  class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$value.thumb}</if>" />
                             </a>
                             </div>
                             <div class="goods_brand">

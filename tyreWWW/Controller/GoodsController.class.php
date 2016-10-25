@@ -78,7 +78,7 @@ class GoodsController extends CommonController {
 		$this->assign("page",$goodslist['page']);
 		// print_r($brand);exit;
 
-		$this->display("Goods/List");
+		$this->display("Goods/goodsList");
 	}
 	
 	/*商品详细页*/
@@ -137,8 +137,7 @@ class GoodsController extends CommonController {
 		$this->assign("company",$company);
 		$this->assign("distributor",$distributor);
 
-		// print_r($series_resource);exit;
-		$this->display("Goods/Detail");
+		$this->display("Goods/goodsDetail");
 	}
 
 

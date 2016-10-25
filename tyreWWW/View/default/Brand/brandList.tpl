@@ -1,5 +1,5 @@
 <include file="Public/header"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodslist.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/brandlist.css">
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
@@ -8,18 +8,8 @@
     			<a href="{:U('Home/index')}">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
-            <if condition="$parent_category neq ''">
-        		<li>
-        			<a href="{:U('Goods/goods_list',array('catid'=>$parent_category['catid']))}">{$parent_category.cat_name}</a>
-        			<i>></i>
-        		</li>
-            </if>
-    		<li>
-    			<a href="{:U('Goods/goods_list',array('catid'=>$current_category['catid']))}">{$current_category.cat_name}</a>
-    			<i>></i>
-    		</li>
             <li>
-                {$nav_series['series_name']}
+                {$brand['brand_name']}
             </li>
     	</ul>
     </div>
@@ -28,83 +18,56 @@
 <!-- nav -->
 <div class="container-fluid">
     <div class="container all_selector">
+	    <input type="hidden" value="0" id="closed" />
+        <input type="hidden" value="{:L('ADMIN_CLOSE')}" id="closeing" />
+        <input type="hidden" value="{:L('ADMIN_SPREAD')}" id="opened" />
 	    <div class="t_selector col-xs-12">
 		    <div class="t_selector_l col-xs-1">
-			    {:L('ADMIN_BRAND')}:
+			    {:L('ADMIN_CAT')}
 		    </div>
+		    <if condition="count($catids) gt 6">
+			    <div class="t_selector_more">
+				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
+				    <i class="opened"></i>
+			    </div>
+		    </if>
 		    <div class="t_selector_r col-xs-11">
 			    <ul class=" col-xs-12 row">
-				    <li class="col-xs-2 row t_selector_brand">
-				    	<div class="t_selector_img">
-					    	<img  src="{$brand.thumb}" />
-					    </div>
-					    <div class="t_selector_title">
-					    	<a href="{:U('Brand/brand_list',array('brandid',$brand['brandid']))}">
-						    	{$brand.brand_name}
-					    	</a>
-					    </div>
+				    <input type="hidden" value="{$catid}" id="cat_id" />
+				    <input type="hidden" value="{:count($catids)}" id="count_cat" />
+				    <li class="t_selector_category">
+				    	<a href="{:U('Brand/brand_list',array('brandid'=>$brand['brandid']))}">
+					    	{:L('UNLIMITED')}
+				    	</a>
 				    </li>
+				    <foreach name="catids" key="key" item="value">
+					    <li class=" t_selector_category <if condition="$catid eq $value">active</if>">
+					    	<a href="{:U('Brand/brand_list',array('brandid'=>$brand['brandid'],'catid'=>$value))}">
+						    	{$category[$value]['cat_name']}
+					    	</a>
+					    </li>
+				    </foreach>
 			    </ul>
 		    </div>
 	    </div>
-	    <!-- 筛选条件 扁平率 -->
 	     <div class="t_filter col-xs-12">
 		    <div class="t_filter_l col-xs-1 ">
-			    {:L('FLATTENING')}:
+			    赛选条件
 		    </div>
 		    <div class="t_filter_r col-xs-11 ">
 			    <ul>
 				    <li >
-					    <a href="">30</a>
+					    <a href="">德国马牌</a>
 				    </li>
 				    <li >
-					    <a href="">35</a>
+					    <a href="">德国马牌</a>
 				    </li>
 				    <li >
-					    <a href="">40</a>
+					    <a href="">德国马牌</a>
 				    </li>
 			    </ul>
 		    </div>
 	    </div>
-	    <!-- 胎面宽度 -->
-	    <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('TREAD_WIDTH')}:
-		    </div>
-		    <div class="t_filter_r col-xs-11 ">
-			    <ul>
-				    <li >
-					    <a href="">155</a>
-				    </li>
-				    <li >
-					    <a href="">165</a>
-				    </li>
-				    <li >
-					    <a href="">175</a>
-				    </li>
-			    </ul>
-		    </div>
-	    </div>
-	    <!-- 尺寸 -->
-	    <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('ADMIN_SIZE')}:
-		    </div>
-		    <div class="t_filter_r col-xs-11 ">
-			    <ul>
-				    <li >
-					    <a href="">12</a>
-				    </li>
-				    <li >
-					    <a href="">15</a>
-				    </li>
-				    <li >
-					    <a href="">16</a>
-				    </li>
-			    </ul>
-		    </div>
-	    </div>
-	    <!-- //筛选条件 -->
     </div>
 </div><!-- //nav -->
 
@@ -125,13 +88,13 @@
 		    <foreach name="goods" key="key" item="value">
 			    <li class="col-xs-12 t_list_li">
 				    <div class="t_list_l col-xs-3">
-			    		<a href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="{$value.thumb}" />
+			    		<a href="{:U("goods/detail",array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
+			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$default_image}<else:>{$site_imagedomain}{$value.thumb}</if>" />
 			    		</a>
 				    </div>
 				    <div class="t_list_c col-xs-8 row">
 					    <div class="t_list_title">
-					    	<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}">{$value.title}</a>
+					    	<a href="{:U("goods/detail",array('goodsid'=>$value['goodsid']))}">{$value.title}</a>
 				    	</div>
 				    	<div class="t_list_spec">
 					    	<ul class="col-xs-12 row">
@@ -220,6 +183,26 @@
 			obj.find("a").removeClass("a_color");
 			obj.parent().find(".t_selector_r").css({"height":"50px"});
 			obj.parent().find(".t_selector_brand").css({"margin-top":"auto"});
+		}
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		var closeing = $("#closeing").val();
+		var cat_id = $("#cat_id").val();
+		var obj = $('.t_selector_more');
+		cat_id = parseInt(cat_id);
+		if(cat_id > 0)
+		{
+			// $(".t_selector_r").css({"height":"auto"});
+			$("#closed").val("1");
+			obj.find("a").html(closeing);
+			obj.addClass("active");
+			obj.find("i").removeClass("opened");
+			obj.find("i").addClass("closeing");
+			obj.find("a").addClass("a_color");
+			obj.parent().find(".t_selector_r").css({"height":"auto"});
+			obj.parent().find(".t_selector_brand").css({"margin-top":"10px"});
 		}
 	});
 </script>

@@ -39,7 +39,7 @@
 		    <div class="t_detail_l col-xs-9">
 		    	<div class="col-xs-12 t_detail_t">
 			    	<div class="t_detail_image col-xs-4">
-			    		<img class="img-responsive" src="{$goods.thumb}" />
+			    		<img class="img-responsive" src="<if condition="$goods['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$goods.thumb}</if>" />
 			    	</div>
 			    	<div class="col-xs-8">
 					    <div class="t_detail_title col-xs-12 row">
@@ -88,7 +88,7 @@
 				    <div class="tyre_tread_body col-xs-12 ">
 					    <div class="col-xs-6 ">
 							<div class="col-xs-12 tyre_tread_l_img">
-								<img class="img-responsive" src="{$series_resource.0.local_thumb}" />
+								<img class="img-responsive" src="{$site_imagedomain}{$series_resource.0.local_thumb}" />
 							</div>
 					    </div>
               	        <div class="col-xs-6 t_tyre_img">
@@ -98,7 +98,7 @@
 			                            <if condition="$key neq 0">
 									    	<li >
 										    	<div>
-													<img src="{$value.local_thumb}" class="img-responsive">
+													<img src="<if condition="$value['local_thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.local_thumb}</if>" class="img-responsive">
 												</div>
 												<div class="t_tyre_content">
 													{:htmlspecialchars_decode($value['content'])}

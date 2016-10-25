@@ -25,7 +25,7 @@ class HomePageController extends CommonController {
 		$this->assign("goods_data",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
 
-		$this->display("HomePage/Index");
+		$this->display("HomePage/homeList");
 
 	}
 
