@@ -1,5 +1,5 @@
 <?php
-namespace tyreWWW\Controller;
+namespace Home\Controller;
 use Think\Controller;
 class GoodsController extends CommonController {
 

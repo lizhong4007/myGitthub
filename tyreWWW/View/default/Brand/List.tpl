@@ -89,7 +89,7 @@
 			    <li class="col-xs-12 t_list_li">
 				    <div class="t_list_l col-xs-3">
 			    		<a href="{:U("goods/detail",array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="{$value.thumb}" />
+			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''">{$value.default_image}<else:>{$site_imagedomain}{$value.thumb}" </if>/>
 			    		</a>
 				    </div>
 				    <div class="t_list_c col-xs-8 row">
