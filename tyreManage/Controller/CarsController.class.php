@@ -1,5 +1,5 @@
 <?php
-namespace tyreManage\Controller;
+namespace TyreManage\Controller;
 use Think\Controller;
 class CarsController extends CommonController {
     public function carsList(){

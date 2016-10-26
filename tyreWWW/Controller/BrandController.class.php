@@ -1,5 +1,5 @@
 <?php
-namespace tyreWWW\Controller;
+namespace TyreWWW\Controller;
 use Think\Controller;
 class BrandController extends Controller {
 

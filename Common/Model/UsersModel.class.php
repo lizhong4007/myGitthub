@@ -198,7 +198,7 @@ class UsersModel extends Model
 				$data['log_last_ip'] = $ip;
 				$data['userid'] = $rs['userid'];
 				$this ->addUsers($data);
-				redirect(U('Index/Index'));
+				redirect(U('HomePage/index'));
 			}else{
 				return L('ADMIN_PASSWORD').L('ADMIN_ERROR');
 			}
