@@ -92,7 +92,7 @@
                   <input type="hidden" value="{:L('ADMIN_CONFIRM')}" id="note_sure" />
                   <div class="brand_img" >
                       <if condition="$data['thumb'] neq ''">
-                      <img id="company_logo" width="100" height="100" src="{:C('UPLOAD_FILE_URL')}{$data.thumb}" />
+                      <img id="company_logo" width="100" height="100" src="{$site_imagedomain}{$data.thumb}" />
                       </if>
                   </div>
                   <div class="form-group">
@@ -101,11 +101,6 @@
                       </label>
                       <div class="input-group col-sm-4 ">
                         <textarea class="form-control" name="data[introduce]">{$data.introduce}</textarea>
-                        <script type="text/javascript">
-                        $(function(){
-                           CKEDITOR.replace("data[introduce]");
-                        })
-                        </script>
                       </div>
                   </div>
                   <!-- 地区开始 -->

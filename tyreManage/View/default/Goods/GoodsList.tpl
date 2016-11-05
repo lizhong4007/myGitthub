@@ -96,8 +96,8 @@
                                 <td>{$value.goodsid}</td>
                                  <td>{:date('Y-m-d',$value['addtime'])}</td>
                                 <td>
-                                  <a href="{$value.thumb}" target="_blank">
-                                    <img src="{$value.thumb}" width="100px" height="60px" />
+                                  <a href="{$site_imagedomain}{$value.thumb}" target="_blank">
+                                    <img src="{$site_imagedomain}{$value.thumb}" width="100px" height="60px" />
                                   </a>
                                 </td>
                                 <td>{$value.title}</td>

@@ -13,16 +13,16 @@ class GoodsModel extends Model
 	*功能：获商品列表
 	*@param array $where
 	*@param int $p 起始页
-	*@param int $size 每页显示条数
+	*@param int $limit 每页显示条数
 	*@param string $order 排序
 	*@return false | array数据和分页
 	**/
-	public function getGoodsList($where = array('1'),$p = 0,$size = 20,$order = 'goodsid DESC')
+	public function getGoodsList($where = array('1'),$p = 0,$limit = 20,$order = 'goodsid DESC')
 	{
 		$data = array();
 		$count = $this->where($where)->count();
-        $pages = pages($count,$p,$size);
-        $result = $this->where($where)->page($p,$size)->order($order)->select();
+        $pages = pages($count,$p,$limit);
+        $result = $this->where($where)->page($p,$limit)->order($order)->select();
         $data['data'] = $result;
         $data['page'] = $pages;
 		return $data;

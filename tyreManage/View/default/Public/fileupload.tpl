@@ -4,7 +4,7 @@
 <script type="text/javascript" src="__PUBLIC__/upload/hander.js"></script>
 <script>
     $(function(){
-	var url  = "{:C('UPLOAD_FILE_URL')}";
+	var url  = "{$site_imagedomain}";
 	var upload_button_path = window.location.host;
 	var type = $('#savedir').val();
 	var image= new Array();

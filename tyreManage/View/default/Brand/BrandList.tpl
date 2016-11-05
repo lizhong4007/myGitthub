@@ -79,8 +79,8 @@
                                 <td>
                                     <if condition="$value.thumb neq ''">
                                     <div style="width:100px;height:60px;">
-                                    <a href="{$value.thumb}" target="_blank">
-                                    <img src="{$value.thumb}" width="100%" height="100%" />
+                                    <a href="{$site_imagedomain}{$value.thumb}" target="_blank">
+                                    <img src="{$site_imagedomain}{$value.thumb}" width="100%" height="100%" />
                                     </a>
                                     </div>
                                     </if>

@@ -27,7 +27,7 @@
                 </if>
                 <if condition="count($page['page']) gt 1">
                 <li class="total">
-                    共{$page.totalPages}页
+                    {:L('ADMIN_TOTAL')}{$page.totalPages}{:L('ADMIN_PAGE')}
                 </li>
                 <li class="page_go">
                     <div class="form-group">

@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="__STATIC__/css/homepage.css">
 <script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.js"></script>
 <script src="__STATIC__/js/home.js"></script>
+<!-- 页面标题 -->
+<input type="hidden" value="{$default_title}轮胎-bmbmda.com" id="site_title" />
+<input type="hidden" value="蹦蹦哒 轮胎 规格 型号" id="site_keywords" />
+<input type="hidden" value="" id="site_description" />
+<!-- //页面标题 -->
 <!-- slide -->
 <div class="container-fluid slide-body">
     <div class="container">
@@ -21,27 +26,21 @@
                 <div id="slideBox" class="col-xs-12 slideBox">
                     <div class="slide_dot hd">
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <!-- <li>1</li> -->
+                            <!-- <li>2</li>
+                            <li>3</li> -->
                         </ul>
                     </div>
                     <div class="bd slider">
                         <ul>
                             <li>
-                                <a href="#" target="_blank"><img src="http://www.superslide2.com/demo/images/pic1.jpg" /></a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank"><img src="http://www.superslide2.com/demo/images/pic2.jpg" /></a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank"><img src="http://www.superslide2.com/demo/images/pic3.jpg" /></a>
+                                <a href="{:U('goods/detail',array('goodsid'=>1799))}" target="_blank"><img src="__STATIC__/images/slide1.png" /></a>
                             </li>
                         </ul>
                     </div>
                     <!-- arrow -->
-                    <a class="prev" href="javascript:void(0)"></a>
-                    <a class="next" href="javascript:void(0)"></a>
+                    <!-- <a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a> -->
                 </div>
             </div>
             <!-- sub-category -->
@@ -73,11 +72,14 @@
             </div>
             <div class="tab_r">
                 <ul>
-                    <li class="-active">
-                        <a href="">{:L('ADMIN_NEW')}</a>
-                    </li>
                     <li>
-                        <a href="">{:L('ADMIN_HOT')}</a>
+                        <a href="{:U('HomePage/index')}">全部</a>
+                    </li>
+                    <li <if condition="$ip eq 1">class="active"</if>>
+                        <a href="{:U('HomePage/index',array('ip'=>1))}">国产</a>
+                    </li>
+                    <li <if condition="$ip eq 2">class="active"</if>>
+                        <a href="{:U('HomePage/index',array('ip'=>2))}">进口</a>
                     </li>
                 </ul>
             </div>
@@ -107,7 +109,12 @@
                                     <if condition="$value['min_price'] neq 0.00">
                                     ￥{$value.min_price}
                                     <else />
-                                    {:L('NO_QUOTATION')}
+                                        <if condition="$value['is_import'] eq 1">
+                                           国产
+                                           <elseif condition="$value['is_import'] eq 2" />进口
+                                           <else />
+                                            {:L('NO_QUOTATION')}
+                                        </if>
                                     </if>
                                 </em>
                             </div>

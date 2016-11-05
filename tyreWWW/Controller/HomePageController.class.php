@@ -10,9 +10,18 @@ class HomePageController extends CommonController {
 		// 商品
 		$where = array();
 		$p = (int)I('p',1);
-		$size = 20;
+		$size = 64;
+		
+		$is_imporat = (int)I('ip','');
+		if(!empty($is_imporat))
+		{
+			$where['is_import'] = $is_imporat;
+		}
+		$this->assign("ip",$is_imporat);
+
 		$goodslist = D("Goods")->getGoodsList($where,$p,$size);
 		$goods_data = $goodslist['data'];
+
 		//实例化商品参数
 		$S_GoodsParam = D("GoodsParam","Service");
 		$goods_data_tmp = array();
@@ -25,7 +34,11 @@ class HomePageController extends CommonController {
 		$this->assign("goods_data",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
 
-		$this->display("HomePage/homeList");
+		//推荐
+		$recommed_goods = D("Goods")->getGoodsList($where,5,8);
+		$this->assign("recommed_goods",$recommed_goods['data']);
+
+		$this->display("HomePage/home_list");
 
 	}
 

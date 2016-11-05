@@ -16,6 +16,15 @@ body{
 ul{
     list-style: none;
 }
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.cl{
+    clear: both;
+}
 img{ 
     border:0;  
 }
@@ -41,38 +50,32 @@ a:link{
     cursor: pointer;
 }
 .menu{
-    padding-bottom:10px; 
     border-bottom:1px solid #e7e7e7;
 }
+.menu .container{
+    background-color: #0871c0;
+}
 .menu .navbar-nav>li{
-    margin-top: 2px;
     display: inline-block;
 }
-.menu .navbar-nav>li.active>a{
-    color: #fff;
-    background-color: #2796de;
+.menu .navbar-nav>li>a.active{
+    background-color: #0f5489;
 }
 .menu .nav>li>a{
-    border-radius: 3px;
-    color: #000;
-    /*font-size: 13px;
-    font-weight: 900;*/
-    font:400  "microsoft yahei";
-    margin: 0 2px;
-    padding: 5px 15px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    /*font-family: 'Slabo 27px', serif;*/
-}
-.menu .navbar-nav > li.active > a:hover, .menu .navbar-nav > li > a:hover {
     color: #fff;
-    background-color: #2796de;
+    font:"microsoft yahei";
+    font-size: 1em;
+    margin-right: 2px;
+    padding: 5px 20px;
+    line-height: normal;
+}
+.menu .navbar-nav > li > a:hover, .menu .navbar-nav > li > a:hover {
+    background-color: #0f5489;
 }
 /*nav*/
 .t_nav{
     height: 34px;
-    /*margin-top: 10px;*/
-    border-bottom: 1px solid #e7e7e7;
+    font-size: 12px;
 }
 .t_nav ul{
     margin-bottom: 0;
@@ -99,12 +102,12 @@ a:link{
     border-top:2px solid #0f5489;
     /*height: 150px;*/
     text-align: center;
-    margin-bottom: 30px; 
+    /*margin-bottom: 30px; */
     padding-top: 10px;
 }
 .footer .footer_l {
     text-align: center;
-    margin-left: 40%;
+    /*margin-left: 40%;*/
 }
 .footer .footer_l ul li{
     float: left;
@@ -123,13 +126,12 @@ a:link{
     color: #d60000;
 }
 .copyright{
-    margin-bottom: 30px; 
     text-align: center;
     color: #999;
 }
 .goto_top{
     position: fixed;
-    right: 10%;
+    right: 5%;
     bottom: 5%;
     background: url("../images/gotop.png") -1px -3px no-repeat;
     width: 32px;
@@ -139,4 +141,15 @@ a:link{
 }
 .goto_top:hover{
     background-position: -1px -39px;
+}
+/*推荐型号*/
+.recommend_model ul {
+    margin-top: 5px;
+}
+.recommend_model ul li{
+    float: left;
+    margin-right:5px;
+}
+.recommend_model ul li a{
+    padding:5px;
 }

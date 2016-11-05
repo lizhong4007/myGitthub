@@ -8,10 +8,14 @@
          'ADMIN_MANAGE_TOOL'=>'工具',
          'ADMIN_WELCOME'=>'欢迎使用',
          'ADMIN_REMEMBER'=>'记住我',
+         'ADMIN_RETURN'=>'返回',
          'ADMIN_HOME'=>'首页',
          'ADMIN_LAST'=>'尾页',
          'ADMIN_PREV'=>'上一页',
          'ADMIN_NEXT'=>'下一页',
+         'ADMIN_TOTAL'=>'共',
+         'ADMIN_PAGE'=>'页',
+         
          'ADMIN_LIST'=>'列表',
          'ADMIN_GROUP'=>'分组',
          'ADMIN_USERS'=>'用户',
@@ -49,6 +53,7 @@
          'ADMIN_ID'=>'编号',
          'ADMIN_IMAGE'=>'图片',
          'ADMIN_NOT'=>'没有',
+         'ADMIN_ALL'=>'全部',
          // 设置
          'NAVIGATION'=>'导航',
          'NAVIGATION_LIST'=>'导航列表',
@@ -89,7 +94,10 @@
          'ADMIN_MATCH'=>'匹配' ,
          'MODEL_CARS_LIST'=>'车胎列表',
          'CARS_LIST'=>'车型列表',  
-                   
+         'DEFAULT_PARAM_LIST'=>'默认参数列表',
+         'ADMIN_DEFAULT'=>'默认',
+         'ADMIN_PARAMETER'=>'参数',
+         'ADMIN_VALUE'=>'值',
                 
          //分类
          'GOODS_CATEGORY'=>'商品分类',
@@ -98,12 +106,14 @@
          'ADD_CAT'=>'编辑分类',
          'DELE_CAT'=>'删除分类',
          'ADD_SUBCAT'=>'添加子分类',
+         'PASSENGER_CAR'=>'乘用车',
          //品牌
          'ADMIN_BRAND'=>'品牌',
          'BRANDS_LIST'=>'品牌列表',
          'ADD_BRANDS'=>'编辑品牌',
          'DELE_BRANDS'=>'删除品牌',
          'RECOMMEND'=>'推荐',
+         'BRAND_ZONE'=>'品牌专区',
          
          //分类字段
          'SMALL_TITLE'=>'小标题',
@@ -118,6 +128,9 @@
          'ADMIN_CONTENT'=>'内容',
          'ADMIN_DELETE_OR'=>'请确认是否删除？',
          'ADMIN_SEARCH'=>'搜索',
+         'ADMIN_MATCH'=>'匹配到',
+         'ADMIN_OOPS'=>'抱歉',
+         'ERROR_404_NOTE'=>'您想访问的页面不存在了',
          'FRONT_PAGE_DISPLAYS'=>"首页显示",
          
          // 上传图片

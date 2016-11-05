@@ -1,12 +1,17 @@
 <include file="Public/header"/>
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/goodsdetail.css">
 <script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.js"></script>
+<!-- 页面标题 -->
+<input type="hidden" value="{$goods.title}-<if condition="$nav_series neq ''">{$nav_series['series_name']}-</if>{$default_title}" id="site_title" />
+<input type="hidden" value="{$goods.brand} <if condition="$nav_series neq ''">{$nav_series['series_name']}</if> {$nav_model['model']} {$current_category.cat_name}" id="site_keywords" />
+<input type="hidden" value="{$goods.title}" id="site_description" />
+
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('Home/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
             <if condition="$parent_category neq ''">
@@ -79,16 +84,16 @@
 					    </div>
 				    </div>
 			    </div><!-- 详情结束 -->
-			    <!-- 花纹 -->
+			    <!-- 资源 -->
 			    <if condition="$series_resource[0] neq ''">
 			    <div class="col-xs-12 tyre_tread ">
 				    <div class="tyre_tread_title col-xs-12 ">
-					    {:L('TYRE_TREAD')}
+					    {:L('RESOURCE')}
 				    </div>
 				    <div class="tyre_tread_body col-xs-12 ">
 					    <div class="col-xs-6 ">
 							<div class="col-xs-12 tyre_tread_l_img">
-								<img class="img-responsive" src="{$site_imagedomain}{$series_resource.0.local_thumb}" />
+								<img class="img-responsive fl" src="{$site_imagedomain}{$series_resource.0.local_thumb}" />
 							</div>
 					    </div>
               	        <div class="col-xs-6 t_tyre_img">
@@ -98,7 +103,9 @@
 			                            <if condition="$key neq 0">
 									    	<li >
 										    	<div>
+										    	    <a href="{$site_imagedomain}{$value.local_thumb}" target="_blank">
 													<img src="<if condition="$value['local_thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.local_thumb}</if>" class="img-responsive">
+													</a>
 												</div>
 												<div class="t_tyre_content">
 													{:htmlspecialchars_decode($value['content'])}
@@ -109,8 +116,10 @@
 			                        <!-- arrow -->
 
 		                        </ul>
+		                        <if condition="count($series_resource) gt 2">
 		                        <a class="prev" href="javascript:void(0)"></a>
-				                    <a class="next" href="javascript:void(0)"></a>
+				                <a class="next" href="javascript:void(0)"></a>
+				                </if>
 			                    
 		                    </div>
 					    </div>
@@ -195,6 +204,7 @@
 				    </div>
 			    </div><!-- 经销商结束 -->
 			     <!-- 内容描述 -->
+			    <notempty name="series_content">
 			    <div class="col-xs-12 t_detail_content">
 				    <div class="t_detail_content_title col-xs-12">
 					    {:L('ADMIN_CONTENT')}{:L('ADMIN_DESCRIPTION')}
@@ -206,7 +216,8 @@
 						    </li>
 					    </ul>
 				    </div>
-			    </div><!-- 经销商结束 -->
+			    </div>
+			    </notempty>
 		    </div>
 		    <div class="t_detail_r col-xs-3">
 			    <div class="t_detail_brand">
@@ -231,39 +242,6 @@
 			    	<div class="t_brand_more">{:L('ADMIN_MORE')}</div>
 			    </div>
 		    </div>
-		   <!--  <div class="t_detail_r col-xs-3">
-			    <div class="t_detail_brand">
-			    	<div class="t_detail_brand_title">
-			    		<h1>品牌</h1>
-			    	</div>
-			    	<div class="t_detail_brand_content">
-			    		<ul>
-			    			<li>
-			    				<i></i><a href="">韩泰</a>
-			    			</li>
-			    			<li>
-			    				<i></i><a href="">固特异</a>
-			    			</li>
-			    			<li>
-			    				<i></i><a href="">韩泰</a>
-			    			</li>
-			    			<li>
-			    				<i></i><a href="">固特异</a>
-			    			</li>
-			    			<li>
-			    				<i></i><a href="">韩泰</a>
-			    			</li>
-			    			<li>
-			    				<i></i><a href="">固特异</a>
-			    			</li>
-			    		</ul>
-			    	</div>
-			    	<input type="hidden" id="more_open" value="0" />
-			    	<input type="hidden" id="more_value" value="更多" />
-			    	<input type="hidden" id="less_value" value="收起" />
-			    	<div class="t_brand_more">更多</div>
-			    </div>
-		    </div> -->
 	    </div>
     </div>
 </div>

@@ -99,11 +99,6 @@
                       </label>
                       <div class="input-group col-sm-4 ">
                         <textarea class="form-control" name="data[introduce]"></textarea>
-                        <script type="text/javascript">
-                        $(function(){
-                           CKEDITOR.replace("data[introduce]");
-                        })
-                        </script>
                       </div>
                   </div>
                   <input type="hidden" id="please_select" value="{:L('PLEASE_SELECT')}"/>

@@ -1,5 +1,10 @@
 <include file="Public/header"/>
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/goodslist.css">
+<!-- 页面标题 -->
+<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name}-</if>{$current_category.cat_name}-{$default_title}" id="site_title" />
+<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name} </if>{$current_category.cat_name} 轮胎花纹 花纹" id="site_keywords" />
+<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name} </if>{$current_category.cat_name} 不同品牌下的花纹-{$default_title}  " id="site_description" />
+<!-- //页面标题 -->
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">

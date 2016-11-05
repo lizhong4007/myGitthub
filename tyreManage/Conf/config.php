@@ -41,6 +41,14 @@ return array(
 						'delete'=>'DELE_BRANDS'
 					)
 				),
+				'GoodsDefault'=>array(
+					'lists'=>'DEFAULT_PARAM_LIST',
+					'index'=>'GoodsDefaultParamList',
+					'url'=>'GoodsDefault/GoodsDefaultParamList',
+					'action'=>array(
+						'list'=>'DEFAULT_PARAM_LIST',
+					)
+				),
 				
 			),
 						

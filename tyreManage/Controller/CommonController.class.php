@@ -37,6 +37,12 @@ class CommonController extends Controller {
         $MANAGEMENT_MODEL = C('MANAGEMENT_MODEL');
         $this->assign('MANAGEMENT_MODEL',$MANAGEMENT_MODEL);
         $this->assign('manager',$rs);
+
+        //图片地址
+        $site = C('BM_SITE');
+        $this->assign('site_imagedomain',$site['UPLOAD_FILE_URL']);
+        $this->assign('default_image',$site['DEFAULT_IMAGE']);
+        $this->assign('default_site',$site['DEFAULT_SITE']);
 	}
 	
 }

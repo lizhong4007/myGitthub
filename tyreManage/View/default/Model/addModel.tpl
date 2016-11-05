@@ -128,7 +128,7 @@
                   <input type="hidden" value="{:L('IMAGE_SELECT')}" id="content_note" />
                   <input type="hidden" value="{:L('ADMIN_CONFIRM')}" id="note_sure" />
                   <div class="brand_img" >
-                      <img id="series_logo" width="100" height="100" src="<if condition="$data['thumb'] neq ''">{:C('UPLOAD_FILE_URL')}{$data.thumb}</if>" />
+                      <img id="series_logo" width="100" height="100" src="<if condition="$data['thumb'] neq ''">{$site_imagedomain}{$data.thumb}</if>" />
                   </div>
                   <div class="form-group">
                       <label class="col-sm-3 control-label">

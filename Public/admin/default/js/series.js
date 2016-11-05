@@ -40,6 +40,7 @@ $(function(){
         var brandid = $("#brandid").val();
         var companyid = $("#companyid").val();
         var title = $('#title_note').val();
+        var series_url = $('#series_url').val();
         $.ajax({
             type: "post",
             dataType: 'json',
@@ -49,7 +50,7 @@ $(function(){
                 alert_message(title,json.message);
                 if(json.code == 1)
                 {
-                   window.location.href = "/Series/seriesList";
+                   window.location.href = series_url;
                 }
             }
         })

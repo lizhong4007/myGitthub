@@ -6,6 +6,7 @@ class GoodsController extends CommonController {
 	/*商品列表*/
 	public function goods_list(){
 		$catid = (int)I('catid','');
+		$this->assign("catid",$catid);
 		//分类
 		$M_Category = D('Category');
 		$catids = array();
@@ -78,7 +79,7 @@ class GoodsController extends CommonController {
 		$this->assign("page",$goodslist['page']);
 		// print_r($brand);exit;
 
-		$this->display("Goods/goodsList");
+		$this->display("Goods/goods_list");
 	}
 	
 	/*商品详细页*/
@@ -137,7 +138,7 @@ class GoodsController extends CommonController {
 		$this->assign("company",$company);
 		$this->assign("distributor",$distributor);
 
-		$this->display("Goods/goodsDetail");
+		$this->display("Goods/goods_detail");
 	}
 
 

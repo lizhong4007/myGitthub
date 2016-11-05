@@ -203,11 +203,18 @@ class SeriesModel extends Model
 	/**
      * 功能：查询系列数据
      * @param array $where 
+     * @param int $limit 是否限制 
      * @return false | array 
      */
-	public function getSeriesData($where = array())
+	public function getSeriesData($where = array(),$limit = 0)
 	{
-		return $this->where($where)->select();
+		if($limit != 0)
+		{
+			return $this->where($where)->limit(0,$limit)->select();
+		}else{
+			return $this->where($where)->select();
+		}
+		
 	}
 	/**
      * 功能：处理系列数据，检查分类和品牌是否存在

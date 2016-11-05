@@ -26,26 +26,28 @@ if(!function_exists('password'))
 */
 if(!function_exists('pages'))
 {
-    function pages($totalRows,$nowPage,$listRows,$rollPage = 5)
+    function pages($totalRows,$nowPage,$listRows = 20,$rollPage = 5)
     {
+        $p_str = C('URL_PATHINFO_DEPR');
+        $p_str .= 'p'.$p_str;
         $p = I('request.p');
     	if(0 == $totalRows) return ;
         /* 生成URL */
         if($_SERVER['REQUEST_URI'] == '/'){
-            $url = '/p/[PAGE]';
+            $url = $p_str.'[PAGE]';
         }elseif(empty($p)){//没有页码时增加页码参数
             $url = $_SERVER['REQUEST_URI'];
             if(strpos($url,'.html?') !== false){
-               $url = str_replace('.html?', '/p/[PAGE].html?', $url);
+               $url = str_replace('.html?', $p_str.'[PAGE].html?', $url);
             }elseif(strpos($url,'?') !== false){
-                $url = str_replace('?', '/p/[PAGE]?', $url);
+                $url = str_replace('?', $p_str.'[PAGE]?', $url);
             }elseif(strpos($url,'.html') !== false){
-                $url = str_replace('.html', '/p/[PAGE].html', $url);
+                $url = str_replace('.html', $p_str.'[PAGE].html', $url);
             }else{
-               $url .= '/p/[PAGE]';
+               $url .= $p_str.'[PAGE]';
             }
         }else{
-            $url = preg_replace('!/p/\d*!', '/p/[PAGE]', $_SERVER['REQUEST_URI']);
+            $url = preg_replace('!'.$p_str.'\d*!', $p_str.'[PAGE]', $_SERVER['REQUEST_URI']);
         }
         
         /* 计算分页信息 */
@@ -78,20 +80,21 @@ if(!function_exists('pages'))
         $data['last'] =  $nowPage == $totalPages ? '' :str_replace("[PAGE]", $totalPages, $url) ;
         
         /* 中间5页 */
+        $page_step = floor($rollPage/2);
         if($totalPages > $rollPage)
         {
-            if($nowPage <ceil($rollPage/2))
+            if($nowPage < $page_step)
             {
                 $startpage = 1;
-                $endpage = $totalPages > $rollPage?$rollPage:$totalPages;
+                $endpage = $totalPages > $rollPage ? $rollPage : $totalPages;
             }else{
-                if($nowPage + 2 > $totalPages)
+                if($nowPage + $page_step > $totalPages)
                 {
                     $endpage = $totalPages;
-                    $startpage = $endpage-4;
+                    $startpage = $endpage - $rollPage;
                 }else{
-                    $startpage = $nowPage - 2 > 0 ? $nowPage - 2 : 1;
-                    $endpage = $nowPage + 2 > $totalPages ? $totalPages : $nowPage + 2;
+                    $startpage = $nowPage - $page_step > 0 ? $nowPage - $page_step : 1;
+                    $endpage = $nowPage + $page_step > $totalPages ? $totalPages : $nowPage + $page_step;
                 }
             } 
             

@@ -76,8 +76,8 @@
                                 <td>{$value.companyid}</td>
                                 <td>
                                     <if condition="$value.thumb neq ''">
-                                    <a href="{$value.thumb}">
-                                    <img src="{$value.thumb}" width="100" height="60" />
+                                    <a href="{$site_imagedomain}{$value.thumb}">
+                                    <img src="{$site_imagedomain}{$value.thumb}" width="100" height="60" />
                                     </a>
                                     </if>
                                 </td>

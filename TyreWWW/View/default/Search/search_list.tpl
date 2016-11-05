@@ -1,11 +1,16 @@
 <include file="Public/header"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodslist.css">
-<div class="container-fluid -slide-body">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/searchlist.css">
+<!-- 页面标题 -->
+<input type="hidden" value="轮胎搜索器-bmbmda.com" id="site_title" />
+<input type="hidden" value="" id="site_keywords" />
+<input type="hidden" value="" id="site_description" />
+<!-- //页面标题 -->
+<!-- <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('Home/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
             <if condition="$parent_category neq ''">
@@ -19,16 +24,17 @@
     			<i>></i>
     		</li>
             <li>
+		       <input type="hidden" value="{$nav_series.seriesid}" id="seriesid" />
                 {$nav_series['series_name']}
             </li>
     	</ul>
     </div>
     </div>
-</div>
+</div> -->
 <!-- nav -->
 <div class="container-fluid">
     <div class="container all_selector">
-	    <div class="t_selector col-xs-12">
+	    <!-- <div class="t_selector col-xs-12">
 		    <div class="t_selector_l col-xs-1">
 			    {:L('ADMIN_BRAND')}:
 		    </div>
@@ -46,64 +52,37 @@
 				    </li>
 			    </ul>
 		    </div>
-	    </div>
+	    </div> -->
 	    <!-- 筛选条件 扁平率 -->
+	    <!-- <input type="hidden" value="{:U('Series/get_filter_goods')}" id="filter_url" />
+	    <foreach name="goods_filter" key="key" item="filter">
 	     <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('FLATTENING')}:
+		    <div class="t_filter_l col-xs-1 fl ">
+			    {$filter.name}:
 		    </div>
-		    <div class="t_filter_r col-xs-11 ">
+		    <input type="hidden" name="paraid[]" value="{$filter.dparaid}" />
+		    <div class="t_filter_r col-xs-11 fl ">
+		        <input type="hidden" name="t_vid[]" value="0" />
 			    <ul>
+			        <foreach name="filter.value" key="k" item="v">
 				    <li >
-					    <a href="">30</a>
+					    <a href="javascript:;" class="goods_filter">
+					    {:strtoupper($v['value'])}
+					    <input type="hidden" value="{$v.dvid}" />
+					    </a>
 				    </li>
+				    </foreach>
 				    <li >
-					    <a href="">35</a>
-				    </li>
-				    <li >
-					    <a href="">40</a>
+					    <a href="javascript:;" class="goods_filter">
+					    {:L('ADMIN_ALL')}
+					    <input type="hidden" value="0" />
+					    </a>
 				    </li>
 			    </ul>
 		    </div>
 	    </div>
+	    </foreach> -->
 	    <!-- 胎面宽度 -->
-	    <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('TREAD_WIDTH')}:
-		    </div>
-		    <div class="t_filter_r col-xs-11 ">
-			    <ul>
-				    <li >
-					    <a href="">155</a>
-				    </li>
-				    <li >
-					    <a href="">165</a>
-				    </li>
-				    <li >
-					    <a href="">175</a>
-				    </li>
-			    </ul>
-		    </div>
-	    </div>
-	    <!-- 尺寸 -->
-	    <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('ADMIN_SIZE')}:
-		    </div>
-		    <div class="t_filter_r col-xs-11 ">
-			    <ul>
-				    <li >
-					    <a href="">12</a>
-				    </li>
-				    <li >
-					    <a href="">15</a>
-				    </li>
-				    <li >
-					    <a href="">16</a>
-				    </li>
-			    </ul>
-		    </div>
-	    </div>
 	    <!-- //筛选条件 -->
     </div>
 </div><!-- //nav -->
@@ -112,16 +91,26 @@
     <div class="container">
         <div class="col-xs-12 t_tab">
             <div class="t_tab_l">
-                {:L('ADMIN_GOODS')}{:L('ADMIN_TOTAL')}
-                <em>({$page.totalRows}{:L('ADMIN_ITEM')})</em>
+                {:L('ADMIN_MATCH')}{:L('ADMIN_GOODS')}
+                <em>(<span id="total_rows">{$totalrows}</span>{:L('ADMIN_ITEM')})</em>
             </div>
         </div>
     </div>
 </div>
+<!-- <div class="container-fluid">
+    <div class="container">
+        <div class="col-xs-12 t_tab">
+            <div class="t_tab_l">
+                {:L('ADMIN_GOODS')}{:L('ADMIN_TOTAL')}
+                <em>(<span id="total_rows">{$totalrows}</span>{:L('ADMIN_ITEM')})</em>
+            </div>
+        </div>
+    </div>
+</div> -->
 <!-- goods list -->
 <div class="container-fluid">
     <div class="container t_list">
-	    <ul class="col-xs-12">
+	    <ul class="col-xs-12" id="goodslist">
 		    <foreach name="goods" key="key" item="value">
 			    <li class="col-xs-12 t_list_li">
 				    <div class="t_list_l col-xs-3">
@@ -167,61 +156,13 @@
 	    </ul>
     </div>
 </div>
-<script type="text/javascript">
-	$(".t_selector_brand").hover(function(){
-		var obj = $(this);
-		obj.find(".t_selector_img").css({"display":"none"});
-		obj.find(".t_selector_title").css({"display":"block"});
+<script type="text/javascript" src="__STATIC__/js/serieslist.js"></script>
+<input type="hidden" value="{:L('ADMIN_PREV')}" id="prev_page" />
+<input type="hidden" value="{:L('ADMIN_NEXT')}" id="next_page" />
+<input type="hidden" value="{:L('ADMIN_TOTAL')}" id="p_total" />
+<input type="hidden" value="{:L('ADMIN_PAGE')}" id="d_page" />
+<div id="page">
+<include file="Public/page"/>
+</div>
 
-	},function(){
-		var obj = $(this);
-		obj.find(".t_selector_title").css({"display":"none"});
-		obj.find(".t_selector_img").css({"display":"block"});
-	});
-
-	$(".t_selector_more").hover(function(){
-		var obj = $(this);
-		obj.find("i").removeClass("opened");
-		obj.find("i").addClass("closed");
-		obj.addClass("active");
-
-	},function(){
-		var obj = $(this);
-		obj.find("i").removeClass("closed");
-		obj.find("i").addClass("opened");
-		obj.removeClass("active");
-	});
-
-</script>
-<script type="text/javascript">
-	/*更多*/
-	$(".t_selector_more").on("click",function(){
-		var obj = $(this);
-		var html = obj.find("a").html();
-		var closed = $("#closed").val();
-		var closeing = $("#closeing").val();
-		var opened = $("#opened").val();
-		if(closed == 0)
-		{
-			$("#closed").val("1");
-			obj.find("a").html(closeing);
-			obj.addClass("active");
-			obj.find("i").removeClass("opened");
-			obj.find("i").addClass("closeing");
-			obj.find("a").addClass("a_color");
-			obj.parent().find(".t_selector_r").css({"height":"auto"});
-			obj.parent().find(".t_selector_brand").css({"margin-top":"10px"});
-		}else{
-			$("#closed").val("0");
-			obj.find("a").html(opened);
-			obj.removeClass("active");
-			obj.find("i").removeClass("closeing");
-			obj.find("i").addClass("opened");
-			obj.find("a").removeClass("a_color");
-			obj.parent().find(".t_selector_r").css({"height":"50px"});
-			obj.parent().find(".t_selector_brand").css({"margin-top":"auto"});
-		}
-	});
-</script>
-<include file="Public/page" />
 <include file="Public/footer"/>

@@ -126,6 +126,7 @@ class NavigationModel extends Model
 		$where = array();
 		$where['controller']  = $data['controller'];
 		$where['action'] = $data['action'];
+		$where['nav_name'] = $data['nav_name'];
 		return $this->getNavigationData($where);
 	}
 	/**

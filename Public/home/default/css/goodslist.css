@@ -218,6 +218,9 @@
     font-style: normal;
 }
 /*商品开始*/
+.t_list{
+	min-height: 500px;
+}
 .t_list .t_list_li{
 	border-bottom:1px solid #e7e7e7; 
 	vertical-align: middle;

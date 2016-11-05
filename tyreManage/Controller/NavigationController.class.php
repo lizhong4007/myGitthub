@@ -36,7 +36,6 @@ class NavigationController extends CommonController {
 	*/
 	public function addNavigation()
 	{
-		/*保存品牌*/
 		$save = I('post.save','');
 		$nav_model = D('Navigation');
 		if(!empty($save)){

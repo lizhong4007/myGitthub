@@ -1,36 +1,32 @@
 <?php
 namespace TyreWWW\Controller;
 use Think\Controller;
-class BrandController extends Controller {
+class BrandController extends CommonController {
 
 	/*商品列表*/
 	public function brand_list(){
-
-		$brandid = (int)I('brandid','');
+        
+        $brand = array();
 		//品牌
-		$brand = D("Brand")->getBrand($brandid);
-		$this->assign("brand",$brand);
-		//系列
-		$series = D("Series")->getSeriesData(array('brandid'=>$brandid));
-		$catids = array();
-		foreach ($series as $key => $value) {
-			$catids[] = $value['catid'];
+		$brand = D("Brands")->getAllBrand(array('is_recommend'=>1));
+        
+        $brand_data = array();
+        $M_series = D('Series');
+		foreach ($brand as $key => $value) {
+			$tmp = array();
+			$tmp = $M_series->getSeriesData(array('brandid'=>$value['brandid']),1);
+			$value['series'] = array_pop($tmp);
+			$brand_data[] = $value;
 		}
-		//分类
-		$catids = array_unique($catids);
-		$category = D('Category')->getCategoryList();
-		$this->assign("category",$category);
-		$this->assign("catids",$catids);
-		// 赛选条件
-		$where = array();
-		$catid = (int)I('get.catid','');
-		if(!empty($catid))
-		{
-			$where['catid'] = $catid;
-			$this->assign("catid",$catid);
+		$this->assign("brand",$brand_data);
+
+		/*$brandids = array();
+		foreach ($brand as $key => $value) {
+			$brandids[] = $value['brandid'];
 		}
+		
 		$p = (int)I('p',1);
-		$where['brandid'] = $brandid;
+		$where['brandid'] = array('in',$brandids);
 		$size = 20;
 		$goodslist = D("Goods")->getGoodsList($where,$p,$size);
 		$goods_data = $goodslist['data'];
@@ -44,8 +40,8 @@ class BrandController extends Controller {
 			$goods_data_tmp[] = $value;
 		}
 		$this->assign("goods",$goods_data_tmp);
-		$this->assign("page",$goodslist['page']);
+		$this->assign("page",$goodslist['page']);*/
 
-		$this->display("Brand/List");
+		$this->display("Brand/brand_list");
 	}
 }

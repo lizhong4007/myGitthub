@@ -3,7 +3,6 @@
 }
 .all_selector .t_selector{
 	padding: 0px 0 10px 15px;
-	border-bottom: 1px solid #e7e7e7;
 	position: relative;
 	height: 100%;
 }
@@ -62,7 +61,7 @@
 	background-position: 4px -47px;
 }
 .all_selector .t_selector_r{
-	height: 50px;
+	height: 120px;
 	overflow: hidden;
 }
 .all_selector .t_selector_r ul li{
@@ -71,6 +70,7 @@
 	cursor: pointer;
 	height: 50px;
 	line-height: 50px;
+	margin-top: 10px;
 }
 .all_selector .t_selector_r ul li .t_selector_title
 {
@@ -161,6 +161,9 @@
     font-style: normal;
 }
 /*商品开始*/
+.t_list{
+	min-height: 350px;
+}
 .t_list .t_list_li{
 	border-bottom:1px solid #e7e7e7; 
 	vertical-align: middle;
