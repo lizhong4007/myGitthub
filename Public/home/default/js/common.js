@@ -26,6 +26,10 @@ $(function(){
     $('title').html($('#site_title').val());
     $("meta[name^='keywords']").attr('content',$('#site_keywords').val());
     $("meta[name^='description']").attr('content',$('#site_description').val());
+    $("link[rel^='canonical']").attr('href',$('#site_canonical').val());
+    $("link[rel^='alternate']").attr('href',$('#site_alternate').val());
+    //异步加载图片
+    $("img.lazy").lazyload({effect: "fadeIn",failurelimit:10});
 });
 /**
 * 功能：js显示中间5页；

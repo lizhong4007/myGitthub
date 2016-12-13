@@ -1,3 +1,6 @@
+.clear{
+	clear: both;
+}
 .all_selector{
 	margin-top: 20px;
 }
@@ -10,8 +13,7 @@
 	border-top: 3px solid #0f5489;
 }
 .all_selector .t_selector .t_selector_l{
-	float: left;
-	text-align: right;
+	text-align: center;
 	margin-top: 10px;
 }
 .all_selector .t_selector .t_selector_more{
@@ -61,15 +63,16 @@
 	background-position: 4px -47px;
 }
 .all_selector .t_selector_r{
-	height: 120px;
+	height: 60px;
 	overflow: hidden;
 }
 .all_selector .t_selector_r ul li{
 	float: left;
-	margin-right: 3px;
+	margin-right: 15px;
 	cursor: pointer;
 	height: 50px;
 	line-height: 50px;
+	width: 150px;
 	margin-top: 10px;
 }
 .all_selector .t_selector_r ul li .t_selector_title
@@ -161,51 +164,57 @@
     font-style: normal;
 }
 /*商品开始*/
-.t_list{
+.brand_goods{
 	min-height: 350px;
 }
-.t_list .t_list_li{
-	border-bottom:1px solid #e7e7e7; 
+.brand_goods .brand_goods_li{
+	border-bottom:1px solid #e7e7e7;
+	padding: 5px 0; 
 	vertical-align: middle;
 }
-.t_list .t_list_l .t_list_img{
+.brand_goods .brand_goods_l .brand_goods_img{
 	height: 240px;
 	width: 100%;
 	display: table-cell;
 	vertical-align:middle;
 	text-align: center;
 }
-.t_list .t_list_l .t_list_img img{
+.brand_goods .brand_goods_l .brand_goods_img img{
 	max-height:240px;
 	width:expression(this.height > 240 ? true: 240);
 }
-.t_list .t_list_c .t_list_title{
+.brand_goods .brand_goods_c {
+	padding-left: 15px;
+}
+.brand_goods .brand_goods_c .brand_goods_title{
 	padding: 5px 0;
 	margin-top: 5px;
 }
-.t_list .t_list_c .t_list_title a{
+.brand_goods .brand_goods_c .brand_goods_title a{
 	font-size: 2em;
 }
-.t_list .t_list_c .t_list_title a:hover{
+.brand_goods .brand_goods_c .brand_goods_title a:hover{
 	color: #e4393c;
 }
-.t_list .t_list_r .t_list_price{
+.brand_goods .brand_goods_r .brand_goods_price{
 	font-size: 1.5em;
 	color: #f00;
-	margin-top: 50%;
+	margin-top: 2em;
+	text-align: right;
+	margin-right: 2em;
 }
-.t_list .t_list_c .t_list_spec{
+.brand_goods .brand_goods_c .brand_goods_spec{
 	margin-top: 5px;
 }
-.t_list .t_list_c .t_list_spec ul{
+.brand_goods .brand_goods_c .brand_goods_spec ul{
 	height: 160px;
 	overflow: hidden;
 }
-.t_list .t_list_c .t_list_spec ul li{
+.brand_goods .brand_goods_c .brand_goods_spec ul li{
 	float: left;
 	line-height: 26px;
 }
-.t_list .t_list_c .t_list_spec ul li span{
+.brand_goods .brand_goods_c .brand_goods_spec ul li span{
 	color: #999;
 	margin-right: 3px;
 }

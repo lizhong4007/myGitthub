@@ -1,32 +1,27 @@
 <include file="Public/header"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodsdetail.css">
-<script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.js"></script>
-<!-- 页面标题 -->
-<input type="hidden" value="{$goods.title}-<if condition="$nav_series neq ''">{$nav_series['series_name']}-</if>{$default_title}" id="site_title" />
-<input type="hidden" value="{$goods.brand} <if condition="$nav_series neq ''">{$nav_series['series_name']}</if> {$nav_model['model']} {$current_category.cat_name}" id="site_keywords" />
-<input type="hidden" value="{$goods.title}" id="site_description" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodsdetail.min.css">
 
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="/">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
             <if condition="$parent_category neq ''">
         		<li>
-        			<a href="{:U('Goods/goods_list',array('catid'=>$parent_category['catid']))}">{$parent_category.cat_name}</a>
+        			<a title="{$parent_category.cat_name}" href="{:U('Goods/goods_list',array('catid'=>$parent_category['catid']))}">{$parent_category.cat_name}</a>
         			<i>></i>
         		</li>
             </if>
     		<li>
-    			<a href="{:U('Goods/goods_list',array('catid'=>$current_category['catid']))}">{$current_category.cat_name}</a>
+    			<a title="{$current_category.cat_name}" href="{:U('Goods/goods_list',array('catid'=>$current_category['catid']))}">{$current_category.cat_name}</a>
     			<i>></i>
     		</li>
             <if condition="$nav_series neq ''">
                 <li>
-                    <a href="{:U('Series/series_list',array('seriesid'=>$goods['seriesid']))}">{$nav_series['series_name']}</a>
+                    <a title="{$nav_series['series_name']}" href="{:U('Series/series_list',array('seriesid'=>$goods['seriesid']))}">{$nav_series['series_name']}</a>
                     <i>></i>
                 </li>
             </if>
@@ -40,19 +35,19 @@
 <!-- 标题 -->
 <div class="container-fluid">
     <div class="container">
-	    <div class="col-xs-12 t_detail">
-		    <div class="t_detail_l col-xs-9">
-		    	<div class="col-xs-12 t_detail_t">
-			    	<div class="t_detail_image col-xs-4">
-			    		<img class="img-responsive" src="<if condition="$goods['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$goods.thumb}</if>" />
+	    <div class="t_detail">
+		    <div class="t_detail_l">
+		    	<div class="t_detail_t">
+			    	<div class="t_detail_image">
+			    		<img title="{$goods.title}" alt="{$goods.title}" class="img-responsive" src="<if condition="$goods['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$goods.thumb}</if>"  />
 			    	</div>
-			    	<div class="col-xs-8">
-					    <div class="t_detail_title col-xs-12 row">
+			    	<div class="t_detail_t_body width600 fl">
+					    <div class="t_detail_title width600">
 					    	<h1>
 							{$goods.title}
 							</h1>
 					    </div>
-					    <div class="t_detail_price col-xs-12 row">
+					    <div class="t_detail_price width600">
 					    	<ul>
 						    	<li>
 						    		<span>{:L("ADMIN_PRICE")}:</span>
@@ -64,7 +59,7 @@
 									    		￥{$goods.min_price}
 								    		</if>
 							    		<else />
-								    		GX
+								    		-
 							    		</if>
 						    		</em>
 						    	</li>
@@ -85,26 +80,26 @@
 				    </div>
 			    </div><!-- 详情结束 -->
 			    <!-- 资源 -->
-			    <if condition="$series_resource[0] neq ''">
-			    <div class="col-xs-12 tyre_tread ">
-				    <div class="tyre_tread_title col-xs-12 ">
+			    <if condition="$series_resource[0] neq '' or $model_resource[0] neq ''">
+			    <div class="tyre_tread fl">
+				    <div class="tyre_tread_title">
 					    {:L('RESOURCE')}
 				    </div>
-				    <div class="tyre_tread_body col-xs-12 ">
-					    <div class="col-xs-6 ">
-							<div class="col-xs-12 tyre_tread_l_img">
-								<img class="img-responsive fl" src="{$site_imagedomain}{$series_resource.0.local_thumb}" />
-							</div>
-					    </div>
-              	        <div class="col-xs-6 t_tyre_img">
+				    <div class="tyre_tread_body width900">
+					    <!-- <div class="width300 fl">
+					    							<div class=" tyre_tread_l_img">
+					    								<img alt="{$goods.title} {:L('RESOURCE')}" title="{$goods.title} {:L('RESOURCE')}" class="img-responsive fl" src="{$site_imagedomain}{$series_resource.0.local_thumb}" />
+					    							</div>
+					    </div> -->
+              	        <div class="width900 t_tyre_img fl">
 					    	<div class="bd slider">
 		                        <ul>
 		                            <foreach name="series_resource" key="key" item="value">
-			                            <if condition="$key neq 0">
+		                                <if condition="$value['local_thumb'] neq ''"> 
 									    	<li >
 										    	<div>
-										    	    <a href="{$site_imagedomain}{$value.local_thumb}" target="_blank">
-													<img src="<if condition="$value['local_thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.local_thumb}</if>" class="img-responsive">
+										    	    <a href="{$site_imagedomain}{$value.local_thumb}" target="_blank" rel="nofollow">
+													<img  alt="{$goods.title} {:L('RESOURCE')}" title="{$goods.title} {:L('RESOURCE')}" src="{$site_imagedomain}{$value.local_thumb}" class="img-responsive">
 													</a>
 												</div>
 												<div class="t_tyre_content">
@@ -114,11 +109,26 @@
 										</if>
 							    	</foreach>
 			                        <!-- arrow -->
+			                        <foreach name="model_resource" key="key" item="value">
+			                                <if condition="$value['resource'] neq ''">
+										    	<li >
+											    	<div>
+
+											    	    <a href="{$site_imagedomain}{$value.resource}" target="_blank" rel="nofollow">
+														<img  alt="{$goods.title} {:L('RESOURCE')}" title="{$goods.title} {:L('RESOURCE')}" src=" {$site_imagedomain}{$value.resource}" class="img-responsive">
+														</a>
+													</div>
+													<div class="t_tyre_content">
+														
+													</div>
+												</li>
+											</if>
+							    	</foreach>
 
 		                        </ul>
-		                        <if condition="count($series_resource) gt 2">
-		                        <a class="prev" href="javascript:void(0)"></a>
-				                <a class="next" href="javascript:void(0)"></a>
+		                        <if condition="(count($series_resource)+count($model_resource)) gt 1">
+		                        <a class="prev" href="javascript:void(0)" rel="nofollow"></a>
+				                <a class="next" href="javascript:void(0)" rel="nofollow"></a>
 				                </if>
 			                    
 		                    </div>
@@ -126,39 +136,41 @@
 				    </div>
 				</div><!-- //花纹 -->
 				</if>
-			    <div class="col-xs-12 t_detail_spec">
-				    <div class="t_spec_title col-xs-12">
+			    <div class="width900 t_detail_spec fl">
+				    <div class="t_spec_title width900">
 				    	{:L('ADMIN_SPEC')}
 				    </div>
-				    <div class="t_spec_body col-xs-12">
-				    	<ul class="col-xs-12 row">
-					    	<li class="col-xs-6 row">
-					    		<span>{:L("ADMIN_SPEC")}:</span>
-					    		{$goods.model}
-					    	</li>
-					    	<li class="col-xs-6 row">
-					    		<span>{:L("ADMIN_BRAND")}:</span>
-					    		{$goods.brand}
-					    	</li>
-					    	<li class="col-xs-6 row">
-					    		<span>{:L("ADMIN_SERIES")}:</span>
-					    		{$nav_series['series_name']}
-					    	</li>
+				    <div class="t_spec_body width900">
+				    	<ul class="width900">
+				    	    <if condition="count($param) lt 6">
+						    	<li >
+						    		<span>{:L("ADMIN_SPEC")}:</span>
+						    		{$goods.model}
+						    	</li>
+						    	<li>
+						    		<span>{:L("ADMIN_BRAND")}:</span>
+						    		{$goods.brand}
+						    	</li>
+						    	<li>
+						    		<span>{:L("ADMIN_SERIES")}:</span>
+						    		{$nav_series['series_name']}
+						    	</li>
+					    	</if>
 					    	<foreach name="param" key="key" item="goods_param">
-					    		<li class="col-xs-6 row">
-	                                <span>{$key}:</span>
-	                                {$goods_param}
+					    		<li >
+	                                <span>{$goods_param['param']}:</span>
+	                                {$goods_param['value']}
 	                            </li>
                             </foreach>
                             <if condition="$model_replace[0] neq ''">
-	                            <li class="col-xs-6 row model_replace">
-		                            <div class="col-xs-12 row">
+	                            <li class=" model_replace">
+		                            <div class="">
 	                                <span>
 	                                {:L('REPLACEABLE_SIZE')}:
 	                                </span>
 	                                <span class="model_replace_r">
 	                                <foreach name="model_replace" key="key" item="value">
-		                                <a href="">{$value.model}</a><br />
+		                                <a href="">{$value.model}</a>
 	                                </foreach>
 	                                </span>
 	                                </div>
@@ -168,11 +180,11 @@
 				    </div>
 			    </div><!-- 规格结束 -->
 			    <!-- 经销商 -->
-			    <div class="col-xs-12 t_distributor">
-				    <div class="t_distributor_title col-xs-12">
+			    <div class="width900 t_distributor fl">
+				    <div class="t_distributor_title width900">
 					    {:L('DISTRIBUTOR')}
 				    </div>
-				    <div class="t_distributor_body col-xs-12">
+				    <div class="t_distributor_body width900">
 					    <table width="100%">
 					    	<tr>
 						    	<th>{:L('DISTRIBUTOR')}</th>
@@ -196,7 +208,7 @@
 						    		</if>
 						    	</td>
 						    	<td>
-							    	<a href="{$distributor[$value['companyid']]['site']['resource_url']}" target="_blank">{:L('ADMIN_CHECK')}</a>
+							    	<a href="{$distributor[$value['companyid']]['site']['resource_url']}" target="_blank" rel="nofollow">{:L('ADMIN_CHECK')}</a>
 						    	</td>
 					    	</tr>
 					    	</foreach>
@@ -205,11 +217,11 @@
 			    </div><!-- 经销商结束 -->
 			     <!-- 内容描述 -->
 			    <notempty name="series_content">
-			    <div class="col-xs-12 t_detail_content">
-				    <div class="t_detail_content_title col-xs-12">
+			    <div class="width900 t_detail_content fl">
+				    <div class="t_detail_content_title width900">
 					    {:L('ADMIN_CONTENT')}{:L('ADMIN_DESCRIPTION')}
 				    </div>
-				    <div class="t_detail_content_body col-xs-12">
+				    <div class="t_detail_content_body width900">
 					    <ul>
 						    <li>
 						    	{$series_content['content']}
@@ -219,7 +231,7 @@
 			    </div>
 			    </notempty>
 		    </div>
-		    <div class="t_detail_r col-xs-3">
+		    <div class="t_detail_r width300 fl">
 			    <div class="t_detail_brand">
 			    	<div class="t_detail_brand_title">
 			    		<h1>{:L("ADMIN_BRAND")}</h1>
@@ -229,7 +241,7 @@
 				    		<foreach name="recommend_brand" key="key" item="value">
 			    			<li>
 			    				<i></i>
-			    				<a href="{:U('Brand/brand_list',array('brandid'=>$value['brandid']))}">
+			    				<a href="{:U('Brand/brand_list',array('brandid'=>$value['brandid']))}" title="{$value.brand_name}">
 				    				{$value.brand_name}
 			    				</a>
 			    			</li>
@@ -245,6 +257,8 @@
 	    </div>
     </div>
 </div>
+<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.min.js"></script>
 <script type="text/javascript">
 	$(".t_brand_more").on("click",function(){
 		var obj = $(this);
@@ -272,7 +286,7 @@ jQuery(".t_tyre_img").slide( {
     easing:"swing",
     delayTime:500,
     mouseOverStop:true,
-    pnLoop:true 
+    pnLoop:false 
 });
 </script>
 <include file="Public/footer"/>

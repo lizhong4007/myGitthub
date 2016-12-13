@@ -21,6 +21,11 @@ class ModelController extends CommonController {
             $searchData = "'%".$searchData."%'";
             $where .= "model_name like ".$searchData." or linkurl like ".$searchData;
         }
+        $seriesid = intval(I('seriesid',''));
+        if(!empty($seriesid))
+        {
+            $where['seriesid'] = $seriesid;
+        }
         $data = $model_model->getModelList($where,$p,$size);
         $this->assign('data',$data['data']);
         $this->assign('page',$data['page']);

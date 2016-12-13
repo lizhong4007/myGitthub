@@ -1,74 +1,78 @@
-
 .page{
     height: 34px;
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: right;
 }
-.page .container .page_num{
+.page_part{
+    width: 1200px;
+    height: 34px;
+}
+.page_num{
     float: right;
     text-align: right;
-    width: 50%;
 }
-.page .container .page_num ul{
+.page_num ul{
     height: 34px;
     float: right;
     text-align: right;
 }
-.page .container .page_num ul li {
+.page_num ul li {
     float: left;
     border: 1px solid #e7e7e7;
     margin-right: 5px;
+    height: 34px;
+    line-height: 34px;
 }
-.page .container .page_num ul .page_go{
+.page_num ul .page_go{
     width: 10%;
     padding: 0;
 }
-.page .container .page_num ul .num{
+.page_num ul .num{
     text-align: center;
 }
-.page .container .page_num ul .num a{
+.page_num ul .num a{
     text-align: center;
     display: block;
-    padding:5px 10px;
+    padding:0 10px;
 }
-.page .container .page_num ul .pre{
-    padding:5px 10px;
+.page_num ul .pre{
+    padding:0 10px;
 }
-.page .container .page_num ul .next{
-    padding:5px 10px;
+.page_num ul .next{
+    padding:0 10px;
 }
-.page .container .page_num ul a:link{
+.page_num ul a:link{
     text-decoration: none;
 }
-.page .container .page_num ul .pre:hover{
+.page_num ul .pre:hover{
     border:1px solid #2796de;
 }
-.page .container .page_num ul .next:hover{
+.page_num ul .next:hover{
     border:1px solid #2796de;
 }
-.page .container .page_num ul .num:hover{
+.page_num ul .num:hover{
     border:1px solid #2796de;
 }
-.page .container .page_num ul .active{
+.page_num ul .active{
     background: #2796de;
 }
-.page .container .page_num ul .active>a{
+.page_num ul .active>a{
     color: #fff;
 }
-.page .container .page_num ul .page_go .form-group{
+.page_num ul .page_go .form-group{
     padding: 0;
     margin-bottom:0;
 }
-.page .container .page_num ul .page_go .form-control{
+.page_num ul .page_go .form-control{
     padding: 0;
     min-width: 34px;
 }
-.page .container .page_num ul .page_go .input-group-addon{
+.page_num ul .page_go .input-group-addon{
     cursor: pointer;
 }
-.page .container .page_num ul .total{
+.page_num ul .total{
     border: none;
-    padding:5px;
+    padding:0 5px;
 }
 /*page end*/

@@ -9,6 +9,7 @@ use \Think\Model;
 class SeriesModel extends Model
 {
 	public $error = '';
+	static $series_content_table = "series_content";
 	/**
 	*功能：获取系列列表
 	*@param array $where
@@ -190,14 +191,20 @@ class SeriesModel extends Model
 	}
     /**
      * 功能：根据id获取单条系列
-     * @param int $seriesid 资源id
-     * @return false | array 资源信息
+     * @param int $seriesid 系列id
+     * @param bool $is_content 是否查询系列信息
+     * @return array 系列信息
      */
-	public function getSeries($seriesid = 0)
+	public function getSeries($seriesid = 0,$is_content = false)
 	{
 		$seriesid = intval($seriesid);
-		if($seriesid <= 0) return false;
-		return $this->where(array("seriesid"=>$seriesid))->find();
+		$series = array();
+		$series = $this->where(array("seriesid"=>$seriesid))->find();
+		if(!empty($series) and $is_content)
+		{
+			$series['content'] = M(self::$series_content_table)->where(array("seriesid"=>$seriesid))->find();
+		}
+		return $series;
 	}
 
 	/**
@@ -294,7 +301,7 @@ class SeriesModel extends Model
 		{
 			return false;
 		}
-		$series_content_table = M('series_content');
+		$series_content_table = M(self::$series_content_table);
 		$info = '';
 		$info = $series_content_table->where(array('seriesid'=>$seriesid))->find();
 		$rs = '';
@@ -311,9 +318,9 @@ class SeriesModel extends Model
      * @param int $seriesid 
      * @return bool | array 
      */
-	public function getSeriesResource($seriesid = 0)
+	public function getSeriesResource($seriesid = 0,$order = 'sresid DESC')
 	{
-		return M('SeriesResource')->where(array('seriesid'=>$seriesid))->select();
+		return M('SeriesResource')->where(array('seriesid'=>$seriesid))->order($order)->select();
 	}
 	/**
      * 功能：添加系列资源（花纹）

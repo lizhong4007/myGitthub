@@ -9,6 +9,7 @@ use \Think\Model;
 class CompanyModel extends Model
 {
 	public $error = '';
+	static $company_distributor_table = "CompanyDistributor";
 	
 	/**
 	*功能：获取公司列表
@@ -152,23 +153,54 @@ class CompanyModel extends Model
 	/**
 	*功能：根据公司id获取单条公司信息
 	*@param int $companyid
+	*@param bool $is_content 是否查询经销商，查询一个
 	*@return false | array 
 	**/
-	public function getCompany($companyid = 0)
+	public function getCompany($companyid = 0,$is_content = false)
 	{
 		$companyid = intval($companyid);
-		if($companyid <= 0) return false;
-		return $this->where(array("companyid"=>$companyid))->find();
+
+		$company = array();
+		$company = $this->where(array("companyid"=>$companyid))->find();
+		if(!empty($company) and $is_content)
+		{
+			if(!empty($value['distributorids']))
+			{
+				$tmp_where = array();
+				$tmp_where['distributorid'] = array('in',explode(',', $company['distributorids']));
+				$company['content'] = M(self::$company_distributor_table)->where($tmp_where)->find();
+			}else{
+				$company['content'] = array();
+			}
+		}
+		return $company;
 	}
 	/**
 	*功能：获取多条公司信息
 	*@param array $where
 	*@return false | array 
 	**/
-	public function getCompanyData($where = array())
+	public function getCompanyData($where = array(),$is_content = false)
 	{
-		if(empty($where)) return false;
-		return $this->where($where)->select();
+		$company = array();
+		$company = $this->where($where)->select();
+		if($is_content)
+		{
+			$M_distributor = M(self::$company_distributor_table);
+			foreach ($company as $key => $value) {
+				$tmp_where = array();
+				;
+				if(!empty($value['distributorids']))
+				{
+					$tmp_where['distributorid'] = array('in',explode(',', $value['distributorids']));
+					$company[$key]['content'] = $M_distributor->where($tmp_where)->find();
+				}else{
+					$company[$key]['content'] = array();
+				}
+				
+			}
+		}
+		return $company;
 	}
 	/**
 	*功能：根据公司id删除公司

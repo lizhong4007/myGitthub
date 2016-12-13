@@ -17,6 +17,7 @@ class SeriesController extends CommonController {
 			die;
 		}
 
+
 		$this->assign("nav_series",$nav_series);
 		//分类
 		$category = D('Category')->getCategoryList();
@@ -27,10 +28,9 @@ class SeriesController extends CommonController {
 		//品牌
 		$brand = D('Brand')->getBrand($nav_series['brandid']);
 		$this->assign("brand",$brand);
+
 		//筛选条件
 		$this->filter();
-
-		// print_r($nav_series);exit;
         // 商品
 		$where = array();
 		$p = (int)I('p',1);
@@ -47,8 +47,19 @@ class SeriesController extends CommonController {
 			$value['param'] = $tmp;
 			$goods_data_tmp[] = $value;
 		}
+		
 		$this->assign("goods",$goods_data_tmp);
 		$this->assign("page",$goodslist['page']);
+
+
+		/*seo*/
+		$seo = '<title>'.$nav_series['series_name'].' '.$current_category['cat_name'].' '.$brand['brand_name'].'-bmbmda</title>';
+		$seo .= '<meta name="keywords" content="'.$nav_series['series_name'].' '.$current_category['cat_name'].' '.$brand['brand_name'].' 花纹 速度级别 尺寸 扁平比 帘布层评级" />';
+		$seo .= '<meta name="description" content="'.$brand['brand_name'].'轮胎下的不同花纹" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Series/series_list').'/'.$p.'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Series/series_list').'/'.$p.'" />';
+		$this->assign("seo",$seo);
+
 
 		$this->display("Series/series_list");
 	}
@@ -87,6 +98,9 @@ class SeriesController extends CommonController {
 		$series = $M_series->getSeriesData(array('catid'=>array('in',$catids),'brandid'=>$brandid));
 		if($series)
 		{
+			foreach ($series as $key => $value) {
+				$series[$key]['url'] = U('series/series_list',array('seriesid'=>$value['seriesid']));
+			}
 			echo json_encode(array('code'=>1,'message'=>$series));
 			die;
 		}else{
@@ -154,7 +168,7 @@ class SeriesController extends CommonController {
 			$tmp = $S_GoodsParam->getGoodsParameter($value['goodsid']);
 			$param_tmp = array();
 			foreach ($tmp as $k => $v) {
-				$param_tmp[] = array($k,$v);
+				$param_tmp[] = array($v['param'],$v['value']);
 			}
 			$value['param'] = $param_tmp;
 			$value['brand_name'] = L('ADMIN_BRAND');
@@ -162,7 +176,7 @@ class SeriesController extends CommonController {
 			$value['url'] = U('goods/detail',array('goodsid'=>$value['goodsid']));
 			if(empty($value['max_price']))
 			{
-				$value['price_str'] = L('NO_QUOTATION');
+				$value['price_str'] = '';
 			}else{
 				$value['price_str'] = $value['min_price'];
 			}

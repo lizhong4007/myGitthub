@@ -39,8 +39,8 @@
               </a>
             </li>
           </ul>
+          <input type="hidden" value="{:U('Series/seriesList')}" id="series_url" />
           <form class="form-horizontal" action="{:U('Series/addSeries')}" method="post" id="form">
-            <input type="hidden" value="{:U('Series/seriesList')}" id="series_url" />
             <div class="tab-content">
               <div class="box-body">
                   <div class="form-group">

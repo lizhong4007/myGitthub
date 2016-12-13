@@ -185,7 +185,7 @@ class UsersModel extends Model
 		$rs = $this->getUsersData(array('user_name'=>$name));
 		if(empty($rs))
 		{
-			return L('ADMIN_USERNAME').L('ADMIN_NOEXISTED');
+			return array('code'=>0,'message'=>L('ADMIN_USERNAME').L('ADMIN_NOEXISTED'));
 		}else{
 			$rs = array_pop($rs);
 			$password = password($password);
@@ -198,9 +198,9 @@ class UsersModel extends Model
 				$data['log_last_ip'] = $ip;
 				$data['userid'] = $rs['userid'];
 				$this ->addUsers($data);
-				redirect(U('HomePage/index'));
+				return array('code'=>1);
 			}else{
-				return L('ADMIN_PASSWORD').L('ADMIN_ERROR');
+				return array('code'=>0,'message'=>L('ADMIN_PASSWORD').L('ADMIN_ERROR'));
 			}
 		}
 	}

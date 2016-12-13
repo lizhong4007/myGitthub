@@ -1,25 +1,28 @@
 .t_detail{
-	padding-top: 20px;
-	padding-bottom: 20px;
-
+	width: 1200px;
 }
 .t_detail_l{
+	width: 900px;
+	float: left;
+	height: 100%;
 	border-right: 1px solid #e7e7e7;
 }
-.t_detail_t{
+.t_detail_l .t_detail_t{
+	width: 900px;
+	min-height: 300px;
+	height: 100%;
 	padding-bottom: 5px;
-	border-bottom:2px solid #0f5489;
+	position: relative;
 }
-.t_detail_l .t_detail_image{
-	height: 240px;
-
+.t_detail_l .t_detail_t .t_detail_image{
+	min-height: 300px;
+	width: 300px;
+	float: left;
 }
-/*.t_detail_l .t_detail_image img{
-	display: block;
-	max-height: 100%;
-	width: auto;
-}*/
-.t_detail_l .t_detail_title h1
+.t_detail_l .t_detail_t .t_detail_t_body{
+	padding-left: 15px;
+}
+.t_detail_l .t_detail_t .t_detail_t_body .t_detail_title h1
 {
 	font-size: 1.5em;
 }
@@ -27,9 +30,9 @@
 	color: #333;
 }
 .t_detail_l .t_detail_price ul li {
-	width: 100%;
 	float: left;
-	padding: 5px 0;
+	width: 598px;
+	margin: 5px 0 5px 0;
 }
 .t_detail_l .t_detail_price ul li span{
 	color: #666;
@@ -40,6 +43,9 @@
 }
 
 /*brand*/
+.t_detail_r{
+	width: 300px;
+}
 .t_detail_r .t_detail_brand {
 	position: relative;
 	border-top: 2px solid #0f5489;
@@ -49,10 +55,13 @@
 .t_detail_r .t_detail_brand .t_detail_brand_title h1
 {
 	font-size: 1.5em;
+	text-indent: 1em;
 }
+
 .t_detail_r .t_detail_brand .t_detail_brand_content ul li{
 	padding: 5px 0 5px 10px;
 	background: url("../images/detail_dot.png") no-repeat 0 15px;
+	margin-left: 1em;
 }
 .t_detail_r .t_detail_brand .t_detail_brand_content ul li a{
 	color: #333;
@@ -66,16 +75,21 @@
 	top: 15px;
 	cursor: pointer;
 }
+.t_detail_r .t_brand_more:hover{
+	color: #e4393c;
+}
 /*brand end*/
 /*花纹*/
 .tyre_tread{
-	border-bottom: 2px solid #0f5489;
+	border-top: 2px solid #0f5489;
 	margin-top: 10px;
 	padding-bottom: 40px;
+	position: relative;
 }
 .tyre_tread .tyre_tread_title{
 	font-size: 1.5em;
 	color: #333;
+	text-indent: 2em;
 }
 .tyre_tread .tyre_tread_body{
 	border-top:1px solid #e7e7e7;
@@ -83,6 +97,7 @@
 .tyre_tread .tyre_tread_body .tyre_tread_l_img{
 	margin-top: 5px;
 	padding-top: 10px;
+	margin-left: 10%;
 
 }
 .t_tyre_img .slider{
@@ -99,9 +114,8 @@
 .t_tyre_img .prev,.t_tyre_img .next{
 	position: absolute;
 	z-index: 10;
-	left: 5px;
-	top: 60px;
-	margin-top: -25px;
+	left: 15px;
+	top: 40%;
 	display: block;
 	width: 20px;
 	height: 20px;
@@ -113,20 +127,21 @@
 }
 .t_tyre_img .next{
 	left: auto;
-	right: 0;
+	right: 15px;
 	background: url(../images/next_v.png) no-repeat;
 }
 .t_tyre_img .t_tyre_content{
 	text-align: left;
 	margin-top: 5px;
-	/*text-indent: 2em;*/
+	text-indent: 2em;
 
 }
 /*spec*/
 .t_detail_spec{
 	margin-top: 10px;
 	padding-bottom: 20px;
-	border-bottom: 2px solid #0f5489;
+	border-top: 2px solid #0f5489;
+	position: relative;
 }
 .t_detail_spec .t_spec_title{
 	font-size: 1.5em;
@@ -136,9 +151,14 @@
 	border-top:1px solid #e7e7e7;
 	
 }
+.t_detail_spec .t_spec_body ul{
+	text-indent: 2em;
+}
 .t_detail_spec .t_spec_body ul li {
 	padding-top: 5px;
 	padding-bottom: 5px;
+	width: 450px;
+	float: left;
 }
 .t_detail_spec .t_spec_body ul li span{
 	color: #999;
@@ -148,7 +168,10 @@
 }
 .model_replace .model_replace_r{
 	margin-left: 3px;
-	color: #000
+	color: #000;
+}
+.model_replace .model_replace_r a{
+	display: inherit;
 }
 .model_replace .model_replace_r a:hover{
 	color: #C81623;
@@ -158,10 +181,16 @@
 .t_distributor{
 	margin-top: 10px;
 	padding-bottom: 20px;
+	position: relative;
+	border-top: 1px solid #e7e7e7;
 }
 .t_distributor .t_distributor_title{
 	font-size: 1.5em;
 	color: #333;
+}
+.t_distributor .t_distributor_body table{
+	margin-left: 50px;
+	width: 800px;
 }
 .t_distributor .t_distributor_body table tr:last-child{
 	border-bottom: 1px solid #e7e7e7;

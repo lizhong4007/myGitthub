@@ -153,6 +153,7 @@ $('body').on('click','.go_other_page',function(){
 /*获取筛选数据*/
 function get_seriresdata(currentpage)
 {
+	var site_imagedomain = $('#site_imagedomain').val();
 	var $paraid = new Array();
     $.each( $("input[name^='paraid']"), function(i, n){
                 $paraid.push($(n).val());
@@ -179,34 +180,34 @@ function get_seriresdata(currentpage)
         	var str = '';
         	var data = json.data;
         	for (var i = 0; i < data.length; i++) {
-        		str += '<li class="col-xs-12 t_list_li">';
-				str += '<div class="t_list_l col-xs-3">';
+        		str += '<li class="width1200 t_list_li">';
+				str += '<div class="t_list_l width300">';
 				str += '<a href="'+data[i].url+'" class="t_list_img" target="_blank">';
-				str += '<img class="img-responsive" src="'+data[i].thumb+'" />';
+				str += '<img class="img-responsive" src="'+site_imagedomain+data[i].thumb+'" />';
 				str += '</a>';
 				str += '</div>';
-				str += '<div class="t_list_c col-xs-8 row">';
+				str += '<div class="t_list_c width600 row">';
 				str += '<div class="t_list_title">';
 				str += '<a href="'+data[i].url+'">';
 				str += data[i].title;
 				str += '</a>';
 				str += '</div>';
 				str += '<div class="t_list_spec">';
-				str += '<ul class="col-xs-12 row">';
-					str += '<li class="col-xs-6 row">';
+				str += '<ul class="width600">';
+					str += '<li class="width300">';
 					str += '<span>';
 					str += data[i].brand_name+':';
 					str += '</span>';
 					str += data[i].brand;
 					str += '</li>';
-					str += '<li class="col-xs-6 row">';
+					str += '<li class="width300">';
 					str += '<span>';
 					str += data[i].model_name+':';
 					str += '</span>';
 					str += data[i].model;
 					str += '</li>';
 					for (var j = 0; j < data[i].param.length; j++) {
-						str += '<li class="col-xs-6 row">';
+						str += '<li class="width300">';
 						str += '<span>';
 						str += data[i].param[j][0]+':';
 						str += '</span>';
@@ -216,7 +217,7 @@ function get_seriresdata(currentpage)
 				str += '</ul>';
 				str += '</div>';
 				str += '</div>';
-				str += '<div class="t_list_r col-xs-1 row">';
+				str += '<div class="t_list_r width300 row">';
 				str += '<div class="t_list_price">';
 				str += data[i].price_str;
 				str += '</div>';

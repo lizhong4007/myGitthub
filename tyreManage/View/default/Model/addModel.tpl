@@ -34,6 +34,7 @@
               </a>
             </li>
           </ul>
+          <input type="hidden" value="{:U('Model/modelList')}" id="model_url" />
           <form class="form-horizontal" action="{:U('Model/addModel')}" method="post" id="form">
             <div class="tab-content">
               <div class="box-body">

@@ -8,7 +8,7 @@ class CompanyController extends CommonController {
 	/**
 	* @HQtag: Company List
 	*/
-	public function CompanyList()
+	public function companyList()
 	{
 		$data  = array();
 		$where = $this->Search();

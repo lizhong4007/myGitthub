@@ -1,21 +1,17 @@
 <include file="Public/header"/>
-<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodslist.css">
-<!-- 页面标题 -->
-<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name}-</if>{$current_category.cat_name}-{$default_title}" id="site_title" />
-<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name} </if>{$current_category.cat_name} 轮胎花纹 花纹" id="site_keywords" />
-<input type="hidden" value="<if condition="$parent_category neq ''">{$parent_category.cat_name} </if>{$current_category.cat_name} 不同品牌下的花纹-{$default_title}  " id="site_description" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/goodslist.min.css">
 <!-- //页面标题 -->
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="/">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
             <if condition="$parent_category neq ''">
         		<li>
-        			<a href="{:U('Goods/goods_list',array('catid'=>$parent_category['catid']))}">{$parent_category.cat_name}</a>
+        			<a title="{$parent_category.cat_name}" href="{:U('Goods/goods_list',array('catid'=>$parent_category['catid']))}">{$parent_category.cat_name}</a>
         			<i>></i>
         		</li>
             </if>
@@ -28,68 +24,70 @@
 </div>
 <!-- nav -->
 <div class="container-fluid">
-    <div class="container all_selector">
-        <input type="hidden" value="0" id="closed" />
-        <input type="hidden" value="{:L('ADMIN_CLOSE')}" id="closeing" />
-        <input type="hidden" value="{:L('ADMIN_SPREAD')}" id="opened" />
-        <input type="hidden" value="{$catid}" id="cat_id" />
-	    <div class="t_selector col-xs-12">
-		    <div class="t_selector_l col-xs-1">
-			    {:L('ADMIN_BRAND')}
-		    </div>
-		    <if condition="count($brand) gt 6">
-			    <div class="t_selector_more">
-				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
-				    <i class="opened"></i>
+    <div class="container ">
+	    <div class="all_selector ">
+	        <input type="hidden" value="0" id="closed" />
+	        <input type="hidden" value="{:L('ADMIN_CLOSE')}" id="closeing" />
+	        <input type="hidden" value="{:L('ADMIN_SPREAD')}" id="opened" />
+	        <input type="hidden" value="{$catid}" id="cat_id" />
+		    <div class="t_selector">
+			    <div class="t_selector_l">
+				    {:L('ADMIN_BRAND')}:
 			    </div>
-		    </if>
-		    <div class="t_selector_r col-xs-11">
-			    <ul class=" col-xs-12 row">
-				    <foreach name="brand" key="key" item="value">
-					    <li class="col-xs-2 row t_selector_brand">
-					    	<div class="t_selector_img">
-						    	<img  src="<if condition="$value['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.thumb}</if>" />
-						    </div>
-						    <div class="t_selector_title">
-							    <input type="hidden" value="{$value.brandid}" class="brand_id" />
-						    	<a href="javascript:;" class="select_brand">{$value.brand_name}</a>
-						    </div>
+			    <if condition="count($brand) gt 6">
+				    <div class="t_selector_more">
+					    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
+					    <i class="opened"></i>
+				    </div>
+			    </if>
+			    <div class="t_selector_r">
+				    <ul class="brand_ul">
+					    <foreach name="brand" key="key" item="value">
+						    <li class="t_selector_brand">
+						    	<div class="t_selector_img">
+							    	<img alt="{$value.brand_name}" title="{$value.brand_name}"  src="<if condition="$value['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.thumb}</if>"  />
+							    </div>
+							    <div class="t_selector_title">
+								    <input type="hidden" value="{$value.brandid}" class="brand_id" />
+							    	<a href="javascript:;" class="select_brand">{$value.brand_name}</a>
+							    </div>
+						    </li>
+
+					    </foreach>
+				    </ul>
+			    </div>
+		    </div>
+		     <div class="t_filter">
+			    <div class="t_filter_l">
+				    {:L('ADMIN_SERIES')}:
+			    </div>
+			    <if condition="count($series) gt 6">
+				    <div class="t_filter_more">
+					    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
+					    <i class="opened"></i>
+				    </div>
+			    </if>
+			    <div class="t_filter_r">
+			    <input type="hidden" value="{:U('series/get_series')}" id="get_series_url" />
+				    <ul id="series_list">
+				        <foreach name="series" key="key" item="value">
+					    <li >
+						    <a title="{$value.series_name}" href="{:U('series/series_list',array('seriesid'=>$value['seriesid']))}">
+						    {$value.series_name}
+						    </a>
 					    </li>
+					    </foreach>
 
-				    </foreach>
-			    </ul>
-		    </div>
-	    </div>
-	     <div class="t_filter col-xs-12">
-		    <div class="t_filter_l col-xs-1 ">
-			    {:L('ADMIN_SERIES')}:
-		    </div>
-		    <if condition="count($series) gt 6">
-			    <div class="t_filter_more">
-				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
-				    <i class="opened"></i>
+				    </ul>
 			    </div>
-		    </if>
-		    <div class="t_filter_r col-xs-10 ">
-		    <input type="hidden" value="{:U('series/get_series')}" id="get_series_url" />
-			    <ul id="series_list">
-			        <foreach name="series" key="key" item="value">
-				    <li >
-					    <a href="{:U('series/series_list',array('seriesid'=>$value['seriesid']))}">
-					    {$value.series_name}
-					    </a>
-				    </li>
-				    </foreach>
-
-			    </ul>
-		    </div>
+		    </div><!-- //all_selector -->
 	    </div>
     </div>
 </div><!-- //nav -->
 
 <div class="container-fluid">
     <div class="container">
-        <div class="col-xs-12 t_tab">
+        <div class="t_tab">
             <div class="t_tab_l">
                 {:L('ADMIN_GOODS')}{:L('ADMIN_TOTAL')}
                 <em>({$page.totalRows}{:L('ADMIN_ITEM')})</em>
@@ -99,53 +97,56 @@
 </div>
 <!-- goods list -->
 <div class="container-fluid">
-    <div class="container t_list">
-	    <ul class="col-xs-12">
+    <div class="container ">
+        <div class="t_list">
+		    <ul class="t_list_ul">
 		    <foreach name="goods" key="key" item="value">
-			    <li class="col-xs-12 t_list_li">
-				    <div class="t_list_l col-xs-3">
-			    		<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.thumb}</if>" />
+			    <li class="t_list_li">
+				    <div class="t_list_l">
+			    		<a title="{$value.title}" href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
+				    		<img title="{$value.title}" alt="{$value.title}"  class="img-responsive lazy" src="{$default_image}" data-original="{$site_imagedomain}{$value.thumb}" />
 			    		</a>
 				    </div>
-				    <div class="t_list_c col-xs-8 row">
+				    <div class="t_list_c">
 					    <div class="t_list_title">
-					    	<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}">{$value.title}</a>
+					    	<a title="{$value.title}" href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}">{$value.title}</a>
 				    	</div>
 				    	<div class="t_list_spec">
-					    	<ul class="col-xs-12 row">
-						    	<li class="col-xs-6 row">
+					    	<ul class="">
+						    	<li class="">
 			                        <span>{:L('ADMIN_BRAND')}:</span>
 			                        {$value.brand}
 		                        </li>
-			                    <li class="col-xs-6 row">
+			                    <li class="">
 			                        <span>{:L('ADMIN_MODEL')}:</span>
 			                        {$value.model}
 		                        </li>
-						    	<foreach name="value.param" key="k" item="v">
-							    	<li class="col-xs-6 row">
-				                        <span>{$k}:</span>
-				                        {$v}
+						    	<foreach name="value.param" key="k" item="para">
+							    	<li class="">
+				                        <span>{$para['param']}:</span>
+				                        {$para['value']}
 			                        </li>
 		                        </foreach>
 					    	</ul>
 					    </div>
 				    </div>
-				    <div class="t_list_r col-xs-1 row">
+				    <div class="t_list_r">
 					    <div class="t_list_price">
 					    	<if condition="$value['minprice'] neq ''">
                             ￥{$value.minprice}
                             <else />
-                            {:L('NO_QUOTATION')}
+                            <!-- {:L('NO_QUOTATION')} -->
                             </if>
 				    	</div>
 					    	<!-- <a href="">联系我们</a> -->
 				    </div>
 			    </li>
 		    </foreach>
-	    </ul>
+		    </ul>
+	    </div>
     </div>
 </div>
+<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript">
 	$(".t_selector_brand").hover(function(){
 		var obj = $(this);
@@ -260,7 +261,7 @@
 					var str = '';
 					for (var i = 0; i < data.length; i++) {
 						str += '<li >';
-						str += '<a href="/Goods/goods_list/catid/'+cat_id+'/seriesid/'+data[i].seriesid+'">';
+						str += '<a href="'+data[i].url+'">';
 						str += data[i].series_name;
 						str += '</a>';
 						str += '</li>';

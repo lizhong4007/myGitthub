@@ -5,6 +5,7 @@
 }
 body{
     font-family: "Microsoft Yahei";
+    /*min-width: 1200px*/
 }
 .container{
     padding:0;
@@ -36,13 +37,27 @@ a:link{
 }
 .header{
     background-color: #f1f1f1;
-    padding: 5px 0;
+    height: 34px;
+    width: 100%; 
+}
+.header_c{
+    width: 1200px;
+    background-color: #f1f1f1;
+    height: 34px;
+    line-height: 34px;
+
+}
+.search{
+    width: 1200px;
 }
 .search .search_l{
-    padding: 15px 0;
+    padding: 15px 0 15px 0;
+    float: left;
 }
 .search .search_r{
-    padding: 15px 0;
+    padding: 15px 0 15px 0;
+    width: 600px;
+    float: right;
     position: relative;
 }
 .search .search_r .search_bg{
@@ -51,25 +66,33 @@ a:link{
 }
 .menu{
     border-bottom:1px solid #e7e7e7;
+    width: 100%; 
 }
-.menu .container{
+/* .menu .container{
+    background-color: #0871c0;
+} */
+.menu-header{
+    width: 1200px;
     background-color: #0871c0;
 }
-.menu .navbar-nav>li{
+.menu-header ul{
+    padding:0;
+    margin: 0;
+}
+.menu-header ul li{
     display: inline-block;
 }
-.menu .navbar-nav>li>a.active{
+.menu-header ul li a.active{
     background-color: #0f5489;
 }
-.menu .nav>li>a{
+.menu-header ul li a{
     color: #fff;
-    font:"microsoft yahei";
     font-size: 1em;
     margin-right: 2px;
+    display: block;
     padding: 5px 20px;
-    line-height: normal;
 }
-.menu .navbar-nav > li > a:hover, .menu .navbar-nav > li > a:hover {
+.menu-header ul li a:hover{
     background-color: #0f5489;
 }
 /*nav*/
@@ -99,11 +122,11 @@ a:link{
 /*nav end*/
 /*footer*/
 .footer{
+    width: 1200px;
     border-top:2px solid #0f5489;
-    /*height: 150px;*/
     text-align: center;
-    /*margin-bottom: 30px; */
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 .footer .footer_l {
     text-align: center;
@@ -138,6 +161,7 @@ a:link{
     height: 32px;
     cursor: pointer;
     display: none;
+    z-index: 999;
 }
 .goto_top:hover{
     background-position: -1px -39px;
@@ -152,4 +176,22 @@ a:link{
 }
 .recommend_model ul li a{
     padding:5px;
+}
+.width600{
+    width: 600px;
+}
+.width900{
+    width: 900px;
+}
+.width300{
+    width: 300px;
+}
+.width1200{
+    width:1200px;
+}
+.width100{
+    width:100px;
+}
+.width1000{
+    width:1000px;
 }

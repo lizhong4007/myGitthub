@@ -11,6 +11,7 @@ class LoginController extends Controller {
         $data = $_POST['data'];
 		$name = $data['name'];
 		$password = $data['password'];
+        $message = '';
 		if(empty($name))
 		{
 			$message = L('ADMIN_USERNAME').L('ADMIN_NOTEMPTY');
@@ -21,8 +22,16 @@ class LoginController extends Controller {
 			$message = L('ADMIN_PASSWORD').L('ADMIN_NOTEMPTY');
 			$this->Message($message);
 		}
-		$message = D('Users')->login($name,$password);
-		$this->Message($message);
+        $rs = array();
+		$rs = D('Users')->login($name,$password);
+        if($rs['code'] == 0)
+        {
+            $message = $rs['message'];
+            $this->Message($message);
+        }else{
+            $this->success('login success!',U('HomePage/index'));
+        }
+		
     }
 
     public function Message($message)

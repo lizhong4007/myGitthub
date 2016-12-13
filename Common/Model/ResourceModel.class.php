@@ -132,6 +132,16 @@ class ResourceModel extends Model
 		return $this->where(array("resid"=>$resid))->find();
 	}
 	/**
+     * 功能：获取多条资源数据
+     * @param array $where 资源id
+     * @return array 资源信息
+     */
+	public function getResourceData($where = array())
+	{
+		if(empty($where )) return array();
+		return $this->where($where)->select();
+	}
+	/**
      * 功能：根据id删除资源数据
      * @param int $resid 资源id
      * @return false | true 

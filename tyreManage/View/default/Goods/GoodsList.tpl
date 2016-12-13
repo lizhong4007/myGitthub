@@ -79,7 +79,7 @@
                                 <th>{:L('ADMIN_LANGUAGE_NAME')}</th>
                                 <th>{:L('ADMIN_BRAND')}</th>
                                 <th>{:L('ADMIN_MODEL')}</th>
-                                <th>{:L('ADMIN_SPEC')}</th>
+                                <th width="300">{:L('ADMIN_SPEC')}</th>
                                 <th>{:L('ADMIN_HANDLE')}</th>
                               </tr>
                             </thead>
@@ -100,15 +100,23 @@
                                     <img src="{$site_imagedomain}{$value.thumb}" width="100px" height="60px" />
                                   </a>
                                 </td>
-                                <td>{$value.title}</td>
-                                <td>{$value.en_title}</td>
+                                <td>
+                                    <a href="{$default_site}{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}" target="_blank">
+                                      {$value.title}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="" target="_blank">
+                                      {$value.en_title}
+                                    </a>
+                                </td>
                                 <td>{$value.brand}</td>
                                 <td>{$value.model}</td>
                                 <td>
                                     <ul>
                                       <foreach name="value.param" key="k" item="v">
                                           <li class="param">
-                                              <strong>{$k}:</strong>{$v}&nbsp;
+                                              <strong>{$v['param']}:</strong>{$v['value']}<br />
                                           </li>
                                       </foreach>
                                     </ul>

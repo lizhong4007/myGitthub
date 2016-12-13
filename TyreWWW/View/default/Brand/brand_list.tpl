@@ -1,16 +1,12 @@
 <include file="Public/header"/>
 <link rel="stylesheet" type="text/css" href="__STATIC__/css/brandlist.css">
-<!-- 页面标题 -->
-<input type="hidden" value="{:L('BRAND_ZONE')}-{$default_title}" id="site_title" />
-<input type="hidden" value="米其林 邓禄普 {:L('BRAND_ZONE')} 轮胎品牌 轮胎" id="site_keywords" />
-<input type="hidden" value="{$default_title}|{:L('BRAND_ZONE')},各种各样的轮胎品牌" id="site_description" />
 <!-- //页面标题 -->
 <div class="container-fluid -slide-body">
     <div class="container">
     <div class="t_nav">
     	<ul>
     		<li>
-    			<a href="{:U('HomePage/index')}">{:L("ADMIN_HOME")}</a>
+    			<a href="/">{:L("ADMIN_HOME")}</a>
     			<i>></i>
     		</li>
     		<li>
@@ -27,26 +23,33 @@
         <input type="hidden" value="{:L('ADMIN_CLOSE')}" id="closeing" />
         <input type="hidden" value="{:L('ADMIN_SPREAD')}" id="opened" />
         <input type="hidden" value="{$catid}" id="cat_id" />
-	    <div class="t_selector col-xs-12">
-		    <div class="t_selector_l col-xs-1">
+	    <div class="t_selector width1200 fl">
+		    <div class="t_selector_l width100 fl">
 			    {:L('ADMIN_BRAND')}
 		    </div>
-		    <if condition="count($brand) gt 10">
+		    <if condition="count($brand) gt 6">
 			    <div class="t_selector_more">
 				    <a href="javascript:;">{:L('ADMIN_SPREAD')}</a>
 				    <i class="opened"></i>
 			    </div>
 		    </if>
-		    <div class="t_selector_r col-xs-11">
-			    <ul class=" col-xs-12 ">
+		    <div class="t_selector_r width1000 fl">
+		    <input type="hidden" value="{:U('Brand/get_brand_goods')}" id="brand_url" />
+			    <ul class="width1000">
 				    <foreach name="brand" key="key" item="value">
-					    <li class="col-xs-2  t_selector_brand">
+					    <li class="t_selector_brand">
 					    	<div class="t_selector_img">
-						    	<img  src="<if condition="$value['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.thumb}</if>" />
+					    	<input type="hidden" value="{$value.brandid}" class="brand_id" />
+					    	    <if condition="$value['thumb'] eq ''">
+					    	        <img title="{$value.brand_name}" alt="{$value.brand_name}"  class="img-responsive"  src=" {$default_image}" />
+					    	    <else />
+							    	<img  title="{$value.brand_name}" alt="{$value.brand_name}" class="img-responsive"  src="{$site_imagedomain}{$value.thumb}" />
+						    	</if>
 						    </div>
 						    <div class="t_selector_title">
-							    <input type="hidden" value="{$value.brandid}" class="brand_id" />
-						    	<a  href="{:U('series/series_list',array('seriesid'=>$value['series']['seriesid']))}" class="select_brand">{$value.brand_name}</a>
+						    	<a  href="javascript:;" class="select_brand">
+							    	{$value.brand_name}
+						    	</a>
 						    </div>
 					    </li>
 
@@ -68,62 +71,135 @@
         <div class="col-xs-12 t_tab">
             <div class="t_tab_l">
                 {:L('ADMIN_GOODS')}{:L('ADMIN_TOTAL')}
-                <em>({$page.totals}{:L('ADMIN_ITEM')})</em>
+                <em>(<span id="total_rows">{$page.totalRows}</span>{:L('ADMIN_ITEM')})</em>
             </div>
         </div>
     </div>
 </div>
 <!-- goods list -->
 <div class="container-fluid">
-    <div class="container t_list">
-	    <ul class="col-xs-12">
+    <div class="container t_list brand_goods">
+	    <ul class="width1200" id="goodslist">
 		    <foreach name="goods" key="key" item="value">
-			    <li class="col-xs-12 t_list_li">
-				    <div class="t_list_l col-xs-3">
+			    <li class="width1200 brand_goods_li">
+				    <div class="brand_goods_l width300 fl">
 			    		<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}" class="t_list_img" target="_blank">
-			    		<img class="img-responsive" src="<if condition="$value['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$value.thumb}</if>" />
+				    		<img title="{$value.title}" alt="{$value.title}"  class="img-responsive lazy" src="{$default_image}" data-original="{$site_imagedomain}{$value.thumb}" />
 			    		</a>
 				    </div>
-				    <div class="t_list_c col-xs-8 ">
-					    <div class="t_list_title">
-					    	<a href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}">{$value.title}</a>
+				    <div class="brand_goods_c width600 fl ">
+					    <div class="brand_goods_title">
+					    	<a title="{$value.title}" href="{:U('goods/detail',array('goodsid'=>$value['goodsid']))}">
+					    	{$value.title}
+					    	</a>
 				    	</div>
-				    	<div class="t_list_spec">
-					    	<ul class="col-xs-12 ">
-						    	<li class="col-xs-6 ">
+				    	<div class="brand_goods_spec">
+					    	<ul class="width600 ">
+						    	<li class="width300 ">
 			                        <span>{:L('ADMIN_BRAND')}:</span>
 			                        {$value.brand}
 		                        </li>
-			                    <li class="col-xs-6 ">
+			                    <li class="width300 ">
 			                        <span>{:L('ADMIN_MODEL')}:</span>
 			                        {$value.model}
 		                        </li>
-						    	<foreach name="value.param" key="k" item="v">
-							    	<li class="col-xs-6 ">
-				                        <span>{$k}:</span>
-				                        {$v}
+						    	<foreach name="value.param" key="k" item="para">
+							    	<li class="width300 ">
+				                        <span>{$para['param']}:</span>
+				                        {$para['value']}
 			                        </li>
 		                        </foreach>
 					    	</ul>
 					    </div>
 				    </div>
-				    <div class="t_list_r col-xs-1 ">
-					    <div class="t_list_price">
+				    <div class="brand_goods_r width300 fl">
+					    <div class="brand_goods_price">
 					    	<if condition="$value['minprice'] neq ''">
                             ￥{$value.minprice}
                             <else />
-                            {:L('NO_QUOTATION')}
+                            <!-- {:L('NO_QUOTATION')} -->
                             </if>
 				    	</div>
 					    	<!-- <a href="">联系我们</a> -->
 				    </div>
+				    <div class="clear"></div>
 			    </li>
 		    </foreach>
 	    </ul>
     </div>
 </div>
 </notempty>
+
+<link rel="stylesheet" href="__STATIC__/css/page.min.css" />
+<input type="hidden" value="{:L('ADMIN_PREV')}" id="prev_page" />
+<input type="hidden" value="{:L('ADMIN_NEXT')}" id="next_page" />
+<input type="hidden" value="{:L('ADMIN_TOTAL')}" id="p_total" />
+<input type="hidden" value="{:L('ADMIN_PAGE')}" id="d_page" />
+<input type="hidden" value="{$site_imagedomain}" id="site_imagedomain" />
+<input type="hidden" value="0" id="brandid_tmp" />
+<div id="page">
+	<!-- page -->
+	<div class="container-fluid page">
+	    <div class="container ">
+	        <div class="page_num">
+	            <ul>
+	                <if condition="$page['prev'] neq ''">
+	                    <li class="pre">
+	                        <a href="{$page.prev}">{:L('ADMIN_PREV')}</a>
+	                    </li>
+	                </if>
+	                <foreach name="page.page" key="key" item="pageurl">
+	                <if condition="$pageurl  eq 'current'">
+	                    <li class="num active">
+	                        <a href="#">{$key}</a>
+	                    </li>
+	                <else />
+	                    <li class="num ">
+	                        <a href="{$pageurl}">{$key}</a>
+	                    </li>
+	                </if>
+	                </foreach>
+	               <if condition="$page['next'] neq ''">
+	                    <li class="next">
+	                        <a href="{$page.next}">{:L('ADMIN_NEXT')}</a>
+	                    </li>
+	                </if>
+	                <if condition="count($page['page']) gt 1">
+	                <li class="total">
+	                    共{$page.totalPages}页
+	                </li>
+	                <li class="page_go">
+	                    <div class="form-group">
+	                        <div class="input-group">
+	                        <input class="form-control" id="goto_page"  value="" type="text">
+	                        <input type="hidden" value="{$page.org_url}" id="org_url" />
+	                        <span class="input-group-addon goto_page">
+	                        GO
+	                        </span>
+	                        </div>
+	                    </div>
+	                </li>
+	                </if>
+	            </ul>
+	        </div>
+	    </div>
+	</div><!-- //page -->
+
+</div>
+<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/brandlist.min.js"></script>
 <script type="text/javascript">
+$(".goto_page").on("click",function(){
+    var p_value = $("#goto_page").val();
+    var org_url = $("#org_url").val();
+    p_value = parseInt(p_value);
+    if(p_value > 0)
+    {
+        var parter = /\[PAGE\]/g;
+        var url = org_url.replace(parter,p_value);
+        window.location.href = url; 
+    }
+});
 	$(".t_selector_brand").hover(function(){
 		var obj = $(this);
 		obj.find(".t_selector_img").css({"display":"none"});
@@ -158,7 +234,7 @@
 		obj.find("i").removeClass("closed");
 		obj.find("i").addClass("opened");
 		obj.removeClass("active");
-	});
+	});	
 
 </script>
 <script type="text/javascript">
@@ -185,7 +261,7 @@
 			obj.find("i").removeClass("closeing");
 			obj.find("i").addClass("opened");
 			obj.find("a").removeClass("a_color");
-			obj.parent().find(".t_selector_r").css({"height":"120px"});
+			obj.parent().find(".t_selector_r").css({"height":"60px"});
 		}
 	});
 	

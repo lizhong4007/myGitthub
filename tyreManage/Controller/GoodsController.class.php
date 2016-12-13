@@ -23,6 +23,12 @@ class GoodsController extends CommonController {
         }
         $p = (int)I('p',1);
         $size = 20;
+        //根据型号查询商品
+        $modelid = intval(I('modelid',''));
+        if(!empty($modelid))
+        {
+            $where['modelid'] = $modelid;
+        }
         $goodslist = D("Goods")->getGoodsList($where,$p,$size);
         $goods_data = $goodslist['data'];
         //实例化商品参数

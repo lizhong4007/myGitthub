@@ -6,10 +6,13 @@
 }
 .slide{
     padding: 0;
+    width: 1200px;
 }
 /*分类*/
 .slide .slide_l{
     padding: 0;
+    width: 300px;
+    float: left;
 }
 .slide .slide_l ul li{
     padding: 6px 0 10px 15px;
@@ -41,6 +44,7 @@
 }
 /*轮播图*/
 .slide_r{ 
+    width: 900px;
     /*padding:0;*/
     padding-left: 10px;
     height: 300px; 
@@ -131,9 +135,10 @@
 /*轮播结束*/
 .tab{
     height: 40px;
-    border-bottom: 2px solid #0f5489;;
+    border-bottom: 2px solid #0f5489;
     padding: 0;
     margin-top: 20px;
+    width: 1200px;
 
 }
 .tab .tab_l{
@@ -184,27 +189,36 @@
 .goodslist{
     padding: 0;
     margin-top: 10px;
+    width: 1200px;
 
 }
 .goodslist .goodslist_ul .goodslist_block{ 
     margin-top: 10px;
     height: 420px;
+    width:296px;
+    float: left;
     padding: 0;
+    margin-right: 2px;
+    border:1px solid #ccc;
 }
-
+.goodslist .goodslist_ul .goodslist_block:hover
+{
+    border: 1px solid #0f5489;
+}
 .goodsthumb
 {
     position: relative;
 }
-.goodsthumb:hover{
-    border: 1px solid #e7e7e7;
-}
+
 .goodsthumb .goods_img{
     height: 300px;
     line-height: 300px;
+    padding-top: 10px;
+    text-align: center;
 }
 .goodsthumb .goods_img img{
     max-height: 100%;
+    max-width: 100%;
 }
 
 .goodsthumb .goods_brand{
@@ -212,8 +226,8 @@
     color: #0f5489;
     font-size: 1.5em;
     font-weight: 700;
-    top: 15px;
-    left: 15px;
+    top: 5px;
+    left: 10px;
     z-index: 10;
 }
 .goodsthumb .goods_model{
@@ -221,6 +235,7 @@
     font-size: 1.5em;
     font-weight: 700;
     margin-top: 10px;
+    margin-left: 5px;
 }
 .goodsthumb .goods_model em{
     font-style: normal;
@@ -229,6 +244,7 @@
 }
 .goodsthumb .goods_spec{
     margin-top: 5px;
+    margin-left: 5px;
 }
 .goodsthumb .goods_spec ul{
     height: 80px;

@@ -24,6 +24,7 @@ class SearchController extends CommonController {
         $sphinx->SetArrayResult ( true );
 		$sphinx->ResetFilters();//重置
 		$sphinx->ResetGroupBy();
+		$sphinx->SetMatchMode(SPH_MATCH_EXTENDED);
 
 		//分页
         $limit = 20;//每页显示20
@@ -34,7 +35,7 @@ class SearchController extends CommonController {
         //搜索数据
         $data = array();
 
-		$data = $sphinx->Query($search_key,"bmbmda_goods");
+		$data = $sphinx->Query('@title '.$search_key,"bmbmda_goods");
 		if(!empty($data['total'])){
 			$totalrows = $data['total'];
 		}
@@ -77,6 +78,16 @@ class SearchController extends CommonController {
 		$this->assign("goods",$goods_data_tmp);
 		$this->assign("totalrows",$totalrows);
 		$this->assign("page",$pages);
+
+
+		/*seo*/
+		$seo = '<title>轮胎搜索器-bmbmda.com</title>';
+		$seo .= '<meta name="keywords" content="蹦蹦哒 轮胎 规格 型号 花纹 经销商" />';
+		$seo .= '<meta name="description" content="" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Search/search_list').'/'.$currentpage.'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Search/search_list').'/'.$currentpage.'" />';
+		$this->assign("seo",$seo);
+
 
 		$this->display("Search/search_list");
 	}

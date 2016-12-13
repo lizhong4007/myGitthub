@@ -49,6 +49,11 @@
                     <label class="col-sm-3 control-label">{:L('ADMIN_DESCRIPTION')}</label>
                     <div class="input-group col-sm-4">
                       <textarea class="form-control" name="data[description]">{$data.description}</textarea>
+                      <script type="text/javascript">
+                        $(function(){
+                           CKEDITOR.replace("data[description]");
+                        })
+                      </script>
                     </div>
                   </div>
 
@@ -60,7 +65,7 @@
                           </label><br />
                           <foreach name="nav['controller']" key="controller" item="action">
                             <div class="input-group  checkbox_little_title">
-                                <div class="control-label col-sm-3 small_title">
+                                <div class="control-label col-sm-2 small_title">
                                   {:L($action['lists'])}:
                                 </div>
                                 <div class="col-sm-9">

@@ -121,6 +121,7 @@ $(function(){
         var official = $('#official').val();
         var is_import = $('#is_import input:radio:checked').val();
         var is_enhance = $('#is_enhance input:radio:checked').val();
+        var model_url = $('#model_url').val();
         $.ajax({
             type: "post",
             dataType: 'json',
@@ -144,7 +145,7 @@ $(function(){
             success: function (json) {
                 if(json.code == 1)
                 {
-                   window.location.href = "/Model/modelList";
+                   window.location.href = model_url;
                 }else{
                    alert_message(title,json.message);
                    return false;

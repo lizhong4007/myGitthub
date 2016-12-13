@@ -3,7 +3,8 @@ $("#btn_submit").on("click", function () {
     var form_data = $("#all_form");
     var url = form_data.attr('action');
     var title = $('#title_note').val();
-    // $("#btn_submit").attr("disabled", true);  
+    // $("#btn_submit").attr("disabled", true); 
+    var company_url = $('#company_url').val(); 
     if (checkForm()) {
         $.ajax({
             type: "post",
@@ -18,7 +19,7 @@ $("#btn_submit").on("click", function () {
                     return false;
                 }else{
                     $("#submit_btn").attr("disabled", true);
-                    window.location.href = "/Company/CompanyList";
+                    window.location.href = company_url;
                 }
          
             }

@@ -68,6 +68,7 @@
                                 <th>{:L('ADMIN_BRAND')}</th>
                                 <th>{:L('ADMIN_CAT')}</th>
                                 <th>{:L('ADMIN_SERIES')}</th>
+                                <th>{:L('ADMIN_GOODS')}</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -88,6 +89,11 @@
                                 <td >{$value.brandid}</td>
                                 <td >{$value.catid}</td>
                                 <td >{$value.seriesid}</td>
+                                <td >
+                                <a  href="{:U('Goods/goodsList',array('modelid'=>$value['modelid']))}" title="{:L('ADMIN_GOODS')}">
+                                 {:L('ADMIN_CHECK')}
+                                 </a>
+                                </td>
                               </tr>
                               </foreach>
                             </tbody>

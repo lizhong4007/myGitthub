@@ -222,11 +222,29 @@ class CategoryModel extends Model
 	}
 	/**
 	 * 功能：根据父级id获取每一级的分类
-	 * @return bool | array
+	 * @param int $parentid
+	 * @return array
 	 */
 	public function getCategoryByParentid($parentid = 0)
 	{
 		$parentid = intval($parentid);
 		return $this->where(array('parentid'=>$parentid))->select();
+	}
+	/**
+	 * 功能：根据catid获取顶级分类
+	 * @param int $catid
+	 * @return array
+	 */
+	public function getTopCategoryByCatid($catid = 0)
+	{
+		$catid = intval($catid);
+		$category = array();
+		$category = $this->where(array('catid'=>$catid))->find();
+		if($category['parentid'] == 0)
+		{
+			return $category;
+		}else{//目前只有两级分类
+			return $this->where(array('catid'=>$category['parentid']))->find();
+		}
 	}
 }

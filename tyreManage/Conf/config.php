@@ -3,7 +3,7 @@ return array(
 	//配置模版文件
 	'DEFAULT_THEME'=>'default',
 	'TMPL_PARSE_STRING'  =>array(
-	    '__STATIC__'     => '/Public/Admin/default'
+	    '__STATIC__'     => '/Public/admin/default'
 	),
 	// 'TMPL_EXCEPTION_FILE' => __PUBLIC__.'/tyre_manage.tpl',//异常模板
 	'NAVIGATION'=>array(

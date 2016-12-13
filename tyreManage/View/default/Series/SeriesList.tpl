@@ -70,6 +70,7 @@
                                 <th>{:L('ADMIN_BRAND')}</th>
                                 <th>{:L('ADMIN_CAT')}</th>
                                 <th>{:L('COMPANY')}</th>
+                                <th>{:L('ADMIN_MODEL')}</th>
                                 <th>{:L('ADMIN_HANDLE')}</th>
                               </tr>
                             </thead>
@@ -91,6 +92,11 @@
                                 <td >{$value.brandid}</td>
                                 <td >{$category[$value['catid']]['cat_name']}</td>
                                 <td >{$value.companyids}</td>
+                                <td >
+                                 <a  href="{:U('Model/modelList',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_MODEL')}">
+                                 {:L('ADMIN_CHECK')}
+                                 </a>
+                                </td>
                                 <td>
                                   <a class="fa fa-edit text-navy" href="{:U('Series/updateSeries',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_EDIT')}"></a>
                                   <a class="fa fa-plus text-navy" href="{:U('Series/addSeriesTread',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_ADD')}{:L('ADMIN_TREAD')}"></a>

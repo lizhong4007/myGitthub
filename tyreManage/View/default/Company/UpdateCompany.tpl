@@ -34,6 +34,7 @@
               </a>
             </li>
           </ul>
+          <input type="hidden" value="{:U('Company/CompanyList')}" id="company_url" />
           <form class="form-horizontal" action="{:U('Company/addCompany')}" method="post" id="all_form">
             <div class="tab-content">
               <div class="box-body">

@@ -10,9 +10,10 @@
          'ADMIN_REMEMBER'=>'remember me',
          'ADMIN_HOME'=>'home',
          'ADMIN_RETURN'=>'go back to ',
-         'ADMIN_LAST'=>'last',
-         'ADMIN_PREV'=>'previous',
-         'ADMIN_NEXT'=>'next',
+         'ADMIN_FIRST'=>'First',
+         'ADMIN_LAST'=>'Last',
+         'ADMIN_PREV'=>'Previous',
+         'ADMIN_NEXT'=>'Next',
          'ADMIN_TOTAL'=>'total',
          'ADMIN_PAGE'=>'page',
 

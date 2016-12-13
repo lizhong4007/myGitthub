@@ -9,6 +9,7 @@ use \Think\Model;
 class GoodsModel extends Model
 {
 	public $error = '';
+	static $goods_content_table = "Goods_content";
 	/**
 	*功能：获商品列表
 	*@param array $where
@@ -17,11 +18,11 @@ class GoodsModel extends Model
 	*@param string $order 排序
 	*@return false | array数据和分页
 	**/
-	public function getGoodsList($where = array('1'),$p = 0,$limit = 20,$order = 'goodsid DESC')
+	public function getGoodsList($where = array('1'),$p = 0,$limit = 20,$order = 'goodsid DESC',$rollPage = 11)
 	{
 		$data = array();
 		$count = $this->where($where)->count();
-        $pages = pages($count,$p,$limit);
+        $pages = pages($count,$p,$limit,$rollPage);
         $result = $this->where($where)->page($p,$limit)->order($order)->select();
         $data['data'] = $result;
         $data['page'] = $pages;
@@ -272,13 +273,19 @@ class GoodsModel extends Model
 	/**
 	*功能：根据id查询单条产品信息
 	*@param int $goodsid
+	*@param bool $is_content 是否查询产品内容
 	*@return false | array 
 	**/
-	public function getGoods($goodsid = 0)
+	public function getGoods($goodsid = 0,$is_content = false)
 	{
 		$goodsid = intval($goodsid);
-		if($goodsid <= 0) return false;
-		return $this->where(array("goodsid"=>$goodsid))->find();
+		$goods = array();
+		$goods = $this->where(array("goodsid"=>$goodsid))->find();
+		if(!empty($goods) and $is_content)
+		{
+			$goods['content'] = M(self::$goods_content_table)->where(array("goodsid"=>$goodsid))->find();
+		}
+		return $goods;
 	}
 	/**
 	*功能：查询多条产品信息

@@ -10,9 +10,10 @@
          'ADMIN_REMEMBER'=>'记住我',
          'ADMIN_RETURN'=>'返回',
          'ADMIN_HOME'=>'首页',
-         'ADMIN_LAST'=>'尾页',
+         'ADMIN_LAST'=>'最后一页',
          'ADMIN_PREV'=>'上一页',
          'ADMIN_NEXT'=>'下一页',
+         'ADMIN_FIRST'=>'第一页',
          'ADMIN_TOTAL'=>'共',
          'ADMIN_PAGE'=>'页',
          
