@@ -22,12 +22,29 @@ class SeriesController extends CommonController {
             $where .= "series_name like ".$searchData." or series_alias like ".$searchData;
         }
         $data = $series_model->getSeriesList($where,$p,$size);
+        $brandids = array();
+        foreach ($data['data'] as $key => $value) {
+            $brandids[] = $value['brandid'];
+        }
+        $brand = array();
+        $brand_data = array();
+        if(!empty($brandids))
+        {
+            $brand = D('Brand')->getBrandList(array('brandid'=>array('in',$brandids)));
+            foreach ($brand['data'] as $key => $value) {
+                $brand_data[$value['brandid']] = $value;
+            }
+        }
+        
+       
         //分类
         $category = array();
         $category = D('Category')->getCategoryList();
         $this->assign('category',$category);
 
         $this->assign('data',$data['data']);
+        $this->assign('brand_data',$brand_data);
+        $this->assign('company_data',$company_data);
         $this->assign('page',$data['page']);
         $this->display('Series/SeriesList');
     }
@@ -204,5 +221,92 @@ class SeriesController extends CommonController {
         $series = $M_series->getSeries($seriesid);
         $this->assign('series',$series);
         $this->display('Series/addSeriesTread');
+    }
+
+    public function addSeriesManual()
+    {
+        $seriesid = '';
+        $save = I('post.save','');
+        $M_series = D('Series');
+
+        if(!empty($save)){
+            $message = '';
+            if(md5($save) == '43781db5c40ecc39fd718685594f0956')
+            {
+                $data = array();
+                $seriesid = (int)I('post.series_id','');
+                $resource = I('post.resource','');
+                $res_type = I('post.res_type','');
+                $res_name = I('post.res_name','');
+                $remark = I('post.res_name','');
+
+                if(empty($resource))
+                {
+                    $this->error('请上传资源');
+                    die;
+                }else{
+                    $data['resource'] = $resource;
+                }
+                if(empty($res_type))
+                {
+                    $this->error('请选择资源类型');
+                    die;
+                }else{
+                    $data['res_type'] = $res_type;
+                }
+                if(empty($res_name))
+                {
+                    $this->error('资源名称不能为空');
+                    die;
+                }else{
+                    $data['res_name'] = $res_name;
+                }
+                if(empty($remark))
+                {
+                    $data['remark'] = 'series';
+                }else{
+                    $data['remark'] = $remark;
+                }
+                $series_info = array();
+                $series_info = $M_series->getSeries($seriesid);
+                if(empty($series_info))
+                {
+                    $this->error('系列不存在');
+                }
+
+
+                $resid = '';
+                $resid = D('Resource')->addResource($data);
+                $resid_str = '';
+                if(!empty($resid))
+                {
+                    if(!empty($series_info['resids']))
+                    {
+                        $resid_str = $series_info['resids'].','.$resid;
+                        $resid_arr = array();
+                        $resid_arr = explode(',', $resid_str);
+                        $resid_arr = array_unique($resid_arr);
+                        $resid_str = implode(',', $resid_arr);
+                    }else{
+                        $resid_str = $resid;
+                    }
+
+                    $rs = $M_series->updateSeries(array('resids'=>$resid_str),$seriesid);
+                    if($rs)
+                    {
+                        $this->success('资源添加成功',U('Series/seriesList'));
+                        die;
+                    }
+                }
+                
+                $this->error('资源添加失败');
+                die;
+            }
+        }
+
+        $seriesid = (int)I('get.seriesid','');
+        $series = $M_series->getSeries($seriesid);
+        $this->assign('series',$series);
+        $this->display('Series/addSeriesManual');
     }
 }

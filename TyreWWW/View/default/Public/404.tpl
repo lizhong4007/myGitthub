@@ -7,8 +7,7 @@
         <title>轮胎花纹 经销商 轮胎规格-bmbmda.com</title>
         <meta name="description" content="轮胎花纹 经销商 轮胎规格">
         <meta name="keywords" content="轮胎花纹 经销商 轮胎规格">
-        <link rel="canonical" href="http://www.bmbmda.com/404" />
-        <input type="hidden" value="http://m.bmbmda.com/404" id="site_alternate" />
+        <link rel="canonical" href="/404.html" />
         <!-- Bootstrap 3.3.5 -->
         <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="__STATIC__/ionicons/ionicons.min.css" />

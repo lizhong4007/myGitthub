@@ -26,7 +26,7 @@ class GoodsController extends CommonController {
 		$this->assign("current_category",$current_category);
 		$this->assign("parent_category",$parent_category);
 		//系列
-		$series = D("Series")->getSeriesData(array('catid'=>array('in',$catids)));
+		$series = D("Series")->getSeriesData(array('catid'=>array('in',$catids),'status'=>1));
 		$this->assign("series",$series);
 
 		//品牌
@@ -73,8 +73,8 @@ class GoodsController extends CommonController {
 		$seo = '<title>型号 '.$current_category['cat_name'].' '.$parent_category['cat_name'].'-bmbmda.com</title>';
 		$seo .= '<meta name="description" content="'.$current_category['cat_name'].' '.$parent_category['cat_name'].' bmbmda.com" />';
 		$seo .= '<meta name="keywords" content=" 型号 经销商 花纹 '.$current_category['cat_name'].' '.$parent_category['cat_name'].'" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Goods/goods_list').'/'.$p.'" />';
-        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Goods/goods_list').'/'.$p.'" >';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Goods/goods_list',array('catid'=>$current_category['catid'],'p'=>$p)).'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Goods/goods_list',array('catid'=>$current_category['catid'],'p'=>$p)).'" >';
 		$this->assign("seo",$seo);
 
 
@@ -101,8 +101,33 @@ class GoodsController extends CommonController {
 		$nav_series = $M_series->getSeries($goods['seriesid']);
 		$this->assign("nav_series",$nav_series);
 
-		//花纹
+        //实例化资源
+		$M_resource = D('Resource');
+		//系列手册
+		$series_manual = array();
+		$resids = array();
+		if(!empty($nav_series['resids']))
+		{
+			$resids = explode(',', $nav_series['resids']);
+			$where_manual = array();
+			$where_manual['res_type'] = 'manual';
+			$where_manual['resid'] = array('in',$resids);
+			$series_manual = $M_resource->getResourceData($where_manual);
+		}
+		$this->assign("series_manual",$series_manual);
+
+		
+        
+		//花纹(系列资源存在系列资源表，后面尽量统一表，都存放在资源表中)
+		$series_resource = array();//来自系列资源表
 		$series_resource = $M_series->getSeriesResource($goods['seriesid']);
+		$ser_resource = array();//来自资源表
+		if(!empty($nav_series['resids']))
+		{
+			$ser_resids_tmp = array();
+			$ser_resids_tmp = explode(',', $nav_series['resids']);
+		    $ser_resource = $M_resource->getResourceData(array('resid'=>array('in',$ser_resids_tmp)));
+		}
 		$this->assign("series_resource",$series_resource);
 
 		//系列内容
@@ -125,9 +150,11 @@ class GoodsController extends CommonController {
 			$model_resids = array();
 			$model_resids = explode(',', $model_data['resids']);
 			$model_res_where['resid'] = array('in',$model_resids);
-			$model_resource = D('Resource')->getResourceData($model_res_where);
+			$model_resource = $M_resource->getResourceData($model_res_where);
 		}
-
+		//合并型号资源和系列资源
+		$model_resource = array_merge($model_resource,$ser_resource);
+		
 		$this->assign("model_resource",$model_resource);
 
 
@@ -142,7 +169,7 @@ class GoodsController extends CommonController {
 		$this->assign("model_replace",$model_replace);
 
 		//品牌
-		$recommend_brand = D('Brand')->getBrandData(array('is_recommend<>0'));
+		$recommend_brand = D('Brand')->getBrandData(array('is_recommend<>0'),10);
 		$this->assign("recommend_brand",$recommend_brand);
 
 		//company
@@ -164,6 +191,12 @@ class GoodsController extends CommonController {
 		$company = $M_company->getCompanyData(array('companyid'=>array('in',$companyids)));
 		$this->assign("company",$company);
 		$this->assign("distributor",$distributor);
+
+		//推荐产品
+		$offet = rand(0,10);
+		$recommend_goods = D('Goods')->getGoodsList(array('catid'=>$goods['catid']),$offet,10);
+		$this->assign("recommend_goods",$recommend_goods['data']);
+
 
 
 		/*seo*/

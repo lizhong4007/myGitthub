@@ -116,16 +116,16 @@
                                {:L('ADMIN_REGION')}
                              </label>
                              <div class="d_select_block">
-                                <select class="form-control select2 d_province" name="distributor[1][provinceid]">
+                                <select class="form-control select2 d_province" name="distributor[1][countryid]">
                                   <option value="0" selected="selected">{:L('PLEASE_SELECT')}</option>
-                                  <foreach name="province" item="value">
-                                  <option value="{$value.id}">{$value.name}</option>
+                                  <foreach name="country" item="value">
+                                  <option value="{$value.countryid}" title="{$value.en_name}">{$value.cn_name}</option>
                                   </foreach>
                                 </select>
-                                <select class="form-control select2 d_city" name="distributor[1][cityid]">
+                                <select class="form-control select2 d_city" name="distributor[1][stateid]">
                                   <option value="0">{:L('PLEASE_SELECT')}</option>
                                 </select>
-                                <select class="form-control select2" name="distributor[1][areaid]">
+                                <select class="form-control select2" name="distributor[1][cityid]">
                                   <option value="0">{:L('PLEASE_SELECT')}</option>
                                 </select>
                             </div>

@@ -1,3 +1,6 @@
+.margintop{
+    margin-top:50px;
+}
 .t_detail{
 	width: 1200px;
 }
@@ -146,6 +149,7 @@
 .t_detail_spec .t_spec_title{
 	font-size: 1.5em;
 	color: #333;
+	text-indent: 2em;
 }
 .t_detail_spec .t_spec_body{
 	border-top:1px solid #e7e7e7;
@@ -157,14 +161,22 @@
 .t_detail_spec .t_spec_body ul li {
 	padding-top: 5px;
 	padding-bottom: 5px;
-	width: 450px;
 	float: left;
+}
+.width450{
+	width: 450px;
 }
 .t_detail_spec .t_spec_body ul li span{
 	color: #999;
 }
 .model_replace span{
    float:left;
+}
+
+/*手册*/
+.t_detail_spec .t_series_manual ul li{
+   border-bottom: 1px solid #e7e7e7;
+   width: 100%;
 }
 .model_replace .model_replace_r{
 	margin-left: 3px;
@@ -182,11 +194,12 @@
 	margin-top: 10px;
 	padding-bottom: 20px;
 	position: relative;
-	border-top: 1px solid #e7e7e7;
+	border-top: 2px solid #0f5489;
 }
 .t_distributor .t_distributor_title{
 	font-size: 1.5em;
 	color: #333;
+	text-indent: 2em;
 }
 .t_distributor .t_distributor_body table{
 	margin-left: 50px;

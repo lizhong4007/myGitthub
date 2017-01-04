@@ -8,11 +8,11 @@
     <meta name="keywords" content="蹦蹦哒 轮胎 规格 型号 轮胎搜索器 花纹 经销商" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" type="text/css" href="__STATIC__/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css" />
-     <link rel="stylesheet" href="__STATIC__/css/common.min.css" />
-    <link rel="stylesheet" href="__STATIC__/css/media.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/media.min.css" />
 	<link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
-    <link rel="canonical" href="http://www.bmbmda.com{:U('Search/search_list')}/{$currentpage}" />
+    <link rel="canonical"  href="http://www.bmbmda.com{:U('Search/search_list',array('p'=>$currentpage))}" />
 </head>
 <body>
 	<div class="header">
@@ -129,5 +129,5 @@
 		</div>
 		</empty>
 	</div>	
-<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
 <include file="Public/footer"/>

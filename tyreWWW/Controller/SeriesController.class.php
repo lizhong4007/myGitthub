@@ -56,8 +56,8 @@ class SeriesController extends CommonController {
 		$seo = '<title>'.$nav_series['series_name'].' '.$current_category['cat_name'].' '.$brand['brand_name'].'-bmbmda</title>';
 		$seo .= '<meta name="keywords" content="'.$nav_series['series_name'].' '.$current_category['cat_name'].' '.$brand['brand_name'].' 花纹 速度级别 尺寸 扁平比 帘布层评级" />';
 		$seo .= '<meta name="description" content="'.$brand['brand_name'].'轮胎下的不同花纹" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Series/series_list').'/'.$p.'" />';
-        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Series/series_list').'/'.$p.'" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Series/series_list',array('seriesid'=>$seriesid,'p'=>$p)).'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Series/series_list',array('seriesid'=>$seriesid,'p'=>$p)).'" />';
 		$this->assign("seo",$seo);
 
 

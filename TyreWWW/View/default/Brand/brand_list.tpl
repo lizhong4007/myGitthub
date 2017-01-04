@@ -47,7 +47,7 @@
 						    	</if>
 						    </div>
 						    <div class="t_selector_title">
-						    	<a  href="javascript:;" class="select_brand">
+						    	<a  href="{:U('Brand/brand_list',array('brandid'=>$value['brandid']))}" class="select_brand">
 							    	{$value.brand_name}
 						    	</a>
 						    </div>

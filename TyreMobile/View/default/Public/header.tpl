@@ -8,10 +8,9 @@
     {$seo}
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" type="text/css" href="__STATIC__/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/css/common.min.css" />
     <link rel="stylesheet" type="text/css" href="__STATIC__/css/main.min.css">
-    <link rel="stylesheet" href="__STATIC__/css/common.min.css" />
-    <link rel="stylesheet" href="__STATIC__/css/media.min.css" />
 </head>
 <body>
 	<div class="header">

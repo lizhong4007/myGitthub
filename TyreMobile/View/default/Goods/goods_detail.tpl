@@ -46,10 +46,12 @@
 		</div>
 		<!-- content -->
 		<notempty name="goods.content.content">
-			<div class="sg_line"></div>
-			<div class="series_content">
-				{$goods.content.content}
-			</div>
+			<if condition="$goods['content']['language'] eq 0">
+				<div class="sg_line"></div>
+				<div class="series_content">
+					{$goods.content.content}
+				</div>
+			</if>
 		</notempty>
 		<!-- goods spec -->
 		<div class="sg_line"></div>
@@ -108,6 +110,7 @@
 			                <foreach name="series_resource" item="value">
 				                <li>
 					                <img  class="img-responsive" src="{$site_imagedomain}{$value.local_thumb}" alt="{$value.title}" title="{$value.title}" />
+				                    <a href="{$site_imagedomain}{$value.resource}" class="src_large fa fa-search " rel="nofollow" title="放大" target="_blank"></a>
 				                    <notempty name="value.content">
 					                    <div class="silde_content">
 						                    {$value.content}
@@ -118,9 +121,9 @@
 			                <foreach name="model_resource" item="value">
 			                    <if condition="$value['resource'] neq ''">
 					                <li>
-					                    <a href="{$site_imagedomain}{$value.resource}" rel="nofollow">
-						                    <img  class="img-responsive" src="{$site_imagedomain}{$value.resource}" alt="{$value.title}" title="{$value.title}" />
-					                    </a>
+						                <img  class="img-responsive" src="{$site_imagedomain}{$value.resource}" alt="{$value.title}" title="{$value.title}" />
+						                <a href="{$site_imagedomain}{$value.resource}" class="src_large fa fa-search " target="_blank" rel="nofollow" title="放大"></a>
+
 					                </li>
 					            </if>
 			                </foreach>
@@ -131,6 +134,7 @@
 					        <a class="prev fa fa-angle-left" href="javascript:void(0)"></a>
 					        <a class="next fa fa-angle-right" href="javascript:void(0)"></a>
 				        </if>
+				        
 			        </div>
 			        
 			    </div>
@@ -195,9 +199,9 @@
 			</div>
 		</notempty>
 	</div>
-<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
-<script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.min.js"></script>
-<script src="__STATIC__/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/slider/jquery.SuperSlide.2.1.1.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.lazyload.min.js"></script>
 <script type="text/javascript">
 jQuery(".modelresourceBox").slide( { 
         mainCell:".bd ul", 

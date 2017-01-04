@@ -136,18 +136,27 @@ class SeriesModel extends Model
 		if(isset($data['brandid'])) unset($data['brandid']);
 		//系列内容
 		$content = '';
+		$language = 0;
 		if(!empty($data['content']))
 		{
 			$content = $data['content'];
+		}
+		if(!empty($data['language']))
+		{
+			$language = $data['language'];
 		}
 		if(isset($data['content']))
 		{
 			unset($data['content']);
 		}
+		if(isset($data['language']))
+		{
+			unset($data['language']);
+		}
 		$rs_content = '';
 		if(!empty($content))
 		{
-			$rs_content = $this->addSeriesContent($content,$seriesid);
+			$rs_content = $this->addSeriesContent(array('content'=>$content,'language'=>$language),$seriesid);
 		}
 		//修改
 		$rs = '';
@@ -250,11 +259,12 @@ class SeriesModel extends Model
 		if(!empty($data['series_alias']))
 		{
 			$linkurl_tmp = trim($data['series_alias']);
+			$data['letter'] = strtoupper(substr($linkurl_tmp,0,1));
+			$linkurl = preg_replace('/[\s]+/i','-',$linkurl_tmp);
+			$linkurl = strtolower($linkurl);
+			$data['linkurl'] = preg_replace("/(-)+/i","-",$linkurl);
 		}
-		$data['letter'] = strtoupper(substr($linkurl_tmp,0,1));
-		$linkurl = preg_replace('/[\s]+/i','-',$linkurl_tmp);
-		$linkurl = strtolower($linkurl);
-		$data['linkurl'] = preg_replace("/(-)+/i","-",$linkurl);
+		
 		if(!empty($data['catid']))
 		{
 			$findcat = '';
@@ -290,11 +300,11 @@ class SeriesModel extends Model
 	}
 	/**
      * 功能：添加或修改系列内容
-     * @param string $content 
+     * @param array $content 
      * @param int $seriesid 
      * @return bool 
      */
-	private function addSeriesContent($content = '',$seriesid = 0)
+	private function addSeriesContent($content = array(),$seriesid = 0)
 	{
 		$seriesid = intval($seriesid);
 		if($seriesid <= 0 or empty($content))
@@ -307,9 +317,10 @@ class SeriesModel extends Model
 		$rs = '';
 		if($info)//修改
 		{
-			$rs = $series_content_table->where(array('scid'=>$info['scid']))->save(array('content'=>$content));
+			$rs = $series_content_table->where(array('scid'=>$info['scid']))->save($content);
 		}else{
-			$rs = $series_content_table->add(array('content'=>$content,"seriesid"=>$seriesid));
+			$content['seriesid'] = $seriesid;
+			$rs = $series_content_table->add($content);
 		}
 		return $rs;
 	}

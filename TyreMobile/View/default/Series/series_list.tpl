@@ -161,8 +161,8 @@
 			</div>
 		</notempty>
 	</div>
-<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
-<script src="__STATIC__/slider/jquery.SuperSlide.2.1.1.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/slider/jquery.SuperSlide.2.1.1.min.js"></script>
 <script type="text/javascript">
 jQuery(".seires_img").slide( { 
         mainCell:".bd ul", 

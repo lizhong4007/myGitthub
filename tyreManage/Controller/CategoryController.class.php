@@ -72,9 +72,18 @@ class CategoryController extends CommonController {
     /*update Category is_show*/
     public function ajaxUpdate()
     {
-        $cat_id = I('cat_id','');
-        $state = I('state','');
-        $data['is_show'] = $state == 1 ? 0 : 1;
+        $cat_id = intval(I('cat_id',''));
+        $state = intval(I('state',''));
+        $type = intval(I('type',''));
+        $state_value = 0;
+        $state_value = $state == 1 ? 0 : 1;
+        if($type == 0)
+        {
+            $data['is_show'] = $state_value;
+        }else{
+            $data['status'] = $state_value;
+        }
+        
         $rs =D('Category')->updateCategory($data,$cat_id);
         if(!empty($rs))
         {
@@ -82,7 +91,7 @@ class CategoryController extends CommonController {
         }else{
             $result['code'] = 0;
         }
-        $result['state'] = $data['is_show'];
+        $result['state'] = $state_value;
         echo json_encode($result); 
         die; 
     }

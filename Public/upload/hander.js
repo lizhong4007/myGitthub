@@ -7,7 +7,7 @@ function uploadImages(url,data,id,image)
         post_params: data,
         // File Upload Settings
         file_size_limit : "2 MB",   // 2MB
-        file_types : "*.jpg;*.bmp;*.png;*.jpeg;*.gif",
+        file_types : "*.jpg;*.bmp;*.png;*.jpeg;*.gif;*.pdf;*.xls;*.doc;*.ppt",
         file_types_description : "All Files",
         file_upload_limit : "0",
 

@@ -1,0 +1,18 @@
+[ 2016-12-29T09:10:35+08:00 ] 222.209.233.55 /company-addcompany-company_id-33.html
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+
+[ 2016-12-29T09:11:16+08:00 ] 222.209.233.55 /company-addcompany-company_id-33.html
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+
+[ 2016-12-29T09:11:42+08:00 ] 222.209.233.55 /company-addcompany-company_id-33.html
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+ERR: 1146:Table 'bmbmda.tyre_area' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tyre_area`
+

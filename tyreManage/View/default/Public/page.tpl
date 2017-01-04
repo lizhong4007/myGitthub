@@ -4,7 +4,7 @@
       Showing {$page.firstRow} to {$page.lastRow} of {$page.totalRows} entries
     </div> -->
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-12">
       <div  class="dataTables_paginate paging_simple_numbers">
           <ul class="pagination">
             <if condition="$page.page neq ''">

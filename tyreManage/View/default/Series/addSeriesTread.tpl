@@ -18,6 +18,7 @@
 }
 .series_tread_c{
   float: left;
+  width: 100px;
 }
 .series_tread .series_tread_r{
   width: 20%;

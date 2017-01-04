@@ -84,8 +84,8 @@ class SearchController extends CommonController {
 		$seo = '<title>轮胎搜索器-bmbmda.com</title>';
 		$seo .= '<meta name="keywords" content="蹦蹦哒 轮胎 规格 型号 花纹 经销商" />';
 		$seo .= '<meta name="description" content="" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Search/search_list').'/'.$currentpage.'" />';
-        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Search/search_list').'/'.$currentpage.'" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Search/search_list',array('p'=>$currentpage)).'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Search/search_list',array('p'=>$currentpage)).'" />';
 		$this->assign("seo",$seo);
 
 

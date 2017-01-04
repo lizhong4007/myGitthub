@@ -64,6 +64,7 @@
                                 <th>{:L('ADMIN_LANGUAGE_NAME')}</th>
                                 <th>{:L('FIRST_LETTER')}</th>
                                 <th>{:L('FRONT_PAGE_DISPLAYS')}</th>
+                                <th>是否有商品</th>
                                 <th>{:L('ADMIN_HANDLE')}</th>
                               </tr>
                             </thead>
@@ -83,9 +84,16 @@
                                 </td>
                                 <td class="show_state">
                                 <if condition="$value['is_show'] eq '0'">
-                                    <a href="javascript:;" class="fa  fa-close text-red is_show" data="0" data-cat="{$value.catid}"></a>
+                                    <a href="javascript:;" class="fa  fa-close text-red is_show" data="0" data-cat="{$value.catid}" data-type="0"></a>
                                 <else />
-                                    <a href="javascript:;" class="fa  fa-check text-navy is_show" data="1" data-cat="{$value.catid}"></a>
+                                    <a href="javascript:;" class="fa  fa-check text-navy is_show" data="1" data-cat="{$value.catid}" data-type="0"></a>
+                                </if>
+                                </td>
+                                <td class="show_state">
+                                <if condition="$value['status'] eq '0'">
+                                    <a href="javascript:;" class="fa  fa-close text-red is_show" data="0" data-cat="{$value.catid}" data-type="1"></a>
+                                <else />
+                                    <a href="javascript:;" class="fa  fa-check text-navy is_show" data="1" data-cat="{$value.catid}" data-type="1"></a>
                                 </if>
                                 </td>
                                 <td>

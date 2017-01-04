@@ -1,3 +1,57 @@
+/*================media========================*/
+@media screen and (min-width: 1024px) {
+    body {
+        font-size: 18pt;
+    }
+}
+@media screen and (max-width: 1024px) {
+
+}
+@media screen and (min-width: 1080px){
+    body {
+        font-size: 18pt;
+    }
+}
+@media screen and (max-width: 1080px){
+    body {
+        font-size: 15pt;
+    }
+}
+@media screen and (min-width: 800px){
+
+}
+@media screen and (max-width: 768px) {
+    body{
+        font-size: 15pt;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body{
+        font-size: 12pt;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    body{
+        font-size: 11pt;
+    }
+}
+
+@media only screen and (max-width: 384px) {
+
+}
+
+@media only screen and (max-width: 360px) {
+    body {
+        font-size: 10pt;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+
+}
 /*===============common start======================*/
 *{
     margin: 0 auto;

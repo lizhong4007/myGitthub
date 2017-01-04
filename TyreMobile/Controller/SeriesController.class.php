@@ -82,7 +82,7 @@ class SeriesController extends CommonController {
 		$seo = '<title>'.$series['series_name'].' '.$top_category['cat_name'].' '.$brand['brand_name'].'-蹦蹦哒</title>';
 		$seo .= '<meta name="keywords" content="'.$series['series_name'].' '.$top_category['cat_name'].' '.$brand['brand_name'].' 花纹 速度级别 尺寸 扁平比 帘布层评级" />';
 		$seo .= '<meta name="description" content="'.$brand['brand_name'].'轮胎下的不同花纹" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Series/series_list').'/'.$p.'" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Series/series_list',array('seriesid'=>$seriesid,'p'=>$p)).'" />';
 		$this->assign("seo",$seo);
 
 

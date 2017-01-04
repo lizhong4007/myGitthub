@@ -38,7 +38,7 @@ class CompanyDistributorModel extends Model
 	{
 		if(empty($data)) return false;
 		//省和详细地址不能为空
-		if(empty($data['provinceid']))
+		if(empty($data['countryid']))
 		{
 			$this->error = L('ADMIN_PROVINCE').L('ADMIN_NOTEMPTY');
 			return false;
@@ -266,9 +266,9 @@ class CompanyDistributorModel extends Model
     	$where = array();
     	$where['distributor_name'] = empty($data['distributor_name']) ? '' : $data['distributor_name'];
     	$where['address'] = $data['address'];
-    	$where['provinceid'] = intval($data['provinceid']);
+    	$where['countryid'] = intval($data['countryid']);
     	$where['cityid'] = intval($data['cityid']);
-    	$where['areaid'] = intval($data['areaid']);
+    	$where['stateid'] = intval($data['stateid']);
 		$distributor_info = '';
 		$distributor_info = $this->getDistributorData($where);
 		if($distributor_info)

@@ -43,6 +43,10 @@ class CommonController extends Controller {
         $this->assign('site_imagedomain',$site['UPLOAD_FILE_URL']);
         $this->assign('default_image',$site['DEFAULT_IMAGE']);
         $this->assign('default_site',$site['DEFAULT_SITE']);
+
+        //资源类型
+        $resource_type = C('RESOURCE_TYPE');
+        $this->assign('resource_type',$resource_type);
 	}
 	
 }

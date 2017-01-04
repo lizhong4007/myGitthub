@@ -32,12 +32,14 @@
 								        </foreach>
 							        </ul>
 							        <div class="clear"></div>
-							        <div class="brand_series_more">
-								        <a href="{:U('Goods/goods_list',array('brandid'=>$brand['brandid'],'catid'=>$category['catid']))}" title="{$category.cat_name}" >
-									        more
-									        <i class="fa fa-angle-double-right"></i>
-								        </a>
-							        </div>
+							        <if condition="$category['status'] eq 1">
+								        <div class="brand_series_more">
+									        <a href="{:U('Goods/goods_list',array('brandid'=>$brand['brandid'],'catid'=>$category['catid']))}" title="{$category.cat_name}" >
+										        more
+										        <i class="fa fa-angle-double-right"></i>
+									        </a>
+								        </div>
+							        </if>
 						        </div>
 						    </li>
 					    </foreach>
@@ -66,6 +68,6 @@
 			</div>
 		</div>
 	</div>
-<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
-<script src="__STATIC__/js/brand.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/brand.min.js"></script>
 <include file="Public/footer"/>

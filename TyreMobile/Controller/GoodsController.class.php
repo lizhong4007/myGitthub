@@ -54,7 +54,16 @@ class GoodsController extends CommonController {
 		$seo = '<title>型号 '.$category['cat_name'].' '.$brand['brand_name'].'-蹦蹦哒</title>';
 		$seo .= '<meta name="description" content="'.$category['cat_name'].' '.$brand['brand_name'].' 蹦蹦哒" />';
 		$seo .= '<meta name="keywords" content=" 型号 经销商 花纹 '.$category['cat_name'].' '.$brand['brand_name'].'" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Goods/goods_list',$where).'/'.$p.'" />';
+		if(!empty($catid))
+		{
+			$seo .= '<link rel="canonical" href="'.$this->default_site.U('Goods/goods_list',array('catid'=>$catid,'p'=>$p)).'" />';
+		}
+
+		if(!empty($brandid))
+		{
+			$seo .= '<link rel="canonical" href="'.$this->default_site.U('Brand/brand_list',array('brandid'=>$brandid)).'" />';
+		}
+		
 		$this->assign("seo",$seo);
 
 		$this->display("Goods/goods_list");

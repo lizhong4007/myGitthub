@@ -56,6 +56,7 @@ class BrandController extends CommonController {
 		$category = $M_series->distinct(true)->field('catid')->where(array('brandid'=>$brandid))->select();
 		//top category
 		$M_category = D('Category');
+		$M_model = D('Model');
 		foreach ($category as $key => $value) {
 			$category_tmp = array();
 			$category_tmp = $M_category->getCategory($value['catid']);
@@ -64,6 +65,13 @@ class BrandController extends CommonController {
 			if(empty($category_tmp ) or empty($series_tmp))
 			{
 				continue;
+			}
+			//判断是否有型号数据
+			$model = array();
+			$model = $M_model->getModelData(array('brandid'=>$brandid,'catid'=>$value['catid']));
+			if(empty($model))
+			{
+				$category_tmp['status'] = 0;
 			}
 			$category_tmp['series'] = $series_tmp['data'];
 			$data[] = $category_tmp;

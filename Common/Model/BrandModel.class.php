@@ -148,9 +148,15 @@ class BrandModel extends Model
 	*@param array $where
 	*@return false | array 品牌信息
 	**/
-	public function getBrandData($where = array())
+	public function getBrandData($where = array(),$limit)
 	{
-		return $this->where($where)->select();
+		if(empty($limit))
+		{
+			return $this->where($where)->select();
+		}else{
+			return $this->where($where)->limit(0,$limit)->select();
+		}
+		
 	}
 	/**
 	*功能：根据brandid删除品牌

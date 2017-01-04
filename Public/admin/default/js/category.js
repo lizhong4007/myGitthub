@@ -61,21 +61,22 @@ $('.show_state').click(function(){
     var obj = $(this); 
     var cat_id = obj.find("a").attr('data-cat');
     var state = obj.find("a").attr('data');
+    var type = obj.find("a").attr('data-type');
     var url = $("#category_url").val();
     $.ajax({
       url:url,
       type:'post',
       dataType:'json',
-      data:{cat_id:cat_id,state:state},
+      data:{cat_id:cat_id,state:state,type:type},
       success:function(data){
         if(data.code == 1)
         {
           obj.attr('data',data.state); 
           if(data.state == 1)
           {
-              obj.html('<a href="javascript:;" data="1" data-cat="'+cat_id+'" class="fa fa-check text-navy"></a>');
+              obj.html('<a href="javascript:;" data="1" data-type="'+type+'" data-cat="'+cat_id+'" class="fa fa-check text-navy"></a>');
           }else{
-              obj.html('<a href="javascript:;" data="0" data-cat="'+cat_id+'" class="fa fa-close text-red"></a>');
+              obj.html('<a href="javascript:;" data="0" data-type="'+type+'" data-cat="'+cat_id+'" class="fa fa-close text-red"></a>');
           }
         }
 
@@ -83,5 +84,6 @@ $('.show_state').click(function(){
     });
   
 })
+
 
 

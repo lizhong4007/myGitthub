@@ -44,7 +44,7 @@
                     <div class=" slide_r sub_category" data-index="{$key}" id="sub_{$key}">
                         <ul class=" row">
                             <foreach name="category" key="k" item="sub_cate">
-                                <if condition="$sub_cate['parentid'] eq $key">
+                                <if condition="$sub_cate['parentid'] eq $key and $sub_cate['status'] eq 1">
                                     <li class="col-xs-4 ">
                                        <a href="{:U('Goods/goods_list',array('catid'=>$sub_cate['catid']))}" title="{$sub_cate.cat_name}">{$sub_cate.cat_name}</a>
                                     </li>

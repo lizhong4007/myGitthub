@@ -212,13 +212,13 @@ $('.all_distributor').on('click','.region_plus',function(){
       new_block +=  '</label>';
       new_block +=  '<div class="d_select_block">';
       //select start
-      new_block += '<select class="form-control select2 d_province" name="distributor['+region_id+'][provinceid]">';
+      new_block += '<select class="form-control select2 d_province" name="distributor['+region_id+'][countryid]">';
       new_block += select_option;
       new_block += '</select>';
-      new_block += '<select class="form-control select2 d_city" name="distributor['+region_id+'][cityid]">';
+      new_block += '<select class="form-control select2 d_city" name="distributor['+region_id+'][stateid]">';
       new_block += '<option value="0">'+please_select+'</option>';
       new_block += '</select>';
-      new_block += '<select class="form-control select2" name="distributor['+region_id+'][areaid]">';
+      new_block += '<select class="form-control select2" name="distributor['+region_id+'][cityid]">';
       new_block += '<option value="0">'+please_select+'</option>';
       new_block += '</select>';
       //select end
@@ -338,8 +338,8 @@ $(".all_distributor").on("change","select",function(){
         {
           var data = json.data;
           for (var i = 0; i < data.length; i++) {
-            str += '<option value="'+data[i].id+'">'; 
-            str += data[i].name+"</option>"; 
+            str += '<option value="'+data[i].id+'" title="'+data[i].en_name+'">'; 
+            str += data[i].cn_name+"</option>"; 
           }
           obj.parent().find('select').eq(index_v).html(str); 
         }

@@ -39,7 +39,11 @@
 		    <div class="t_detail_l">
 		    	<div class="t_detail_t">
 			    	<div class="t_detail_image">
-			    		<img title="{$goods.title}" alt="{$goods.title}" class="img-responsive" src="<if condition="$goods['thumb'] eq ''"> {$default_image} <else />{$site_imagedomain}{$goods.thumb}</if>"  />
+			    	<if condition="$goods['thumb'] eq ''">
+				    	<img title="{$goods.title}" alt="{$goods.title}" class="img-responsive" src=" {$default_image}"  />
+			    	 <else />
+			    		<img title="{$goods.title}" alt="{$goods.title}" class="img-responsive" src=" {$site_imagedomain}{$goods.thumb}"  />
+			    	</if>
 			    	</div>
 			    	<div class="t_detail_t_body width600 fl">
 					    <div class="t_detail_title width600">
@@ -79,9 +83,52 @@
 					    </div>
 				    </div>
 			    </div><!-- 详情结束 -->
+			    <div class="width900 t_detail_spec fl margintop">
+				    <div class="t_spec_title width900">
+				    	{:L('ADMIN_SPEC')}
+				    </div>
+				    <div class="t_spec_body width900">
+				    	<ul class="width900">
+				    	    <if condition="count($param) lt 6">
+						    	<li class="width450" >
+						    		<span>{:L("ADMIN_SPEC")}:</span>
+						    		{$goods.model}
+						    	</li>
+						    	<li class="width450" >
+						    		<span>{:L("ADMIN_BRAND")}:</span>
+						    		{$goods.brand}
+						    	</li>
+						    	<li class="width450" >
+						    		<span>{:L("ADMIN_SERIES")}:</span>
+						    		{$nav_series['series_name']}
+						    	</li>
+					    	</if>
+					    	<foreach name="param" key="key" item="goods_param">
+					    		<li class="width450"  >
+	                                <span>{$goods_param['param']}:</span>
+	                                {$goods_param['value']}
+	                            </li>
+                            </foreach>
+                            <if condition="$model_replace[0] neq ''">
+	                            <li class=" model_replace width450">
+		                            <div class="">
+	                                <span>
+	                                {:L('REPLACEABLE_SIZE')}:
+	                                </span>
+	                                <span class="model_replace_r">
+	                                <foreach name="model_replace" key="key" item="value">
+		                                <a href="">{$value.model}</a>
+	                                </foreach>
+	                                </span>
+	                                </div>
+	                            </li>
+                            </if>
+				    	</ul>
+				    </div>
+			    </div><!-- 规格结束 -->
 			    <!-- 资源 -->
 			    <if condition="$series_resource[0] neq '' or $model_resource[0] neq ''">
-			    <div class="tyre_tread fl">
+			    <div class="tyre_tread fl margintop">
 				    <div class="tyre_tread_title">
 					    {:L('RESOURCE')}
 				    </div>
@@ -136,51 +183,28 @@
 				    </div>
 				</div><!-- //花纹 -->
 				</if>
-			    <div class="width900 t_detail_spec fl">
+			    
+			    <!-- 手册 -->
+			    <notempty name="series_manual">
+			    <div class="width900 t_detail_spec fl margintop">
 				    <div class="t_spec_title width900">
-				    	{:L('ADMIN_SPEC')}
+				    	手册
 				    </div>
-				    <div class="t_spec_body width900">
+				    <div class="t_spec_body width900 t_series_manual">
 				    	<ul class="width900">
-				    	    <if condition="count($param) lt 6">
-						    	<li >
-						    		<span>{:L("ADMIN_SPEC")}:</span>
-						    		{$goods.model}
+				    	    <foreach name="series_manual" key="key" item="value">
+						    	<li class="width900" >
+						    		<a href="{$site_imagedomain}{$value.resource}" target="_blank">
+							    		{$value.res_name}
+						    		</a>
 						    	</li>
-						    	<li>
-						    		<span>{:L("ADMIN_BRAND")}:</span>
-						    		{$goods.brand}
-						    	</li>
-						    	<li>
-						    		<span>{:L("ADMIN_SERIES")}:</span>
-						    		{$nav_series['series_name']}
-						    	</li>
-					    	</if>
-					    	<foreach name="param" key="key" item="goods_param">
-					    		<li >
-	                                <span>{$goods_param['param']}:</span>
-	                                {$goods_param['value']}
-	                            </li>
-                            </foreach>
-                            <if condition="$model_replace[0] neq ''">
-	                            <li class=" model_replace">
-		                            <div class="">
-	                                <span>
-	                                {:L('REPLACEABLE_SIZE')}:
-	                                </span>
-	                                <span class="model_replace_r">
-	                                <foreach name="model_replace" key="key" item="value">
-		                                <a href="">{$value.model}</a>
-	                                </foreach>
-	                                </span>
-	                                </div>
-	                            </li>
-                            </if>
+					    	</foreach>
 				    	</ul>
 				    </div>
-			    </div><!-- 规格结束 -->
+			    </div><!-- 手册结束 -->
+			    </notempty>
 			    <!-- 经销商 -->
-			    <div class="width900 t_distributor fl">
+			    <div class="width900 t_distributor fl margintop">
 				    <div class="t_distributor_title width900">
 					    {:L('DISTRIBUTOR')}
 				    </div>
@@ -217,18 +241,20 @@
 			    </div><!-- 经销商结束 -->
 			     <!-- 内容描述 -->
 			    <notempty name="series_content">
-			    <div class="width900 t_detail_content fl">
-				    <div class="t_detail_content_title width900">
-					    {:L('ADMIN_CONTENT')}{:L('ADMIN_DESCRIPTION')}
+			    <if condition="$series_content['language'] eq 0">
+				    <div class="width900 t_detail_content fl margintop">
+					    <div class="t_detail_content_title width900">
+						    {:L('ADMIN_CONTENT')}{:L('ADMIN_DESCRIPTION')}
+					    </div>
+					    <div class="t_detail_content_body width900">
+						    <ul>
+							    <li>
+							    	{$series_content.content}
+							    </li>
+						    </ul>
+					    </div>
 				    </div>
-				    <div class="t_detail_content_body width900">
-					    <ul>
-						    <li>
-						    	{$series_content['content']}
-						    </li>
-					    </ul>
-				    </div>
-			    </div>
+			    </if>
 			    </notempty>
 		    </div>
 		    <div class="t_detail_r width300 fl">
@@ -243,6 +269,29 @@
 			    				<i></i>
 			    				<a href="{:U('Brand/brand_list',array('brandid'=>$value['brandid']))}" title="{$value.brand_name}">
 				    				{$value.brand_name}
+			    				</a>
+			    			</li>
+			    			</foreach>
+			    		</ul>
+			    	</div>
+			    	<input type="hidden" id="more_open" value="0" />
+			    	<input type="hidden" id="more_value" value="{:L('ADMIN_MORE')}" />
+			    	<input type="hidden" id="less_value" value="{:L('ADMIN_LESS')}" />
+			    	<div class="t_brand_more">{:L('ADMIN_MORE')}</div>
+			    </div>
+		    </div>
+		    <div class="t_detail_r width300 fl margintop">
+			    <div class="t_detail_brand">
+			    	<div class="t_detail_brand_title">
+			    		<h1>你可能在找...</h1>
+			    	</div>
+			    	<div class="t_detail_brand_content">
+			    		<ul>
+				    		<foreach name="recommend_goods" key="key" item="value">
+			    			<li>
+			    				<i></i>
+			    				<a href="{:U('Goods/detail',array('goodsid'=>$value['goodsid']))}" title="{$value.model}">
+				    				{$value.model}
 			    				</a>
 			    			</li>
 			    			</foreach>

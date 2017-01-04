@@ -81,6 +81,18 @@
                           <input class="form-control" name="data[thumb]" value="{$data.thumb}" id="thumb" type="text" readonly />
                       </div>
                   </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">
+                          语音:
+                      </label>
+                      <div class="input-group col-sm-2 ">
+                          中文：<input type="radio" name="data[language]" value="0" class="minimal" checked /> &nbsp;
+                          英语：<input type="radio" name="data[language]" value="1" class="minimal" />
+                      </div>
+                  </div>
+
+                  
                   <div class="form-group">
                       <label class="col-sm-3 control-label">
                          {:L('ADMIN_DESCRIPTION')}

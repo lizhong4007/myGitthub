@@ -63,7 +63,7 @@
                                 <th>{:L('ADMIN_TELEPHONE')}</th>
                                 <th>{:L('ADMIN_CONTANCT')}</th>
                                 <th>fax</th>
-                                <th>email</th>
+                                <th style="width:200px;">email</th>
                                 <th>{:L('ADMIN_PLATFORM')}</th>
                                 <th>{:L('ADMIN_ACCOUNT')}</th>
                               </tr>
@@ -79,14 +79,14 @@
                                     {$value.site}
                                 </td>
                                 <td >
-                                    {$value.address}
+                                   {:preg_replace('/,/','<br />',$value['address'])}
                                 </td>
-                                <td >{$value.telephone}</td>
-                                <td >{$value.contacts}</td>
-                                <td>{$value.fax}</td>
-                                <td>{$value.email}</td>
-                                <td>{$value.platform}</td>
-                                <td>{$value.account}</td>
+                                <td >{:preg_replace('/,/','<br />',$value['telephone'])}</td>
+                                <td >{:preg_replace('/,/','<br />',$value['contacts'])}</td>
+                                <td>{:preg_replace('/,/','<br />',$value['fax'])}</td>
+                                <td>{:preg_replace('/,/','<br />',$value['email'])}</td>
+                                <td>{:preg_replace('/,/','<br />',$value['platform'])}</td>
+                                <td>{:preg_replace('/,/','<br />',$value['account'])}</td>
                               </tr>
                               </foreach>
                             </tbody>

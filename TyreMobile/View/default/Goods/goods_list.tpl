@@ -63,5 +63,5 @@
 		</div>
 	</div>
 </div>
-<script src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jQuery-2.1.4.min.js"></script>
 <include file="Public/footer"/>

@@ -42,7 +42,7 @@ class HomePageController extends CommonController {
 		$this->assign("page",$goodslist['page']);
 
 		//推荐
-		$offet = rand(0,100);
+		$offet = rand(0,10000);
 		$recommed_goods = M("Goods")->distinct(true)->field('seriesid,model,goodsid')->limit($offet,8)->select();
 		$this->assign("recommed_goods",$recommed_goods);
 
@@ -52,8 +52,8 @@ class HomePageController extends CommonController {
 		$seo = '<title>蹦蹦哒轮胎-bmbmda.com</title>';
 		$seo .= '<meta name="keywords" content="轮胎 冬季胎  轿车轮胎 雪地 轮胎花纹 SUV 冬季  规格 四季胎  夏季胎 乘用车 花纹  型号  经销商  蹦蹦哒" />';
 		$seo .= '<meta name="description" content="蹦蹦哒轮胎帮助您快速查询到您想要的轮胎,为您提供完善的轮胎规格,花纹等信息" />';
-		$seo .= '<link rel="canonical" href="http://www.bmbmda.com/'.$p.'" />';
-        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.bmbmda.com/'.$p.'" />';
+		$seo .= '<link rel="canonical" href="http://www.bmbmda.com/p-'.$p.'" />';
+        $seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.bmbmda.com/p-'.$p.'" />';
 		$this->assign("seo",$seo);
 
 

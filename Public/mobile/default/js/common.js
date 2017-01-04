@@ -8,13 +8,20 @@ $(function(){
 
 	});
 	$(window).scroll(function(){
-        if ($(window).scrollTop() > 200){
+        if ($(window).scrollTop() > 150){
             $(".goto_top").fadeIn(1000);
         }
         else
         {
             $(".goto_top").fadeOut(1000);
         }
+        var wScrollY = window.scrollY; // 当前滚动条位置    
+        var wInnerH = window.innerHeight; // 设备窗口的高度（不会变）    
+        var bScrollH = document.body.scrollHeight; // 滚动条总高度        
+        if (wScrollY + wInnerH + 5 >= bScrollH) {            
+            $(".goto_top").fadeOut(800);
+        }   
+        
     });
     $(".goto_top").on("click",function(){
         $("html,body").animate({scrollTop:0},800);

@@ -7,6 +7,10 @@ class CommonController extends Controller {
 	private $site_imagedomain = '';
 	public function _initialize()
 	{
+		if(!ismobile()){
+		    header("Location: http://www.bmbmda.com/");
+		    exit;
+		}
 		//图片地址
 		$site = C('BM_SITE');
 		$this->assign('site_imagedomain',$site['UPLOAD_FILE_URL']);

@@ -81,7 +81,7 @@ class CompanyController extends CommonController {
 				//检查经销商数据
 				$distributor = I('post.distributor','');
 				foreach ($distributor as $key => $value) {
-					if(empty($value['provinceid']))
+					if(empty($value['countryid']))
 					{
 						$error = L('ADMIN_PROVINCE').L('ADMIN_NOTEMPTY');
 						break;
@@ -105,6 +105,7 @@ class CompanyController extends CommonController {
 					echo json_encode(array("code"=>0,"message"=>$error));
 					exit;
 				}
+				// print_r($distributor);exit;
 				$result = '';
 				if(empty($company['companyid']))
 				{//添加
@@ -118,8 +119,8 @@ class CompanyController extends CommonController {
 				exit;
 			}
 		}
-		$province = D('Area')->getAllProvince();
-		$this->assign('province',$province);
+		$country = D('Country')->getAllCountry();
+		$this->assign('country',$country);
 		$brand = D('Brand')->getAllBrand();
 		$this->assign('brand',$brand);
 		$companyid = I('get.company_id','');
@@ -143,11 +144,11 @@ class CompanyController extends CommonController {
 		$distributor_where = array();
 		if(!empty($distributorids))
 		{
-			$area_model = D('Area');
+			$area_model = D('Country');
 			$distributor = D('CompanyDistributor')->getDistributorData(array('distributorid'=>array('in',$distributorids)));
 			foreach ($distributor as $key => $value) {
-				$distributor[$key]['city_data'] = $area_model->getCityByParentid($value['provinceid']);
-				$distributor[$key]['area_data'] = $area_model->getAreaByParentid($value['cityid']);
+				$distributor[$key]['city_data'] = $area_model->getStateByParentid($value['countryid']);
+				$distributor[$key]['area_data'] = $area_model->getCityByParentid($value['stateid']);
 				// 将数据分割成数组
 				$distributor[$key]['telephone'] = explode(',', $value['telephone']);
 				$distributor[$key]['contacts'] = explode(',', $value['contacts']);
@@ -173,11 +174,17 @@ class CompanyController extends CommonController {
 			$data = array();
 			if($type == 'p')//省
 			{
-				$data = D('Area')->getCityByParentid($parentid);
+				$data = D('Country')->getStateByParentid($parentid);
+				foreach ($data as $key => $value) {
+					$data[$key]['id'] = $value['stateid'];
+				}
 
 			}elseif($type == 'c')//省
 			{
-				$data = D('Area')->getAreaByParentid($parentid);
+				$data = D('Country')->getCityByParentid($parentid);
+				foreach ($data as $key => $value) {
+					$data[$key]['id'] = $value['cityid'];
+				}
 				
 			}
 			echo json_encode(array('data'=>$data));
@@ -291,5 +298,10 @@ class CompanyController extends CommonController {
 			$distributor_model->deleteDistributor($value);
 		}
 		return array('code'=>1,'message'=>L('ADMIN_UPDATE').L('ADMIN_SUCCESS'));
+	}
+
+	public function deleteCompany()
+	{
+		$this->error("公司删除功能未做");
 	}
 }

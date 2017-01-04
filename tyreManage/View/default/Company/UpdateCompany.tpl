@@ -82,7 +82,7 @@
                       <div class="input-group col-sm-2 ">
                           <input class="form-control" name="data[thumb]" value="{$data.thumb}" id="image" type="text"  />
                           <span class="input-group-addon input-group-addon_image" >
-                              <input type="hidden" value="brand" id="savedir" />
+                              <input type="hidden" value="company" id="savedir" />
                               <span class="fileupload" data-callback="setImages" id="filepicker">
                               </span>
                           </span>
@@ -126,24 +126,24 @@
                                      {:L('ADMIN_REGION')}
                                    </label>
                                    <div class="d_select_block">
-                                      <select class="form-control select2 d_province" name="distributor[{$distributor.distributorid}][provinceid]">
+                                      <select class="form-control select2 d_province" name="distributor[{$distributor.distributorid}][countryid]">
                                         <option value="0" >{:L('PLEASE_SELECT')}</option>
-                                        <foreach name="province" item="province_v">
-                                        <option  value="{$province_v.id}" <if condition="$distributor['provinceid'] eq $province_v['id']">selected="selected"</if> >{$province_v.name}</option>
+                                        <foreach name="country" item="country_v">
+                                        <option title="{$country_v.en_name}"  value="{$country_v.countryid}" <if condition="$distributor['countryid'] eq $country_v['countryid']">selected="selected"</if> >{$country_v.cn_name}</option>
                                         </foreach>
                                       </select>
 
-                                      <select class="form-control select2 d_city" name="distributor[{$distributor.distributorid}][cityid]">
+                                      <select class="form-control select2 d_city" name="distributor[{$distributor.distributorid}][stateid]">
                                         <option value="0">{:L('PLEASE_SELECT')}</option>
-                                        <foreach name="distributor.city_data" item="city">
-                                        <option  value="{$city.id}" <if condition="$distributor['cityid'] eq $city['id']">selected="selected"</if> >{$city.name}</option>
+                                        <foreach name="distributor.city_data" item="state">
+                                        <option title="{$state.en_name}"  value="{$state.stateid}" <if condition="$distributor['stateid'] eq $state['stateid']">selected="selected"</if> >{$state.cn_name}</option>
                                         </foreach>
                                       </select>
 
-                                      <select class="form-control select2" name="distributor[{$distributor.distributorid}][areaid]">
+                                      <select class="form-control select2" name="distributor[{$distributor.distributorid}][cityid]">
                                         <option value="0">{:L('PLEASE_SELECT')}</option>
-                                        <foreach name="distributor.area_data" item="area">
-                                        <option  value="{$area.id}" <if condition="$distributor['areaid'] eq $area['id']">selected="selected"</if> >{$area.name}</option>
+                                        <foreach name="distributor.area_data" item="city">
+                                        <option title="{$city.en_name}"  value="{$city.cityid}" <if condition="$distributor['cityid'] eq $city['cityid']">selected="selected"</if> >{$city.cn_name}</option>
                                         </foreach>
                                       </select>
                                   </div>

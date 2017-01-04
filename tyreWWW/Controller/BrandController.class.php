@@ -45,14 +45,11 @@ class BrandController extends CommonController {
 		$this->assign("goods",$goods_data_tmp);
 		$this->assign("page",$goods['page']);
 
-		// print_r($goods['page']);exit;
-
-
 		/*seo*/
 		$seo = '<title>'.L('BRAND_ZONE').'-bmbmda.com</title>';
 		$seo .= '<meta name="keywords" content="米其林 邓禄普 '.L('BRAND_ZONE').' 轮胎品牌 轮胎" />';
 		$seo .= '<meta name="description" content="蹦蹦哒'.L('BRAND_ZONE').',各种各样的轮胎品牌" />';
-		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Brand/brand_list').'/'.$p.'" />';
+		$seo .= '<link rel="canonical" href="'.$this->default_site.U('Brand/brand_list',array('p'=>$p)).'" />';
 		if(!empty($brandid))
 		{
 			$seo .= '<link rel="alternate" media="only screen and (max-width: 640px)" href="'.$this->default_mobile_site.U('Brand/brand_list',array('brandid'=>$brandid)).'" >';

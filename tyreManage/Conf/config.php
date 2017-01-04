@@ -174,10 +174,21 @@ return array(
     ),
     /*===============公司经营模式==========================*/
     'MANAGEMENT_MODEL'=>array(
-    	'Manufacturer',
-    	'Trading_Company', 
-    	'Distributor',
-    	'Repairer',
-    	'Online_Retailer',
+    	0=>'Manufacturer',
+    	1=>'Trading_Company', 
+    	2=>'Distributor',
+    	3=>'Repairer',
+    	4=>'Online_Retailer',
+    	),
+    /*===============资源类型==========================*/
+    'RESOURCE_TYPE'=>array(
+    	'MT_manual'		=>'manual',
+		'MT_picture'	=>'picture',
+		'MT_catalog'	=>'catalog',
+		'MT_datasheet'	=>'Datasheet',
+		'MT_size'		=>'Dimensions',
+		'MT_torque'		=>'Torque Curve',
+		'MT_wire'		=>'Wiring Diagram',
+		'others'        =>'others'
     	),
  );

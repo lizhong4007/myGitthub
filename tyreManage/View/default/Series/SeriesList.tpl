@@ -71,6 +71,7 @@
                                 <th>{:L('ADMIN_CAT')}</th>
                                 <th>{:L('COMPANY')}</th>
                                 <th>{:L('ADMIN_MODEL')}</th>
+                                <th>手册</th>
                                 <th>{:L('ADMIN_HANDLE')}</th>
                               </tr>
                             </thead>
@@ -89,13 +90,16 @@
                                 <td >{$value.series_alias}</td>
                                 <td >{$value.letter}</td>
                                 <td >{$value.linkurl}</td>
-                                <td >{$value.brandid}</td>
+                                <td >{$brand_data[$value['brandid']]['brand_name']}</td>
                                 <td >{$category[$value['catid']]['cat_name']}</td>
                                 <td >{$value.companyids}</td>
                                 <td >
                                  <a  href="{:U('Model/modelList',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_MODEL')}">
                                  {:L('ADMIN_CHECK')}
                                  </a>
+                                </td>
+                                <td>
+                                  <a class="fa fa-plus text-navy" href="{:U('Series/addSeriesManual',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_ADD')}手册"></a>
                                 </td>
                                 <td>
                                   <a class="fa fa-edit text-navy" href="{:U('Series/updateSeries',array('seriesid'=>$value['seriesid']))}" title="{:L('ADMIN_EDIT')}"></a>
