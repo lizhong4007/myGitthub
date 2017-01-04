@@ -7,11 +7,11 @@ return array(
     'TMPL_ACTION_ERROR' =>APP_PATH.'/404.html',//部署后错误页面
 	'DB_TYPE'    =>   'mysql',
         'DB_HOST'    =>   '127.0.0.1',
-        'DB_USER'    =>   'admin',
-        'DB_PWD'     =>   'lizhong+bmbmda',
+        'DB_USER'    =>   'root',
+        'DB_PWD'     =>   'root123',
         'DB_PORT'    =>    3306,
         // 'DB_NAME'    =>   'my_database',
-        'DB_NAME'    =>   'bmbmda',
+        'DB_NAME'    =>   'my_text',
         'DB_CHARSET' =>   'utf8',
         'DB_PREFIX'  =>   'tyre_',
 	'TMPL_TEMPLATE_SUFFIX'=>'.tpl',
@@ -32,24 +32,24 @@ return array(
 
     'APP_SUB_DOMAIN_DEPLOY'=>1,
     'APP_SUB_DOMAIN_RULES'=>array(
-        'manage.bmbmda.com'=>'TyreManage',
-        'img.bmbmda.com'=>'TyreImage',
-        'www.bmbmda.com'=>'TyreWWW',
-        'm.bmbmda.com'=>'TyreMobile',
+        'manage.bmbmda1.com'=>'TyreManage',
+        'img.bmbmda1.com'=>'TyreImage',
+        'www.bmbmda1.com'=>'TyreWWW',
+        'm.bmbmda1.com'=>'TyreMobile',
        
     ),
     'MODULE_SITE'=>array(
-        'TyreManage'=>'manage.bmbmda.com',
-        'TyreImage'=>'img.bmbmda.com',
-        'TyreWWW'=>'www.bmbmda.com',
-        'TyreMobile'=>'m.bmbmda.com',
+        'TyreManage'=>'manage.bmbmda1.com',
+        'TyreImage'=>'img.bmbmda1.com',
+        'TyreWWW'=>'www.bmbmda1.com',
+        'TyreMobile'=>'m.bmbmda1.com',
     ),
     //网址配置
     'BM_SITE'=>array(
-        'UPLOAD_FILE_URL'=>'http://img.bmbmda.com',//上传文件地址
-        'DEFAULT_IMAGE'=>'http://img.bmbmda.com/Public/common/images/default.gif',//默认图片域名
-        'DEFAULT_SITE'=>'http://www.bmbmda.com',//默认pc网址
-        'DEFAULT_MOBILE_SITE'=>'http://m.bmbmda.com',//默认mobile网址
+        'UPLOAD_FILE_URL'=>'http://img.bmbmda1.com',//上传文件地址
+        'DEFAULT_IMAGE'=>'http://img.bmbmda1.com/Public/common/images/default.gif',//默认图片域名
+        'DEFAULT_SITE'=>'http://www.bmbmda1.com',//默认pc网址
+        'DEFAULT_MOBILE_SITE'=>'http://m.bmbmda1.com',//默认mobile网址
         'DEFAULT_TITLE'=>'蹦蹦哒',//默认网址
         ),
     'URL_MODEL'=>2,//去掉index.php
