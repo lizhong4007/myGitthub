@@ -1,0 +1,22 @@
+*{
+	margin:0 auto;
+	padding: 0;
+}
+a:link{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+ol{
+	list-style: none;
+}
+.clear{
+	clear: both;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}

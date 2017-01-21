@@ -1,0 +1,13 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$config['email']=array();
+$config['email']['protocol']='smtp';
+$config['email']['smtp_host']='ssl://smtp.qq.com';
+$config['email']['smtp_port']=587;
+$config['email']['mailtype']='html';
+$config['email']['newline']="\\r\\n";
+$config['email']['crlf']="\\r\\n";
+$config['email']['charset']='iso-8859-1';
+$config['email']['smtp_timeout']=5;
+$config['email']['wordwrap']=TRUE;
+$config['email']['smtp_user']='870521452@qq.com';
+$config['email']['smtp_pass']='Xuqiujin@831122';
